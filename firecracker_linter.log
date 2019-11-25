@@ -1,0 +1,171 @@
+root@oslo:/home/pmieden/firecracker# cargo clippy
+    Checking lazy_static v1.4.0
+    Checking cfg-if v0.1.10
+    Checking itoa v0.4.4
+    Checking kvm-bindings v0.1.1
+    Checking byteorder v1.2.1
+    Checking net_gen v0.1.0 (/home/pmieden/firecracker/net_gen)
+   Compiling regex v1.0.6
+    Checking unicode-width v0.1.6
+    Checking virtio_gen v0.1.0 (/home/pmieden/firecracker/virtio_gen)
+    Checking arch_gen v0.1.0 (/home/pmieden/firecracker/arch_gen)
+    Checking regex-syntax v0.6.12
+    Checking utf8-ranges v1.0.4
+    Checking rustc-demangle v0.1.16
+   Compiling libc v0.2.64
+   Compiling serde v1.0.101
+   Compiling bitflags v1.2.1
+   Compiling proc-macro2 v1.0.5
+   Compiling ryu v1.0.2
+   Compiling syn v1.0.5
+   Compiling log v0.4.8
+   Compiling memchr v2.2.1
+   Compiling backtrace-sys v0.1.31
+    Checking textwrap v0.11.0
+    Checking thread_local v0.3.6
+   Compiling quote v1.0.2
+    Checking aho-corasick v0.6.10
+    Checking clap v2.33.0
+    Checking fc_util v0.1.0 (/home/pmieden/firecracker/fc_util)
+    Checking sys_util v0.1.0 (/home/pmieden/firecracker/sys_util)
+    Checking epoll v4.0.1
+    Checking memory_model v0.1.0 (/home/pmieden/firecracker/memory_model)
+warning: unsafe function's docs miss `# Safety` section
+   --> sys_util/src/ioctl.rs:108:1
+    |
+108 | / pub unsafe fn ioctl<F: AsRawFd>(fd: &F, req: c_ulong) -> c_int {
+109 | |     libc::ioctl(fd.as_raw_fd(), req as IoctlRequest, 0)
+110 | | }
+    | |_^
+    |
+    = note: `#[warn(clippy::missing_safety_doc)]` on by default
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#missing_safety_doc
+
+warning: unsafe function's docs miss `# Safety` section
+   --> sys_util/src/ioctl.rs:113:1
+    |
+113 | / pub unsafe fn ioctl_with_val<F: AsRawFd>(fd: &F, req: c_ulong, arg: c_ulong) -> c_int {
+114 | |     libc::ioctl(fd.as_raw_fd(), req as IoctlRequest, arg)
+115 | | }
+    | |_^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#missing_safety_doc
+
+warning: unsafe function's docs miss `# Safety` section
+   --> sys_util/src/ioctl.rs:118:1
+    |
+118 | / pub unsafe fn ioctl_with_ref<F: AsRawFd, T>(fd: &F, req: c_ulong, arg: &T) -> c_int {
+119 | |     libc::ioctl(
+120 | |         fd.as_raw_fd(),
+121 | |         req as IoctlRequest,
+122 | |         arg as *const T as *const c_void,
+123 | |     )
+124 | | }
+    | |_^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#missing_safety_doc
+
+warning: unsafe function's docs miss `# Safety` section
+   --> sys_util/src/ioctl.rs:127:1
+    |
+127 | / pub unsafe fn ioctl_with_mut_ref<F: AsRawFd, T>(fd: &F, req: c_ulong, arg: &mut T) -> c_int {
+128 | |     libc::ioctl(
+129 | |         fd.as_raw_fd(),
+130 | |         req as IoctlRequest,
+131 | |         arg as *mut T as *mut c_void,
+132 | |     )
+133 | | }
+    | |_^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#missing_safety_doc
+
+warning: unsafe function's docs miss `# Safety` section
+   --> sys_util/src/ioctl.rs:136:1
+    |
+136 | / pub unsafe fn ioctl_with_ptr<F: AsRawFd, T>(fd: &F, req: c_ulong, arg: *const T) -> c_int {
+137 | |     libc::ioctl(fd.as_raw_fd(), req as IoctlRequest, arg as *const c_void)
+138 | | }
+    | |_^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#missing_safety_doc
+
+warning: unsafe function's docs miss `# Safety` section
+   --> sys_util/src/ioctl.rs:141:1
+    |
+141 | / pub unsafe fn ioctl_with_mut_ptr<F: AsRawFd, T>(fd: &F, req: c_ulong, arg: *mut T) -> c_int {
+142 | |     libc::ioctl(fd.as_raw_fd(), req as IoctlRequest, arg as *mut c_void)
+143 | | }
+    | |_^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#missing_safety_doc
+
+warning: unsafe function's docs miss `# Safety` section
+   --> sys_util/src/signal.rs:108:1
+    |
+108 | / pub unsafe fn register_vcpu_signal_handler(
+109 | |     signum: c_int,
+110 | |     handler: SignalHandler,
+111 | | ) -> io::Result<()> {
+...   |
+117 | |     SyscallReturnCode(sigaction(num, &sigact, null_mut())).into_empty_result()
+118 | | }
+    | |_^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#missing_safety_doc
+
+warning: unsafe function's docs miss `# Safety` section
+  --> sys_util/src/struct_util.rs:36:1
+   |
+36 | / pub unsafe fn read_struct<T: Copy, F: Read>(f: &mut F, out: &mut T) -> Result<()> {
+37 | |     let out_slice = std::slice::from_raw_parts_mut(out as *mut T as *mut u8, mem::size_of::<T>());
+38 | |     f.read_exact(out_slice).map_err(Error::ReadStruct)?;
+39 | |     Ok(())
+40 | | }
+   | |_^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#missing_safety_doc
+
+warning: unsafe function's docs miss `# Safety` section
+  --> sys_util/src/struct_util.rs:53:1
+   |
+53 | / pub unsafe fn read_struct_slice<T: Copy, F: Read>(f: &mut F, len: usize) -> Result<Vec<T>> {
+54 | |     let mut out: Vec<T> = Vec::with_capacity(len);
+55 | |     out.set_len(len);
+56 | |     let out_slice = std::slice::from_raw_parts_mut(
+...  |
+61 | |     Ok(out)
+62 | | }
+   | |_^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#missing_safety_doc
+
+    Checking vmm-sys-util v0.2.0
+    Checking timerfd v1.0.0
+    Checking seccomp v0.1.0 (/home/pmieden/firecracker/seccomp)
+    Checking micro_http v0.1.0 (/home/pmieden/firecracker/micro_http)
+    Checking kvm-ioctls v0.3.0
+    Checking backtrace v0.3.35
+    Checking kernel v0.1.0 (/home/pmieden/firecracker/kernel)
+    Checking arch v0.1.0 (/home/pmieden/firecracker/arch)
+    Checking cpuid v0.1.0 (/home/pmieden/firecracker/cpuid)
+    Checking jailer v0.19.0 (/home/pmieden/firecracker/jailer)
+    Checking serde_json v1.0.41
+    Checking net_util v0.1.0 (/home/pmieden/firecracker/net_util)
+   Compiling serde_derive v1.0.101
+    Checking mmds v0.1.0 (/home/pmieden/firecracker/mmds)
+    Checking logger v0.1.0 (/home/pmieden/firecracker/logger)
+    Checking rate_limiter v0.1.0 (/home/pmieden/firecracker/rate_limiter)
+    Checking dumbo v0.1.0 (/home/pmieden/firecracker/dumbo)
+    Checking devices v0.1.0 (/home/pmieden/firecracker/devices)
+warning: use of deprecated item 'std::mem::uninitialized': use `mem::MaybeUninit` instead
+  --> devices/src/virtio/vsock/csm/txbuf.rs:63:34
+   |
+63 |                 Box::new(unsafe {mem::uninitialized::<[u8; Self::SIZE]>()}));
+   |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(deprecated)]` on by default
+
+    Checking vmm v0.1.0 (/home/pmieden/firecracker/vmm)
+    Checking api_server v0.1.0 (/home/pmieden/firecracker/api_server)
+    Checking firecracker v0.19.0 (/home/pmieden/firecracker)
+    Finished dev [unoptimized + debuginfo] target(s) in 1m 00s

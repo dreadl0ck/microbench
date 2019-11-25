@@ -358,4 +358,15 @@ https://github.com/firecracker-microvm/firecracker/blob/master/docs/network-setu
     Broadcast: 145.100.106.31        10010001.01100100.01101010.0001 1111
     HostMin:   145.100.106.17        10010001.01100100.01101010.0001 0001
     HostMax:   145.100.106.30        10010001.01100100.01101010.0001 1110
-    Hosts/Net: 14 
+    Hosts/Net: 14
+    
+#### Run Firecracker Unit Tests
+
+    cd firecracker
+    tools/devtool test 2>&1 > firecracker_tests.log 
+
+#### Run Rust Linter
+
+    rustup target add x86_64-unknown-linux-musl
+    cargo clippy
+    ...
