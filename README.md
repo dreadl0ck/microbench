@@ -192,8 +192,9 @@ Install via snap:
 In ~/.bashrc:
 
     export PATH="$PATH:/snap/bin"
-    export GOBIN="$(go env GOPATH)/bin"
-    export PATH="$PATH:$GOBIN"
+    export GOPATH="/home/pmieden/go"
+    export GOBIN="$GOPATH/bin"
+    export PATH="$PATH:$GOBIN:$HOME/.cargo/bin"
 
 Reload
 
@@ -370,3 +371,9 @@ https://github.com/firecracker-microvm/firecracker/blob/master/docs/network-setu
     rustup target add x86_64-unknown-linux-musl
     cargo clippy
     ...
+    
+### Automate microVM start
+    
+    dreadl0ck
+    cd firebench
+    cli/setup_rootfs.sh && bin/firebench 145.100.106.18

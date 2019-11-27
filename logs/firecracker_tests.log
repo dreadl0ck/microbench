@@ -1,0 +1,1761 @@
+[Firecracker devtool] Starting test run ...
+============================= test session starts ==============================
+platform linux -- Python 3.6.8, pytest-5.2.1, py-1.8.0, pluggy-0.13.0
+cachedir: ../build/pytest_cache
+rootdir: /firecracker/tests, inifile: pytest.ini
+plugins: timeout-1.3.3
+timeout: 300.0s
+timeout method: signal
+timeout func_only: False
+collected 70 items
+
+integration_tests/build/test_build.py ..
+integration_tests/build/test_coverage.py 
+running 61 tests
+test if_tun::bindgen_test_layout___kernel_fd_set ... ok
+test if_tun::bindgen_test_layout___kernel_fsid_t ... ok
+test if_tun::bindgen_test_layout_ethhdr ... ok
+test if_tun::bindgen_test_layout_sock_filter ... ok
+test if_tun::bindgen_test_layout_sock_fprog ... ok
+test if_tun::bindgen_test_layout_tun_filter ... ok
+test if_tun::bindgen_test_layout_tun_pi ... ok
+test iff::bindgen_test_layout___fsid_t ... ok
+test iff::bindgen_test_layout___kernel_fd_set ... ok
+test iff::bindgen_test_layout___kernel_fsid_t ... ok
+test iff::bindgen_test_layout___kernel_sockaddr_storage ... ok
+test iff::bindgen_test_layout___pthread_internal_list ... ok
+test iff::bindgen_test_layout___sigset_t ... ok
+test iff::bindgen_test_layout_cisco_proto ... ok
+test iff::bindgen_test_layout_cmsghdr ... ok
+test iff::bindgen_test_layout_fd_set ... ok
+test iff::bindgen_test_layout_fr_proto ... ok
+test iff::bindgen_test_layout_fr_proto_pvc ... ok
+test iff::bindgen_test_layout_fr_proto_pvc_info ... ok
+test iff::bindgen_test_layout_if_settings ... ok
+test iff::bindgen_test_layout_if_settings__bindgen_ty_1 ... ok
+test iff::bindgen_test_layout_ifmap ... ok
+test iff::bindgen_test_layout_ifreq ... ok
+test iff::bindgen_test_layout_ifreq__bindgen_ty_1 ... ok
+test iff::bindgen_test_layout_ifreq__bindgen_ty_2 ... ok
+test iff::bindgen_test_layout_iovec ... ok
+test iff::bindgen_test_layout_linger ... ok
+test iff::bindgen_test_layout_msghdr ... ok
+test iff::bindgen_test_layout_osockaddr ... ok
+test iff::bindgen_test_layout_pthread_attr_t ... ok
+test iff::bindgen_test_layout_pthread_barrier_t ... ok
+test iff::bindgen_test_layout_pthread_barrierattr_t ... ok
+test iff::bindgen_test_layout_pthread_cond_t ... ok
+test iff::bindgen_test_layout_pthread_cond_t__bindgen_ty_1 ... ok
+test iff::bindgen_test_layout_pthread_condattr_t ... ok
+test iff::bindgen_test_layout_pthread_mutex_t ... ok
+test iff::bindgen_test_layout_pthread_mutex_t___pthread_mutex_s ... ok
+test iff::bindgen_test_layout_pthread_mutexattr_t ... ok
+test iff::bindgen_test_layout_pthread_rwlock_t ... ok
+test iff::bindgen_test_layout_pthread_rwlock_t__bindgen_ty_1 ... ok
+test iff::bindgen_test_layout_pthread_rwlockattr_t ... ok
+test iff::bindgen_test_layout_raw_hdlc_proto ... ok
+test iff::bindgen_test_layout_sockaddr ... ok
+test iff::bindgen_test_layout_sockaddr_storage ... ok
+test iff::bindgen_test_layout_sync_serial_settings ... ok
+test iff::bindgen_test_layout_te1_settings ... ok
+test iff::bindgen_test_layout_timespec ... ok
+test iff::bindgen_test_layout_timeval ... ok
+test inn::bindgen_test_layout___kernel_fd_set ... ok
+test inn::bindgen_test_layout___kernel_fsid_t ... ok
+test inn::bindgen_test_layout___kernel_sockaddr_storage ... ok
+test inn::bindgen_test_layout_group_filter ... ok
+test inn::bindgen_test_layout_group_req ... ok
+test inn::bindgen_test_layout_group_source_req ... ok
+test inn::bindgen_test_layout_in_addr ... ok
+test inn::bindgen_test_layout_in_pktinfo ... ok
+test inn::bindgen_test_layout_ip_mreq ... ok
+test inn::bindgen_test_layout_ip_mreq_source ... ok
+test inn::bindgen_test_layout_ip_mreqn ... ok
+test inn::bindgen_test_layout_ip_msfilter ... ok
+test inn::bindgen_test_layout_sockaddr_in ... ok
+
+test result: ok. 61 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 23 tests
+test virtio_blk::bindgen_test_layout___kernel_fd_set ... ok
+test virtio_blk::bindgen_test_layout___kernel_fsid_t ... ok
+test virtio_blk::bindgen_test_layout_virtio_blk_config ... ok
+test virtio_blk::bindgen_test_layout_virtio_blk_config_virtio_blk_geometry ... ok
+test virtio_blk::bindgen_test_layout_virtio_blk_outhdr ... ok
+test virtio_blk::bindgen_test_layout_virtio_scsi_inhdr ... ok
+test virtio_net::bindgen_test_layout___kernel_fd_set ... ok
+test virtio_net::bindgen_test_layout___kernel_fsid_t ... ok
+test virtio_net::bindgen_test_layout_ethhdr ... ok
+test virtio_net::bindgen_test_layout_virtio_net_config ... ok
+test virtio_net::bindgen_test_layout_virtio_net_ctrl_hdr ... ok
+test virtio_net::bindgen_test_layout_virtio_net_ctrl_mac ... ok
+test virtio_net::bindgen_test_layout_virtio_net_ctrl_mq ... ok
+test virtio_net::bindgen_test_layout_virtio_net_hdr ... ok
+test virtio_net::bindgen_test_layout_virtio_net_hdr_mrg_rxbuf ... ok
+test virtio_net::bindgen_test_layout_virtio_net_hdr_v1 ... ok
+test virtio_ring::bindgen_test_layout___kernel_fd_set ... ok
+test virtio_ring::bindgen_test_layout___kernel_fsid_t ... ok
+test virtio_ring::bindgen_test_layout_vring ... ok
+test virtio_ring::bindgen_test_layout_vring_avail ... ok
+test virtio_ring::bindgen_test_layout_vring_desc ... ok
+test virtio_ring::bindgen_test_layout_vring_used ... ok
+test virtio_ring::bindgen_test_layout_vring_used_elem ... ok
+
+test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 43 tests
+test x86::bootparam::bindgen_test_layout___kernel_fd_set ... ok
+test x86::bootparam::bindgen_test_layout___kernel_fsid_t ... ok
+test x86::bootparam::bindgen_test_layout_apm_bios_info ... ok
+test x86::bootparam::bindgen_test_layout_boot_params ... ok
+test x86::bootparam::bindgen_test_layout_e820entry ... ok
+test x86::bootparam::bindgen_test_layout_e820map ... ok
+test x86::bootparam::bindgen_test_layout_edd ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_1 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_1__bindgen_ty_1 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_1__bindgen_ty_2 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_1__bindgen_ty_3 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_1__bindgen_ty_4 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_1__bindgen_ty_5 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_1__bindgen_ty_6 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_2 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_2__bindgen_ty_1 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_2__bindgen_ty_10 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_2__bindgen_ty_2 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_2__bindgen_ty_3 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_2__bindgen_ty_4 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_2__bindgen_ty_5 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_2__bindgen_ty_6 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_2__bindgen_ty_7 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_2__bindgen_ty_8 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_2__bindgen_ty_9 ... ok
+test x86::bootparam::bindgen_test_layout_edd_info ... ok
+test x86::bootparam::bindgen_test_layout_edid_info ... ok
+test x86::bootparam::bindgen_test_layout_efi_info ... ok
+test x86::bootparam::bindgen_test_layout_ist_info ... ok
+test x86::bootparam::bindgen_test_layout_olpc_ofw_header ... ok
+test x86::bootparam::bindgen_test_layout_screen_info ... ok
+test x86::bootparam::bindgen_test_layout_setup_data ... ok
+test x86::bootparam::bindgen_test_layout_setup_header ... ok
+test x86::bootparam::bindgen_test_layout_sys_desc_table ... ok
+test x86::mpspec::bindgen_test_layout_mpc_bus ... ok
+test x86::mpspec::bindgen_test_layout_mpc_cpu ... ok
+test x86::mpspec::bindgen_test_layout_mpc_intsrc ... ok
+test x86::mpspec::bindgen_test_layout_mpc_ioapic ... ok
+test x86::mpspec::bindgen_test_layout_mpc_lintsrc ... ok
+test x86::mpspec::bindgen_test_layout_mpc_oemtable ... ok
+test x86::mpspec::bindgen_test_layout_mpc_table ... ok
+test x86::mpspec::bindgen_test_layout_mpf_intel ... ok
+
+test result: ok. 43 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 15 tests
+test tests::test_bpf_expanding_functions ... ok
+test tests::test_bpf_functions ... ok
+test tests::test_eq_operator ... ok
+test tests::test_error_messages ... ok
+test tests::test_filter_bpf_output_dword ... ok
+test tests::test_filter_bpf_output_qword ... ok
+test tests::test_from_seccomp_action ... ok
+test tests::test_ge_operator ... ok
+test tests::test_gt_operator ... ok
+test tests::test_le_operator ... ok
+test tests::test_lt_operator ... ok
+test tests::test_masked_eq_operator ... ok
+test tests::test_ne_operator ... ok
+test tests::test_rule_bpf_output ... ok
+test tests::test_rule_many_conditions_bpf_output ... ok
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 5 tests
+test rand::tests::test_xor_rng_u32 ... ok
+test time::tests::test_get_time ... ok
+test time::tests::test_local_time_display ... ok
+test time::tests::test_seconds_to_nanoseconds ... ok
+test validators::tests::test_validate_instance_id ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 38 tests
+test common::headers::tests::test_default ... ok
+test common::headers::tests::test_header_try_from ... ok
+test common::headers::tests::test_media_as_str ... ok
+test common::headers::tests::test_parse_header_line ... ok
+test common::headers::tests::test_try_from_headers ... ok
+test common::headers::tests::test_try_from_media ... ok
+test common::tests::test_body ... ok
+test common::tests::test_display_connection_error ... ok
+test common::tests::test_display_request_error ... ok
+test common::tests::test_display_server_error ... ok
+test common::tests::test_method ... ok
+test common::tests::test_version ... ok
+test connection::tests::test_enqueue_response ... ok
+test connection::tests::test_try_read_connection_closed ... ok
+test connection::tests::test_try_read_double_request ... ok
+test connection::tests::test_try_read_expect ... ok
+test connection::tests::test_try_read_invalid_request ... ok
+test connection::tests::test_try_read_large_header_line ... ok
+test connection::tests::test_try_read_large_req_line ... ok
+test connection::tests::test_try_read_long_headers ... ok
+test connection::tests::test_try_read_long_req_line_b2b ... ok
+test connection::tests::test_try_read_long_request_body ... ok
+test connection::tests::test_try_read_no_body_request ... ok
+test connection::tests::test_try_read_segmented_req_line ... ok
+test connection::tests::test_try_read_split_ending ... ok
+test request::tests::test_find ... ok
+test request::tests::test_into_request ... ok
+test request::tests::test_into_request_line ... ok
+test request::tests::test_uri ... ok
+test response::tests::test_set_server ... ok
+test response::tests::test_status_code ... ok
+test response::tests::test_write_response ... ok
+test server::tests::test_wait_concurrent_connections ... ok
+test server::tests::test_wait_expect_connection ... ok
+test server::tests::test_wait_in_flight_responses ... ok
+test server::tests::test_wait_many_connections ... ok
+test server::tests::test_wait_one_connection ... ok
+test server::tests::test_wait_parse_error ... ok
+
+test result: ok. 38 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 19 tests
+test cmdline::tests::display_errors ... ok
+test cmdline::tests::insert_emoji ... ok
+test cmdline::tests::insert_equals ... ok
+test cmdline::tests::insert_hello_world ... ok
+test cmdline::tests::insert_multi ... ok
+test cmdline::tests::insert_space ... ok
+test cmdline::tests::insert_string ... ok
+test cmdline::tests::insert_too_large ... ok
+test loader::elf::tests::bindgen_test_layout_elf64_hdr ... ok
+test loader::elf::tests::bindgen_test_layout_elf64_phdr ... ok
+test loader::tests::test_bad_kernel_endian ... ok
+test loader::tests::test_bad_kernel_invalid_entry ... ok
+test loader::tests::test_bad_kernel_magic ... ok
+test loader::tests::test_bad_kernel_phoff ... ok
+test loader::tests::test_bad_kernel_phsize ... ok
+test loader::tests::test_cmdline_overflow ... ok
+test loader::tests::test_cmdline_write_end ... ok
+test loader::tests::test_load_kernel ... ok
+test loader::tests::test_load_kernel_no_memory ... ok
+
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 41 tests
+test bit_helper::tests::test_chained_write_bit ... ok
+test bit_helper::tests::test_chained_write_bits ... ok
+test bit_helper::tests::test_get_u32_mask_for_range ... ok
+test bit_helper::tests::test_invalid_msb_index ... ok
+test bit_helper::tests::test_invalid_range ... ok
+test bit_helper::tests::test_invalid_read_bit ... ok
+test bit_helper::tests::test_invalid_read_bits ... ok
+test bit_helper::tests::test_invalid_write_bit ... ok
+test bit_helper::tests::test_invalid_write_bits ... ok
+test bit_helper::tests::test_overflow_write_bits ... ok
+test bit_helper::tests::test_read_bits ... ok
+test bit_helper::tests::test_simple_read_bit ... ok
+test bit_helper::tests::test_simple_write_bit ... ok
+test bit_helper::tests::test_simple_write_bits ... ok
+test brand_string::tests::test_brand_string ... ok
+test brand_string::tests::test_find_freq_fails ... ok
+test common::tests::test_get_cpu_id ... ok
+test common::tests::test_get_vendor_id ... ok
+test transformer::amd::test::test_1vcpu_ht_off ... ok
+test transformer::amd::test::test_1vcpu_ht_on ... ok
+test transformer::amd::test::test_2vcpu_ht_off ... ok
+test transformer::amd::test::test_2vcpu_ht_on ... ok
+test transformer::amd::test::test_update_extended_cache_topology_entry ... ok
+test transformer::amd::test::test_update_extended_feature_info_entry ... ok
+test transformer::amd::test::test_update_largest_extended_fn_entry ... ok
+test transformer::amd::test::test_update_structured_extended_entry ... ok
+test transformer::common::test::test_1vcpu_ht_off ... ok
+test transformer::common::test::test_1vcpu_ht_on ... ok
+test transformer::common::test::test_2vcpu_ht_off ... ok
+test transformer::common::test::test_2vcpu_ht_on ... ok
+test transformer::common::test::test_get_max_cpus_per_package ... ok
+test transformer::common::test::test_use_host_cpuid_function_err ... ok
+test transformer::common::test::test_use_host_cpuid_function_with_count ... ok
+test transformer::common::test::test_use_host_cpuid_function_without_count ... ok
+test transformer::intel::test::test_1vcpu_ht_off ... ok
+test transformer::intel::test::test_1vcpu_ht_on ... ok
+test transformer::intel::test::test_2vcpu_ht_off ... ok
+test transformer::intel::test::test_2vcpu_ht_on ... ok
+test transformer::intel::test::test_update_feature_info_entry ... ok
+test transformer::intel::test::test_update_perf_mon_entry ... ok
+test transformer::test::test_process_cpuid ... ok
+
+test result: ok. 41 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 23 tests
+test x86_64::gdt::tests::field_parse ... ok
+test x86_64::interrupts::tests::test_apic_delivery_mode ... ok
+test x86_64::interrupts::tests::test_set_and_get_klapic_out_of_bounds ... ok
+test x86_64::interrupts::tests::test_set_and_get_klapic_reg ... ok
+test x86_64::interrupts::tests::test_setlint ... ok
+test x86_64::interrupts::tests::test_setlint_fails ... ok
+test x86_64::mptable::tests::bounds_check ... ok
+test x86_64::mptable::tests::bounds_check_fails ... ok
+test x86_64::mptable::tests::cpu_entry_count ... ok
+test x86_64::mptable::tests::cpu_entry_count_max ... ok
+test x86_64::mptable::tests::mpc_table_checksum ... ok
+test x86_64::mptable::tests::mpf_intel_checksum ... ok
+test x86_64::regs::tests::test_configure_segments_and_sregs ... ok
+test x86_64::regs::tests::test_setup_fpu ... ok
+test x86_64::regs::tests::test_setup_msrs ... ok
+test x86_64::regs::tests::test_setup_page_tables ... ok
+test x86_64::regs::tests::test_setup_regs ... ok
+test x86_64::regs::tests::test_setup_sregs ... ok
+test x86_64::tests::regions_gt_4gb ... ok
+test x86_64::tests::regions_lt_4gb ... ok
+test x86_64::tests::test_32bit_gap ... ok
+test x86_64::tests::test_add_e820_entry ... ok
+test x86_64::tests::test_system_configuration ... ok
+
+test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 22 tests
+test guest_address::tests::test_add_sub ... ok
+test guest_address::tests::test_bit_and ... ok
+test guest_address::tests::test_bit_or ... ok
+test guest_address::tests::test_checked_add_with_overflow ... ok
+test guest_address::tests::test_checked_sub_with_underflow ... ok
+test guest_address::tests::test_cmp ... ok
+test guest_address::tests::test_default ... ok
+test guest_address::tests::test_equals ... ok
+test guest_memory::tests::create_vec_with_regions ... ok
+test guest_memory::tests::guest_to_host ... ok
+test guest_memory::tests::overlap_memory ... ok
+test guest_memory::tests::read_to_and_write_from_mem ... ok
+test guest_memory::tests::test_map_fold ... ok
+test guest_memory::tests::test_read_u64 ... ok
+test guest_memory::tests::test_regions ... ok
+test guest_memory::tests::write_and_read_slice ... ok
+test mmap::tests::basic_map ... ok
+test mmap::tests::map_invalid_size ... ok
+test mmap::tests::mem_read_and_write ... ok
+test mmap::tests::obj_read_and_write ... ok
+test mmap::tests::slice_read_and_write ... ok
+test mmap::tests::test_write_past_end ... ok
+
+test result: ok. 22 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 13 tests
+test eventfd::tests::clone ... ok
+test eventfd::tests::new ... ok
+test eventfd::tests::read_nothing ... ok
+test eventfd::tests::read_write ... ok
+test eventfd::tests::write_overflow ... ok
+test ioctl::tests::ioctl_macros ... ok
+test signal::tests::test_register_signal_handler ... ok
+test signal::tests::test_register_vcpu_handler ... ok
+test struct_util::tests::struct_basic_read ... ok
+test struct_util::tests::struct_read_past_end ... ok
+test struct_util::tests::struct_slice_read ... ok
+test terminal::tests::test_a_non_tty ... ok
+test terminal::tests::test_a_tty ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 5 tests
+test cgroup::tests::test_inherit_from_parent ... ok
+test env::tests::test_dup2 ... ok
+test env::tests::test_new_env ... ok
+test tests::test_error_display ... ok
+test tests::test_sanitize_process ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test data_store::tests::test_get_element_from_array ... ok
+test data_store::tests::test_get_value ... ok
+test data_store::tests::test_mmds ... ok
+test data_store::tests::test_update_data_store ... ok
+test tests::test_json_patch ... ok
+test tests::test_parse_request ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 5 tests
+test error::tests::test_error_messages ... ok
+test metrics::tests::test_metric ... ok
+test metrics::tests::test_serialize ... ok
+test tests::test_default_values ... ok
+test tests::test_init ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 24 tests
+test mac::tests::test_from_bytes ... ok
+test mac::tests::test_mac_addr ... ok
+test mac::tests::test_mac_addr_serialization_and_deserialization ... ok
+test ns::tests::test_ns ... ok
+test pdu::arp::tests::test_eth_ipv4_arp_frame ... ok
+test pdu::arp::tests::test_speculative ... ok
+test pdu::bytes::tests::test_network_bytes ... ok
+test pdu::ethernet::tests::test_ethernet_frame ... ok
+test pdu::ipv4::tests::test_constructors ... ok
+test pdu::ipv4::tests::test_incomplete ... ok
+test pdu::ipv4::tests::test_set_get ... ok
+test pdu::ipv4::tests::test_speculative ... ok
+test pdu::tcp::tests::test_constructors ... ok
+test pdu::tcp::tests::test_set_get ... ok
+test pdu::udp::tests::test_checksum ... ok
+test pdu::udp::tests::test_construction ... ok
+test pdu::udp::tests::test_failing_construction ... ok
+test pdu::udp::tests::test_set_get ... ok
+test tcp::connection::tests::test_connection ... ok
+test tcp::endpoint::tests::test_endpoint ... ok
+test tcp::handler::tests::test_handler ... ok
+test tcp::tests::test_rst_config ... ok
+test tcp::tests::test_seq_at_or_after ... ok
+test tests::test_u8_byte_buffer ... ok
+
+test result: ok. 24 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 11 tests
+test tests::test_rate_limiter_bandwidth ... ok
+test tests::test_rate_limiter_debug ... ok
+test tests::test_rate_limiter_default ... ok
+test tests::test_rate_limiter_full ... ok
+test tests::test_rate_limiter_manual_replenish ... ok
+test tests::test_rate_limiter_new ... ok
+test tests::test_rate_limiter_ops ... ok
+test tests::test_token_bucket_create ... ok
+test tests::test_token_bucket_preprocess ... ok
+test tests::test_token_bucket_reduce ... ok
+test tests::test_update_buckets ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 86 tests
+test bus::tests::bus_insert ... ok
+test bus::tests::bus_read_write ... ok
+test bus::tests::bus_read_write_values ... ok
+test bus::tests::busrange_cmp_and_clone ... ok
+test bus::tests::test_display_error ... ok
+test legacy::i8042::tests::test_i8042_buffer ... ok
+test legacy::i8042::tests::test_i8042_commands ... ok
+test legacy::i8042::tests::test_i8042_kbd ... ok
+test legacy::i8042::tests::test_i8042_read_write_and_event ... ok
+test legacy::serial::tests::serial_dlab ... ok
+test legacy::serial::tests::serial_input ... ok
+test legacy::serial::tests::serial_modem ... ok
+test legacy::serial::tests::serial_output ... ok
+test legacy::serial::tests::serial_scratch ... ok
+test legacy::serial::tests::serial_thr ... ok
+test legacy::serial::tests::test_serial_data_len ... ok
+test virtio::block::tests::test_handler ... ok
+test virtio::block::tests::test_invalid_event_handler ... ok
+test virtio::block::tests::test_parse ... ok
+test virtio::block::tests::test_read_request_header ... ok
+test virtio::block::tests::test_request_type_from ... ok
+test virtio::block::tests::test_virtio_device ... ok
+test virtio::mmio::tests::test_ack_features_by_page ... ok
+test virtio::mmio::tests::test_bus_device_activate ... ok
+test virtio::mmio::tests::test_bus_device_read ... ok
+test virtio::mmio::tests::test_bus_device_reset ... ok
+test virtio::mmio::tests::test_bus_device_write ... ok
+test virtio::mmio::tests::test_get_acked_features ... ok
+test virtio::mmio::tests::test_get_avail_features ... ok
+test virtio::mmio::tests::test_new ... ok
+test virtio::mmio::tests::test_set_acked_features ... ok
+test virtio::mmio::tests::test_set_avail_features ... ok
+test virtio::net::tests::test_bandwidth_rate_limiter ... ok
+test virtio::net::tests::test_handler ... ok
+test virtio::net::tests::test_handler_error_cases ... ok
+test virtio::net::tests::test_invalid_event_handler ... ok
+test virtio::net::tests::test_mac_spoofing_detection ... ok
+test virtio::net::tests::test_mmds_detour_and_injection ... ok
+test virtio::net::tests::test_ops_rate_limiter ... ok
+test virtio::net::tests::test_patch_rate_limiters ... ok
+test virtio::net::tests::test_read_tap_fail_event_handler ... ok
+test virtio::net::tests::test_rx_rate_limited_event_handler ... ok
+test virtio::net::tests::test_tx_rate_limited_event_handler ... ok
+test virtio::net::tests::test_virtio_device ... ok
+test virtio::net::tests::test_vnet_helpers ... ok
+test virtio::queue::tests::test_add_used ... ok
+test virtio::queue::tests::test_checked_new_descriptor_chain ... ok
+test virtio::queue::tests::test_queue_processing ... ok
+test virtio::queue::tests::test_queue_validation ... ok
+test virtio::vsock::csm::connection::tests::test_credit_request_from_peer ... ok
+test virtio::vsock::csm::connection::tests::test_credit_request_to_peer ... ok
+test virtio::vsock::csm::connection::tests::test_credit_update_to_peer ... ok
+test virtio::vsock::csm::connection::tests::test_local_close ... ok
+test virtio::vsock::csm::connection::tests::test_local_read_error ... ok
+test virtio::vsock::csm::connection::tests::test_local_request ... ok
+test virtio::vsock::csm::connection::tests::test_local_request_timeout ... ok
+test virtio::vsock::csm::connection::tests::test_peer_close ... ok
+test virtio::vsock::csm::connection::tests::test_peer_credit_misbehavior ... ok
+test virtio::vsock::csm::connection::tests::test_peer_request ... ok
+test virtio::vsock::csm::connection::tests::test_rx_data ... ok
+test virtio::vsock::csm::connection::tests::test_stream_write_error ... ok
+test virtio::vsock::csm::connection::tests::test_tx_buffering ... ok
+test virtio::vsock::csm::txbuf::tests::test_flush_error ... ok
+test virtio::vsock::csm::txbuf::tests::test_incomplete_flush ... ok
+test virtio::vsock::csm::txbuf::tests::test_push_error ... ok
+test virtio::vsock::csm::txbuf::tests::test_push_nowrap ... ok
+test virtio::vsock::csm::txbuf::tests::test_push_wrap ... ok
+test virtio::vsock::device::tests::test_virtio_device ... ok
+test virtio::vsock::epoll_handler::tests::test_backend_event ... ok
+test virtio::vsock::epoll_handler::tests::test_evq_event ... ok
+test virtio::vsock::epoll_handler::tests::test_irq ... ok
+test virtio::vsock::epoll_handler::tests::test_rxq_event ... ok
+test virtio::vsock::epoll_handler::tests::test_txq_event ... ok
+test virtio::vsock::epoll_handler::tests::test_unknown_event ... ok
+test virtio::vsock::packet::tests::test_packet_buf ... ok
+test virtio::vsock::packet::tests::test_packet_hdr_accessors ... ok
+test virtio::vsock::packet::tests::test_rx_packet_assembly ... ok
+test virtio::vsock::packet::tests::test_tx_packet_assembly ... ok
+test virtio::vsock::unix::muxer::tests::test_bad_peer_pkt ... ok
+test virtio::vsock::unix::muxer::tests::test_local_close ... ok
+test virtio::vsock::unix::muxer::tests::test_local_connection ... ok
+test virtio::vsock::unix::muxer::tests::test_muxer_epoll_listener ... ok
+test virtio::vsock::unix::muxer::tests::test_muxer_killq ... ok
+test virtio::vsock::unix::muxer::tests::test_muxer_rxq ... ok
+test virtio::vsock::unix::muxer::tests::test_peer_close ... ok
+test virtio::vsock::unix::muxer::tests::test_peer_connection ... ok
+
+test result: ok. 86 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 9 tests
+test tap::tests::test_raw_fd ... ok
+test tap::tests::test_read ... ok
+test tap::tests::test_set_options ... ok
+test tap::tests::test_tap_configure ... ok
+test tap::tests::test_tap_enable ... ok
+test tap::tests::test_tap_get_ifreq ... ok
+test tap::tests::test_tap_name ... ok
+test tap::tests::test_tap_partial_eq ... ok
+test tap::tests::test_write ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 65 tests
+test default_syscalls::tests::test_advanced_seccomp ... ok
+test default_syscalls::tests::test_basic_seccomp ... ok
+test device_manager::legacy::tests::test_debug_error ... ok
+test device_manager::legacy::tests::test_register_legacy_devices ... ok
+test device_manager::mmio::tests::test_device_info ... ok
+test device_manager::mmio::tests::test_dummy_device ... ok
+test device_manager::mmio::tests::test_error_messages ... ok
+test device_manager::mmio::tests::test_raw_io_device ... ok
+test device_manager::mmio::tests::test_register_too_many_devices ... ok
+test device_manager::mmio::tests::test_register_virtio_device ... ok
+test device_manager::mmio::tests::test_update_drive ... ok
+test error::tests::test_drive_error_conversion ... ok
+test error::tests::test_error_messages ... ok
+test error::tests::test_network_interface_error_conversion ... ok
+test error::tests::test_start_microvm_error_conversion_cl ... ok
+test error::tests::test_start_microvm_error_conversion_mv ... ok
+test error::tests::test_vmconfig_error_conversion ... ok
+test signal_handler::tests::test_signal_handler ... ok
+test tests::add_epollin_event_test ... ok
+test tests::epoll_event_test ... ok
+test tests::new_epoll_context_test ... ok
+test tests::test_attach_block_devices ... ok
+test tests::test_attach_legacy_devices ... ok
+test tests::test_attach_net_devices ... ok
+test tests::test_attach_virtio_devices ... ok
+test tests::test_block_device_rescan ... ok
+test tests::test_check_health ... ok
+test tests::test_configure_boot_source ... ok
+test tests::test_configure_system ... ok
+test tests::test_configure_system_no_mem ... ok
+test tests::test_configure_vmm_from_json ... ok
+test tests::test_create_vcpus ... ok
+test tests::test_device_handler ... ok
+test tests::test_dirty_page_count ... ok
+test tests::test_epoll_stdin_event ... ok
+test tests::test_init_devices ... ok
+test tests::test_init_logger ... ok
+test tests::test_insert_block_device ... ok
+test tests::test_insert_net_device ... ok
+test tests::test_is_instance_initialized ... ok
+test tests::test_load_kernel ... ok
+test tests::test_load_kernel_no_mem ... ok
+test tests::test_machine_configuration ... ok
+test tests::test_update_net_device ... ok
+test vmm_config::drive::tests::test_add_non_root_block_device ... ok
+test vmm_config::drive::tests::test_add_one_root_block_device ... ok
+test vmm_config::drive::tests::test_add_root_block_device_first ... ok
+test vmm_config::drive::tests::test_add_two_root_block_devices_configs ... ok
+test vmm_config::drive::tests::test_create_block_devices_configs ... ok
+test vmm_config::drive::tests::test_root_block_device_add_last ... ok
+test vmm_config::drive::tests::test_update ... ok
+test vmm_config::logger::tests::test_log_writer ... ok
+test vmm_config::machine_config::tests::test_display_cpu_features_template ... ok
+test vmm_config::machine_config::tests::test_display_vm_config_error ... ok
+test vmm_config::net::tests::test_error_display ... ok
+test vmm_config::net::tests::test_insert ... ok
+test vmm_config::net::tests::test_insert_error_cases ... ok
+test vmm_config::tests::test_rate_limiter_configs ... ok
+test vstate::tests::test_configure_vcpu ... ok
+test vstate::tests::test_get_supported_cpuid ... ok
+test vstate::tests::test_kvm_context ... ok
+test vstate::tests::test_set_mmio_bus ... ok
+test vstate::tests::test_setup_irqchip ... ok
+test vstate::tests::test_vcpu_run_failed ... ok
+test vstate::tests::test_vm_memory_init ... ok
+
+test result: ok. 65 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 49 tests
+test parsed_request::tests::test_checked_id ... ok
+test parsed_request::tests::test_convert_to_response ... ok
+test parsed_request::tests::test_describe ... ok
+test parsed_request::tests::test_error_into_response ... ok
+test parsed_request::tests::test_invalid_get ... ok
+test parsed_request::tests::test_invalid_patch ... ok
+test parsed_request::tests::test_invalid_put ... ok
+test parsed_request::tests::test_try_from_get_info ... ok
+test parsed_request::tests::test_try_from_get_machine_config ... ok
+test parsed_request::tests::test_try_from_get_mmds ... ok
+test parsed_request::tests::test_try_from_patch_drives ... ok
+test parsed_request::tests::test_try_from_patch_machine_config ... ok
+test parsed_request::tests::test_try_from_patch_mmds ... ok
+test parsed_request::tests::test_try_from_patch_netif ... ok
+test parsed_request::tests::test_try_from_put_actions ... ok
+test parsed_request::tests::test_try_from_put_boot ... ok
+test parsed_request::tests::test_try_from_put_drives ... ok
+test parsed_request::tests::test_try_from_put_logger ... ok
+test parsed_request::tests::test_try_from_put_machine_config ... ok
+test parsed_request::tests::test_try_from_put_mmds ... ok
+test parsed_request::tests::test_try_from_put_netif ... ok
+test parsed_request::tests::test_try_from_put_vsock ... ok
+test request::actions::tests::test_into_parsed_request ... ok
+test request::actions::tests::test_validate_payload ... ok
+test request::boot_source::tests::test_parse_boot_request ... ok
+test request::drive::tests::test_parse_patch_request ... ok
+test request::drive::tests::test_parse_put_request ... ok
+test request::drive::tests::test_validate ... ok
+test request::instance_info::tests::test_parse_request ... ok
+test request::logger::tests::test_parse_logger_request_x64 ... ok
+test request::machine_configuration::tests::test_parse_get_machine_config_request ... ok
+test request::machine_configuration::tests::test_parse_patch_machine_config_request ... ok
+test request::machine_configuration::tests::test_parse_put_machine_config_request ... ok
+test request::mmds::tests::test_parse_get_mmds_request ... ok
+test request::mmds::tests::test_parse_patch_mmds_request ... ok
+test request::mmds::tests::test_parse_put_mmds_request ... ok
+test request::net::tests::test_network_interface_body_serialization_and_deserialization ... ok
+test request::net::tests::test_parse_netif_request ... ok
+test request::vsock::tests::test_parse_vsock_request ... ok
+test tests::test_bind_and_run ... ok
+test tests::test_error_debug ... ok
+test tests::test_error_messages ... ok
+test tests::test_get_instance_info ... ok
+test tests::test_get_mmds ... ok
+test tests::test_handle_request ... ok
+test tests::test_invalid_seccomp ... ok
+test tests::test_patch_mmds ... ok
+test tests::test_put_mmds ... ok
+test tests::test_serve_vmm_action_request ... ok
+
+test result: ok. 49 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+Number of executable lines: 10414
+Number of covered lines: 8821
+Thus, coverage is: 84.7
+F
+integration_tests/build/test_licenses.py .
+integration_tests/build/test_style.py ....
+integration_tests/build/test_unittests.py 
+running 49 tests
+test parsed_request::tests::test_checked_id ... ok
+test parsed_request::tests::test_convert_to_response ... ok
+test parsed_request::tests::test_describe ... ok
+test parsed_request::tests::test_error_into_response ... ok
+test parsed_request::tests::test_invalid_get ... ok
+test parsed_request::tests::test_invalid_patch ... ok
+test parsed_request::tests::test_invalid_put ... ok
+test parsed_request::tests::test_try_from_get_info ... ok
+test parsed_request::tests::test_try_from_get_machine_config ... ok
+test parsed_request::tests::test_try_from_get_mmds ... ok
+test parsed_request::tests::test_try_from_patch_drives ... ok
+test parsed_request::tests::test_try_from_patch_machine_config ... ok
+test parsed_request::tests::test_try_from_patch_mmds ... ok
+test parsed_request::tests::test_try_from_patch_netif ... ok
+test parsed_request::tests::test_try_from_put_actions ... ok
+test parsed_request::tests::test_try_from_put_boot ... ok
+test parsed_request::tests::test_try_from_put_drives ... ok
+test parsed_request::tests::test_try_from_put_logger ... ok
+test parsed_request::tests::test_try_from_put_machine_config ... ok
+test parsed_request::tests::test_try_from_put_mmds ... ok
+test parsed_request::tests::test_try_from_put_netif ... ok
+test parsed_request::tests::test_try_from_put_vsock ... ok
+test request::actions::tests::test_into_parsed_request ... ok
+test request::actions::tests::test_validate_payload ... ok
+test request::boot_source::tests::test_parse_boot_request ... ok
+test request::drive::tests::test_parse_patch_request ... ok
+test request::drive::tests::test_parse_put_request ... ok
+test request::drive::tests::test_validate ... ok
+test request::instance_info::tests::test_parse_request ... ok
+test request::logger::tests::test_parse_logger_request_x64 ... ok
+test request::machine_configuration::tests::test_parse_get_machine_config_request ... ok
+test request::machine_configuration::tests::test_parse_patch_machine_config_request ... ok
+test request::machine_configuration::tests::test_parse_put_machine_config_request ... ok
+test request::mmds::tests::test_parse_get_mmds_request ... ok
+test request::mmds::tests::test_parse_patch_mmds_request ... ok
+test request::mmds::tests::test_parse_put_mmds_request ... ok
+test request::net::tests::test_network_interface_body_serialization_and_deserialization ... ok
+test request::net::tests::test_parse_netif_request ... ok
+test request::vsock::tests::test_parse_vsock_request ... ok
+test tests::test_bind_and_run ... ok
+test tests::test_error_debug ... ok
+test tests::test_error_messages ... ok
+test tests::test_get_instance_info ... ok
+test tests::test_get_mmds ... ok
+test tests::test_handle_request ... ok
+test tests::test_invalid_seccomp ... ok
+test tests::test_patch_mmds ... ok
+test tests::test_put_mmds ... ok
+test tests::test_serve_vmm_action_request ... ok
+
+test result: ok. 49 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 23 tests
+test x86_64::gdt::tests::field_parse ... ok
+test x86_64::interrupts::tests::test_apic_delivery_mode ... ok
+test x86_64::interrupts::tests::test_set_and_get_klapic_out_of_bounds ... ok
+test x86_64::interrupts::tests::test_set_and_get_klapic_reg ... ok
+test x86_64::interrupts::tests::test_setlint ... ok
+test x86_64::interrupts::tests::test_setlint_fails ... ok
+test x86_64::mptable::tests::bounds_check ... ok
+test x86_64::mptable::tests::bounds_check_fails ... ok
+test x86_64::mptable::tests::cpu_entry_count ... ok
+test x86_64::mptable::tests::cpu_entry_count_max ... ok
+test x86_64::mptable::tests::mpc_table_checksum ... ok
+test x86_64::mptable::tests::mpf_intel_checksum ... ok
+test x86_64::regs::tests::test_configure_segments_and_sregs ... ok
+test x86_64::regs::tests::test_setup_fpu ... ok
+test x86_64::regs::tests::test_setup_msrs ... ok
+test x86_64::regs::tests::test_setup_page_tables ... ok
+test x86_64::regs::tests::test_setup_regs ... ok
+test x86_64::regs::tests::test_setup_sregs ... ok
+test x86_64::tests::regions_gt_4gb ... ok
+test x86_64::tests::regions_lt_4gb ... ok
+test x86_64::tests::test_32bit_gap ... ok
+test x86_64::tests::test_add_e820_entry ... ok
+test x86_64::tests::test_system_configuration ... ok
+
+test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 43 tests
+test x86::bootparam::bindgen_test_layout___kernel_fd_set ... ok
+test x86::bootparam::bindgen_test_layout___kernel_fsid_t ... ok
+test x86::bootparam::bindgen_test_layout_apm_bios_info ... ok
+test x86::bootparam::bindgen_test_layout_boot_params ... ok
+test x86::bootparam::bindgen_test_layout_e820entry ... ok
+test x86::bootparam::bindgen_test_layout_e820map ... ok
+test x86::bootparam::bindgen_test_layout_edd ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_1 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_1__bindgen_ty_1 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_1__bindgen_ty_2 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_1__bindgen_ty_3 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_1__bindgen_ty_4 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_1__bindgen_ty_5 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_1__bindgen_ty_6 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_2 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_2__bindgen_ty_1 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_2__bindgen_ty_10 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_2__bindgen_ty_2 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_2__bindgen_ty_3 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_2__bindgen_ty_4 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_2__bindgen_ty_5 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_2__bindgen_ty_6 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_2__bindgen_ty_7 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_2__bindgen_ty_8 ... ok
+test x86::bootparam::bindgen_test_layout_edd_device_params__bindgen_ty_2__bindgen_ty_9 ... ok
+test x86::bootparam::bindgen_test_layout_edd_info ... ok
+test x86::bootparam::bindgen_test_layout_edid_info ... ok
+test x86::bootparam::bindgen_test_layout_efi_info ... ok
+test x86::bootparam::bindgen_test_layout_ist_info ... ok
+test x86::bootparam::bindgen_test_layout_olpc_ofw_header ... ok
+test x86::bootparam::bindgen_test_layout_screen_info ... ok
+test x86::bootparam::bindgen_test_layout_setup_data ... ok
+test x86::bootparam::bindgen_test_layout_setup_header ... ok
+test x86::bootparam::bindgen_test_layout_sys_desc_table ... ok
+test x86::mpspec::bindgen_test_layout_mpc_bus ... ok
+test x86::mpspec::bindgen_test_layout_mpc_cpu ... ok
+test x86::mpspec::bindgen_test_layout_mpc_intsrc ... ok
+test x86::mpspec::bindgen_test_layout_mpc_ioapic ... ok
+test x86::mpspec::bindgen_test_layout_mpc_lintsrc ... ok
+test x86::mpspec::bindgen_test_layout_mpc_oemtable ... ok
+test x86::mpspec::bindgen_test_layout_mpc_table ... ok
+test x86::mpspec::bindgen_test_layout_mpf_intel ... ok
+
+test result: ok. 43 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 41 tests
+test bit_helper::tests::test_chained_write_bit ... ok
+test bit_helper::tests::test_chained_write_bits ... ok
+test bit_helper::tests::test_get_u32_mask_for_range ... ok
+test bit_helper::tests::test_invalid_msb_index ... ok
+test bit_helper::tests::test_invalid_range ... ok
+test bit_helper::tests::test_invalid_read_bit ... ok
+test bit_helper::tests::test_invalid_read_bits ... ok
+test bit_helper::tests::test_invalid_write_bit ... ok
+test bit_helper::tests::test_invalid_write_bits ... ok
+test bit_helper::tests::test_overflow_write_bits ... ok
+test bit_helper::tests::test_read_bits ... ok
+test bit_helper::tests::test_simple_read_bit ... ok
+test bit_helper::tests::test_simple_write_bit ... ok
+test bit_helper::tests::test_simple_write_bits ... ok
+test brand_string::tests::test_brand_string ... ok
+test brand_string::tests::test_find_freq_fails ... ok
+test common::tests::test_get_cpu_id ... ok
+test common::tests::test_get_vendor_id ... ok
+test transformer::amd::test::test_1vcpu_ht_off ... ok
+test transformer::amd::test::test_1vcpu_ht_on ... ok
+test transformer::amd::test::test_2vcpu_ht_off ... ok
+test transformer::amd::test::test_2vcpu_ht_on ... ok
+test transformer::amd::test::test_update_extended_cache_topology_entry ... ok
+test transformer::amd::test::test_update_extended_feature_info_entry ... ok
+test transformer::amd::test::test_update_largest_extended_fn_entry ... ok
+test transformer::amd::test::test_update_structured_extended_entry ... ok
+test transformer::common::test::test_1vcpu_ht_off ... ok
+test transformer::common::test::test_1vcpu_ht_on ... ok
+test transformer::common::test::test_2vcpu_ht_off ... ok
+test transformer::common::test::test_2vcpu_ht_on ... ok
+test transformer::common::test::test_get_max_cpus_per_package ... ok
+test transformer::common::test::test_use_host_cpuid_function_err ... ok
+test transformer::common::test::test_use_host_cpuid_function_with_count ... ok
+test transformer::common::test::test_use_host_cpuid_function_without_count ... ok
+test transformer::intel::test::test_1vcpu_ht_off ... ok
+test transformer::intel::test::test_1vcpu_ht_on ... ok
+test transformer::intel::test::test_2vcpu_ht_off ... ok
+test transformer::intel::test::test_2vcpu_ht_on ... ok
+test transformer::intel::test::test_update_feature_info_entry ... ok
+test transformer::intel::test::test_update_perf_mon_entry ... ok
+test transformer::test::test_process_cpuid ... ok
+
+test result: ok. 41 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 86 tests
+test bus::tests::bus_insert ... ok
+test bus::tests::bus_read_write ... ok
+test bus::tests::bus_read_write_values ... ok
+test bus::tests::busrange_cmp_and_clone ... ok
+test bus::tests::test_display_error ... ok
+test legacy::i8042::tests::test_i8042_buffer ... ok
+test legacy::i8042::tests::test_i8042_commands ... ok
+test legacy::i8042::tests::test_i8042_kbd ... ok
+test legacy::i8042::tests::test_i8042_read_write_and_event ... ok
+test legacy::serial::tests::serial_dlab ... ok
+test legacy::serial::tests::serial_input ... ok
+test legacy::serial::tests::serial_modem ... ok
+test legacy::serial::tests::serial_output ... ok
+test legacy::serial::tests::serial_scratch ... ok
+test legacy::serial::tests::serial_thr ... ok
+test legacy::serial::tests::test_serial_data_len ... ok
+test virtio::block::tests::test_handler ... ok
+test virtio::block::tests::test_invalid_event_handler ... ok
+test virtio::block::tests::test_parse ... ok
+test virtio::block::tests::test_read_request_header ... ok
+test virtio::block::tests::test_request_type_from ... ok
+test virtio::block::tests::test_virtio_device ... ok
+test virtio::mmio::tests::test_ack_features_by_page ... ok
+test virtio::mmio::tests::test_bus_device_activate ... ok
+test virtio::mmio::tests::test_bus_device_read ... ok
+test virtio::mmio::tests::test_bus_device_reset ... ok
+test virtio::mmio::tests::test_bus_device_write ... ok
+test virtio::mmio::tests::test_get_acked_features ... ok
+test virtio::mmio::tests::test_get_avail_features ... ok
+test virtio::mmio::tests::test_new ... ok
+test virtio::mmio::tests::test_set_acked_features ... ok
+test virtio::mmio::tests::test_set_avail_features ... ok
+test virtio::net::tests::test_bandwidth_rate_limiter ... ok
+test virtio::net::tests::test_handler ... ok
+test virtio::net::tests::test_handler_error_cases ... ok
+test virtio::net::tests::test_invalid_event_handler ... ok
+test virtio::net::tests::test_mac_spoofing_detection ... ok
+test virtio::net::tests::test_mmds_detour_and_injection ... ok
+test virtio::net::tests::test_ops_rate_limiter ... ok
+test virtio::net::tests::test_patch_rate_limiters ... ok
+test virtio::net::tests::test_read_tap_fail_event_handler ... ok
+test virtio::net::tests::test_rx_rate_limited_event_handler ... ok
+test virtio::net::tests::test_tx_rate_limited_event_handler ... ok
+test virtio::net::tests::test_virtio_device ... ok
+test virtio::net::tests::test_vnet_helpers ... ok
+test virtio::queue::tests::test_add_used ... ok
+test virtio::queue::tests::test_checked_new_descriptor_chain ... ok
+test virtio::queue::tests::test_queue_processing ... ok
+test virtio::queue::tests::test_queue_validation ... ok
+test virtio::vsock::csm::connection::tests::test_credit_request_from_peer ... ok
+test virtio::vsock::csm::connection::tests::test_credit_request_to_peer ... ok
+test virtio::vsock::csm::connection::tests::test_credit_update_to_peer ... ok
+test virtio::vsock::csm::connection::tests::test_local_close ... ok
+test virtio::vsock::csm::connection::tests::test_local_read_error ... ok
+test virtio::vsock::csm::connection::tests::test_local_request ... ok
+test virtio::vsock::csm::connection::tests::test_local_request_timeout ... ok
+test virtio::vsock::csm::connection::tests::test_peer_close ... ok
+test virtio::vsock::csm::connection::tests::test_peer_credit_misbehavior ... ok
+test virtio::vsock::csm::connection::tests::test_peer_request ... ok
+test virtio::vsock::csm::connection::tests::test_rx_data ... ok
+test virtio::vsock::csm::connection::tests::test_stream_write_error ... ok
+test virtio::vsock::csm::connection::tests::test_tx_buffering ... ok
+test virtio::vsock::csm::txbuf::tests::test_flush_error ... ok
+test virtio::vsock::csm::txbuf::tests::test_incomplete_flush ... ok
+test virtio::vsock::csm::txbuf::tests::test_push_error ... ok
+test virtio::vsock::csm::txbuf::tests::test_push_nowrap ... ok
+test virtio::vsock::csm::txbuf::tests::test_push_wrap ... ok
+test virtio::vsock::device::tests::test_virtio_device ... ok
+test virtio::vsock::epoll_handler::tests::test_backend_event ... ok
+test virtio::vsock::epoll_handler::tests::test_evq_event ... ok
+test virtio::vsock::epoll_handler::tests::test_irq ... ok
+test virtio::vsock::epoll_handler::tests::test_rxq_event ... ok
+test virtio::vsock::epoll_handler::tests::test_txq_event ... ok
+test virtio::vsock::epoll_handler::tests::test_unknown_event ... ok
+test virtio::vsock::packet::tests::test_packet_buf ... ok
+test virtio::vsock::packet::tests::test_packet_hdr_accessors ... ok
+test virtio::vsock::packet::tests::test_rx_packet_assembly ... ok
+test virtio::vsock::packet::tests::test_tx_packet_assembly ... ok
+test virtio::vsock::unix::muxer::tests::test_bad_peer_pkt ... ok
+test virtio::vsock::unix::muxer::tests::test_local_close ... ok
+test virtio::vsock::unix::muxer::tests::test_local_connection ... ok
+test virtio::vsock::unix::muxer::tests::test_muxer_epoll_listener ... ok
+test virtio::vsock::unix::muxer::tests::test_muxer_killq ... ok
+test virtio::vsock::unix::muxer::tests::test_muxer_rxq ... ok
+test virtio::vsock::unix::muxer::tests::test_peer_close ... ok
+test virtio::vsock::unix::muxer::tests::test_peer_connection ... ok
+
+test result: ok. 86 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 24 tests
+test mac::tests::test_from_bytes ... ok
+test mac::tests::test_mac_addr ... ok
+test mac::tests::test_mac_addr_serialization_and_deserialization ... ok
+test ns::tests::test_ns ... ok
+test pdu::arp::tests::test_eth_ipv4_arp_frame ... ok
+test pdu::arp::tests::test_speculative ... ok
+test pdu::bytes::tests::test_network_bytes ... ok
+test pdu::ethernet::tests::test_ethernet_frame ... ok
+test pdu::ipv4::tests::test_constructors ... ok
+test pdu::ipv4::tests::test_incomplete ... ok
+test pdu::ipv4::tests::test_set_get ... ok
+test pdu::ipv4::tests::test_speculative ... ok
+test pdu::tcp::tests::test_constructors ... ok
+test pdu::tcp::tests::test_set_get ... ok
+test pdu::udp::tests::test_checksum ... ok
+test pdu::udp::tests::test_construction ... ok
+test pdu::udp::tests::test_failing_construction ... ok
+test pdu::udp::tests::test_set_get ... ok
+test tcp::connection::tests::test_connection ... ok
+test tcp::endpoint::tests::test_endpoint ... ok
+test tcp::handler::tests::test_handler ... ok
+test tcp::tests::test_rst_config ... ok
+test tcp::tests::test_seq_at_or_after ... ok
+test tests::test_u8_byte_buffer ... ok
+
+test result: ok. 24 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 5 tests
+test rand::tests::test_xor_rng_u32 ... ok
+test time::tests::test_get_time ... ok
+test time::tests::test_local_time_display ... ok
+test time::tests::test_seconds_to_nanoseconds ... ok
+test validators::tests::test_validate_instance_id ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 5 tests
+test cgroup::tests::test_inherit_from_parent ... ok
+test env::tests::test_dup2 ... ok
+test env::tests::test_new_env ... ok
+test tests::test_error_display ... ok
+test tests::test_sanitize_process ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 19 tests
+test cmdline::tests::display_errors ... ok
+test cmdline::tests::insert_emoji ... ok
+test cmdline::tests::insert_equals ... ok
+test cmdline::tests::insert_hello_world ... ok
+test cmdline::tests::insert_multi ... ok
+test cmdline::tests::insert_space ... ok
+test cmdline::tests::insert_string ... ok
+test cmdline::tests::insert_too_large ... ok
+test loader::elf::tests::bindgen_test_layout_elf64_hdr ... ok
+test loader::elf::tests::bindgen_test_layout_elf64_phdr ... ok
+test loader::tests::test_bad_kernel_endian ... ok
+test loader::tests::test_bad_kernel_invalid_entry ... ok
+test loader::tests::test_bad_kernel_magic ... ok
+test loader::tests::test_bad_kernel_phoff ... ok
+test loader::tests::test_bad_kernel_phsize ... ok
+test loader::tests::test_cmdline_overflow ... ok
+test loader::tests::test_cmdline_write_end ... ok
+test loader::tests::test_load_kernel ... ok
+test loader::tests::test_load_kernel_no_memory ... ok
+
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 5 tests
+test error::tests::test_error_messages ... ok
+test metrics::tests::test_metric ... ok
+test metrics::tests::test_serialize ... ok
+test tests::test_default_values ... ok
+test tests::test_init ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 22 tests
+test guest_address::tests::test_add_sub ... ok
+test guest_address::tests::test_bit_and ... ok
+test guest_address::tests::test_bit_or ... ok
+test guest_address::tests::test_checked_add_with_overflow ... ok
+test guest_address::tests::test_checked_sub_with_underflow ... ok
+test guest_address::tests::test_cmp ... ok
+test guest_address::tests::test_default ... ok
+test guest_address::tests::test_equals ... ok
+test guest_memory::tests::create_vec_with_regions ... ok
+test guest_memory::tests::guest_to_host ... ok
+test guest_memory::tests::overlap_memory ... ok
+test guest_memory::tests::read_to_and_write_from_mem ... ok
+test guest_memory::tests::test_map_fold ... ok
+test guest_memory::tests::test_read_u64 ... ok
+test guest_memory::tests::test_regions ... ok
+test guest_memory::tests::write_and_read_slice ... ok
+test mmap::tests::basic_map ... ok
+test mmap::tests::map_invalid_size ... ok
+test mmap::tests::mem_read_and_write ... ok
+test mmap::tests::obj_read_and_write ... ok
+test mmap::tests::slice_read_and_write ... ok
+test mmap::tests::test_write_past_end ... ok
+
+test result: ok. 22 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 38 tests
+test common::headers::tests::test_default ... ok
+test common::headers::tests::test_header_try_from ... ok
+test common::headers::tests::test_media_as_str ... ok
+test common::headers::tests::test_parse_header_line ... ok
+test common::headers::tests::test_try_from_headers ... ok
+test common::headers::tests::test_try_from_media ... ok
+test common::tests::test_body ... ok
+test common::tests::test_display_connection_error ... ok
+test common::tests::test_display_request_error ... ok
+test common::tests::test_display_server_error ... ok
+test common::tests::test_method ... ok
+test common::tests::test_version ... ok
+test connection::tests::test_enqueue_response ... ok
+test connection::tests::test_try_read_connection_closed ... ok
+test connection::tests::test_try_read_double_request ... ok
+test connection::tests::test_try_read_expect ... ok
+test connection::tests::test_try_read_invalid_request ... ok
+test connection::tests::test_try_read_large_header_line ... ok
+test connection::tests::test_try_read_large_req_line ... ok
+test connection::tests::test_try_read_long_headers ... ok
+test connection::tests::test_try_read_long_req_line_b2b ... ok
+test connection::tests::test_try_read_long_request_body ... ok
+test connection::tests::test_try_read_no_body_request ... ok
+test connection::tests::test_try_read_segmented_req_line ... ok
+test connection::tests::test_try_read_split_ending ... ok
+test request::tests::test_find ... ok
+test request::tests::test_into_request ... ok
+test request::tests::test_into_request_line ... ok
+test request::tests::test_uri ... ok
+test response::tests::test_set_server ... ok
+test response::tests::test_status_code ... ok
+test response::tests::test_write_response ... ok
+test server::tests::test_wait_concurrent_connections ... ok
+test server::tests::test_wait_expect_connection ... ok
+test server::tests::test_wait_in_flight_responses ... ok
+test server::tests::test_wait_many_connections ... ok
+test server::tests::test_wait_one_connection ... ok
+test server::tests::test_wait_parse_error ... ok
+
+test result: ok. 38 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test data_store::tests::test_get_element_from_array ... ok
+test data_store::tests::test_get_value ... ok
+test data_store::tests::test_mmds ... ok
+test data_store::tests::test_update_data_store ... ok
+test tests::test_json_patch ... ok
+test tests::test_parse_request ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 61 tests
+test if_tun::bindgen_test_layout___kernel_fd_set ... ok
+test if_tun::bindgen_test_layout___kernel_fsid_t ... ok
+test if_tun::bindgen_test_layout_ethhdr ... ok
+test if_tun::bindgen_test_layout_sock_filter ... ok
+test if_tun::bindgen_test_layout_sock_fprog ... ok
+test if_tun::bindgen_test_layout_tun_filter ... ok
+test if_tun::bindgen_test_layout_tun_pi ... ok
+test iff::bindgen_test_layout___fsid_t ... ok
+test iff::bindgen_test_layout___kernel_fd_set ... ok
+test iff::bindgen_test_layout___kernel_fsid_t ... ok
+test iff::bindgen_test_layout___kernel_sockaddr_storage ... ok
+test iff::bindgen_test_layout___pthread_internal_list ... ok
+test iff::bindgen_test_layout___sigset_t ... ok
+test iff::bindgen_test_layout_cisco_proto ... ok
+test iff::bindgen_test_layout_cmsghdr ... ok
+test iff::bindgen_test_layout_fd_set ... ok
+test iff::bindgen_test_layout_fr_proto ... ok
+test iff::bindgen_test_layout_fr_proto_pvc ... ok
+test iff::bindgen_test_layout_fr_proto_pvc_info ... ok
+test iff::bindgen_test_layout_if_settings ... ok
+test iff::bindgen_test_layout_if_settings__bindgen_ty_1 ... ok
+test iff::bindgen_test_layout_ifmap ... ok
+test iff::bindgen_test_layout_ifreq ... ok
+test iff::bindgen_test_layout_ifreq__bindgen_ty_1 ... ok
+test iff::bindgen_test_layout_ifreq__bindgen_ty_2 ... ok
+test iff::bindgen_test_layout_iovec ... ok
+test iff::bindgen_test_layout_linger ... ok
+test iff::bindgen_test_layout_msghdr ... ok
+test iff::bindgen_test_layout_osockaddr ... ok
+test iff::bindgen_test_layout_pthread_attr_t ... ok
+test iff::bindgen_test_layout_pthread_barrier_t ... ok
+test iff::bindgen_test_layout_pthread_barrierattr_t ... ok
+test iff::bindgen_test_layout_pthread_cond_t ... ok
+test iff::bindgen_test_layout_pthread_cond_t__bindgen_ty_1 ... ok
+test iff::bindgen_test_layout_pthread_condattr_t ... ok
+test iff::bindgen_test_layout_pthread_mutex_t ... ok
+test iff::bindgen_test_layout_pthread_mutex_t___pthread_mutex_s ... ok
+test iff::bindgen_test_layout_pthread_mutexattr_t ... ok
+test iff::bindgen_test_layout_pthread_rwlock_t ... ok
+test iff::bindgen_test_layout_pthread_rwlock_t__bindgen_ty_1 ... ok
+test iff::bindgen_test_layout_pthread_rwlockattr_t ... ok
+test iff::bindgen_test_layout_raw_hdlc_proto ... ok
+test iff::bindgen_test_layout_sockaddr ... ok
+test iff::bindgen_test_layout_sockaddr_storage ... ok
+test iff::bindgen_test_layout_sync_serial_settings ... ok
+test iff::bindgen_test_layout_te1_settings ... ok
+test iff::bindgen_test_layout_timespec ... ok
+test iff::bindgen_test_layout_timeval ... ok
+test inn::bindgen_test_layout___kernel_fd_set ... ok
+test inn::bindgen_test_layout___kernel_fsid_t ... ok
+test inn::bindgen_test_layout___kernel_sockaddr_storage ... ok
+test inn::bindgen_test_layout_group_filter ... ok
+test inn::bindgen_test_layout_group_req ... ok
+test inn::bindgen_test_layout_group_source_req ... ok
+test inn::bindgen_test_layout_in_addr ... ok
+test inn::bindgen_test_layout_in_pktinfo ... ok
+test inn::bindgen_test_layout_ip_mreq ... ok
+test inn::bindgen_test_layout_ip_mreq_source ... ok
+test inn::bindgen_test_layout_ip_mreqn ... ok
+test inn::bindgen_test_layout_ip_msfilter ... ok
+test inn::bindgen_test_layout_sockaddr_in ... ok
+
+test result: ok. 61 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 9 tests
+test tap::tests::test_raw_fd ... ok
+test tap::tests::test_read ... ok
+test tap::tests::test_set_options ... ok
+test tap::tests::test_tap_configure ... ok
+test tap::tests::test_tap_enable ... ok
+test tap::tests::test_tap_get_ifreq ... ok
+test tap::tests::test_tap_name ... ok
+test tap::tests::test_tap_partial_eq ... ok
+test tap::tests::test_write ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 11 tests
+test tests::test_rate_limiter_bandwidth ... ok
+test tests::test_rate_limiter_debug ... ok
+test tests::test_rate_limiter_default ... ok
+test tests::test_rate_limiter_full ... ok
+test tests::test_rate_limiter_manual_replenish ... ok
+test tests::test_rate_limiter_new ... ok
+test tests::test_rate_limiter_ops ... ok
+test tests::test_token_bucket_create ... ok
+test tests::test_token_bucket_preprocess ... ok
+test tests::test_token_bucket_reduce ... ok
+test tests::test_update_buckets ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 15 tests
+test tests::test_bpf_expanding_functions ... ok
+test tests::test_bpf_functions ... ok
+test tests::test_eq_operator ... ok
+test tests::test_error_messages ... ok
+test tests::test_filter_bpf_output_dword ... ok
+test tests::test_filter_bpf_output_qword ... ok
+test tests::test_from_seccomp_action ... ok
+test tests::test_ge_operator ... ok
+test tests::test_gt_operator ... ok
+test tests::test_le_operator ... ok
+test tests::test_lt_operator ... ok
+test tests::test_masked_eq_operator ... ok
+test tests::test_ne_operator ... ok
+test tests::test_rule_bpf_output ... ok
+test tests::test_rule_many_conditions_bpf_output ... ok
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 13 tests
+test eventfd::tests::clone ... ok
+test eventfd::tests::new ... ok
+test eventfd::tests::read_nothing ... ok
+test eventfd::tests::read_write ... ok
+test eventfd::tests::write_overflow ... ok
+test ioctl::tests::ioctl_macros ... ok
+test signal::tests::test_register_signal_handler ... ok
+test signal::tests::test_register_vcpu_handler ... ok
+test struct_util::tests::struct_basic_read ... ok
+test struct_util::tests::struct_read_past_end ... ok
+test struct_util::tests::struct_slice_read ... ok
+test terminal::tests::test_a_non_tty ... ok
+test terminal::tests::test_a_tty ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 23 tests
+test virtio_blk::bindgen_test_layout___kernel_fd_set ... ok
+test virtio_blk::bindgen_test_layout___kernel_fsid_t ... ok
+test virtio_blk::bindgen_test_layout_virtio_blk_config ... ok
+test virtio_blk::bindgen_test_layout_virtio_blk_config_virtio_blk_geometry ... ok
+test virtio_blk::bindgen_test_layout_virtio_blk_outhdr ... ok
+test virtio_blk::bindgen_test_layout_virtio_scsi_inhdr ... ok
+test virtio_net::bindgen_test_layout___kernel_fd_set ... ok
+test virtio_net::bindgen_test_layout___kernel_fsid_t ... ok
+test virtio_net::bindgen_test_layout_ethhdr ... ok
+test virtio_net::bindgen_test_layout_virtio_net_config ... ok
+test virtio_net::bindgen_test_layout_virtio_net_ctrl_hdr ... ok
+test virtio_net::bindgen_test_layout_virtio_net_ctrl_mac ... ok
+test virtio_net::bindgen_test_layout_virtio_net_ctrl_mq ... ok
+test virtio_net::bindgen_test_layout_virtio_net_hdr ... ok
+test virtio_net::bindgen_test_layout_virtio_net_hdr_mrg_rxbuf ... ok
+test virtio_net::bindgen_test_layout_virtio_net_hdr_v1 ... ok
+test virtio_ring::bindgen_test_layout___kernel_fd_set ... ok
+test virtio_ring::bindgen_test_layout___kernel_fsid_t ... ok
+test virtio_ring::bindgen_test_layout_vring ... ok
+test virtio_ring::bindgen_test_layout_vring_avail ... ok
+test virtio_ring::bindgen_test_layout_vring_desc ... ok
+test virtio_ring::bindgen_test_layout_vring_used ... ok
+test virtio_ring::bindgen_test_layout_vring_used_elem ... ok
+
+test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 63 tests
+test device_manager::legacy::tests::test_debug_error ... ok
+test device_manager::legacy::tests::test_register_legacy_devices ... ok
+test device_manager::mmio::tests::test_device_info ... ok
+test device_manager::mmio::tests::test_dummy_device ... ok
+test device_manager::mmio::tests::test_error_messages ... ok
+test device_manager::mmio::tests::test_raw_io_device ... ok
+test device_manager::mmio::tests::test_register_too_many_devices ... ok
+test device_manager::mmio::tests::test_register_virtio_device ... ok
+test device_manager::mmio::tests::test_update_drive ... ok
+test error::tests::test_drive_error_conversion ... ok
+test error::tests::test_error_messages ... ok
+test error::tests::test_network_interface_error_conversion ... ok
+test error::tests::test_start_microvm_error_conversion_cl ... ok
+test error::tests::test_start_microvm_error_conversion_mv ... ok
+test error::tests::test_vmconfig_error_conversion ... ok
+test signal_handler::tests::test_signal_handler ... ok
+test tests::add_epollin_event_test ... ok
+test tests::epoll_event_test ... ok
+test tests::new_epoll_context_test ... ok
+test tests::test_attach_block_devices ... ok
+test tests::test_attach_legacy_devices ... ok
+test tests::test_attach_net_devices ... ok
+test tests::test_attach_virtio_devices ... ok
+test tests::test_block_device_rescan ... ok
+test tests::test_check_health ... ok
+test tests::test_configure_boot_source ... ok
+test tests::test_configure_system ... ok
+test tests::test_configure_system_no_mem ... ok
+test tests::test_configure_vmm_from_json ... ok
+test tests::test_create_vcpus ... ok
+test tests::test_device_handler ... ok
+test tests::test_dirty_page_count ... ok
+test tests::test_epoll_stdin_event ... ok
+test tests::test_init_devices ... ok
+test tests::test_init_logger ... ok
+test tests::test_insert_block_device ... ok
+test tests::test_insert_net_device ... ok
+test tests::test_is_instance_initialized ... ok
+test tests::test_load_kernel ... ok
+test tests::test_load_kernel_no_mem ... ok
+test tests::test_machine_configuration ... ok
+test tests::test_update_net_device ... ok
+test vmm_config::drive::tests::test_add_non_root_block_device ... ok
+test vmm_config::drive::tests::test_add_one_root_block_device ... ok
+test vmm_config::drive::tests::test_add_root_block_device_first ... ok
+test vmm_config::drive::tests::test_add_two_root_block_devices_configs ... ok
+test vmm_config::drive::tests::test_create_block_devices_configs ... ok
+test vmm_config::drive::tests::test_root_block_device_add_last ... ok
+test vmm_config::drive::tests::test_update ... ok
+test vmm_config::logger::tests::test_log_writer ... ok
+test vmm_config::machine_config::tests::test_display_cpu_features_template ... ok
+test vmm_config::machine_config::tests::test_display_vm_config_error ... ok
+test vmm_config::net::tests::test_error_display ... ok
+test vmm_config::net::tests::test_insert ... ok
+test vmm_config::net::tests::test_insert_error_cases ... ok
+test vmm_config::tests::test_rate_limiter_configs ... ok
+test vstate::tests::test_configure_vcpu ... ok
+test vstate::tests::test_get_supported_cpuid ... ok
+test vstate::tests::test_kvm_context ... ok
+test vstate::tests::test_set_mmio_bus ... ok
+test vstate::tests::test_setup_irqchip ... ok
+test vstate::tests::test_vcpu_run_failed ... ok
+test vstate::tests::test_vm_memory_init ... ok
+
+test result: ok. 63 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 7 tests
+test src/lib.rs -  (line 23) ... ok
+test src/lib.rs -  (line 41) ... ok
+test src/lib.rs - Logger::init (line 537) ... ok
+test src/lib.rs - Logger::preinit (line 498) ... ok
+test src/lib.rs - Logger::set_include_level (line 309) ... ok
+test src/lib.rs - Logger::set_include_origin (line 343) ... ok
+test src/lib.rs - Logger::set_level (line 387) ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 9 tests
+test src/common/headers.rs - common::headers::Headers::try_from (line 188) ... ok
+test src/common/mod.rs - common::Body (line 94) ... ok
+test src/common/mod.rs - common::Version (line 170) ... ok
+test src/lib.rs -  (line 47) ... ok
+test src/lib.rs -  (line 57) ... ok
+test src/lib.rs -  (line 84) ... ok
+test src/request.rs - request::Request::try_from (line 166) ... ok
+test src/server.rs - server::HttpServer (line 214) ... ok
+test src/server.rs - server::HttpServer::epoll_fd (line 382) ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 1 test
+test src/tap.rs - tap::Tap::open_named (line 97) ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 2 tests
+test src/signal.rs - signal::register_signal_handler (line 129) ... ok
+test src/signal.rs - signal::register_vcpu_signal_handler (line 85) ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 5 tests
+test src/bit_helper.rs - bit_helper::BitHelper::read_bits_in_range (line 110) ... ok
+test src/bit_helper.rs - bit_helper::BitHelper::write_bits_in_range (line 134) ... ok
+test src/bit_helper.rs - bit_helper::BitRange (line 10) ... ok
+test src/bit_helper.rs - bit_helper::BitRangeExt::get_mask (line 47) ... ok
+test src/lib.rs - filter_cpuid (line 43) ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 15 tests
+test src/guest_memory.rs - guest_memory::GuestMemory::end_addr (line 99) ... ok
+test src/guest_memory.rs - guest_memory::GuestMemory::get_host_address (line 382) ... ok
+test src/guest_memory.rs - guest_memory::GuestMemory::map_and_fold (line 416) ... ok
+test src/guest_memory.rs - guest_memory::GuestMemory::read_obj_from_addr (line 242) ... ok
+test src/guest_memory.rs - guest_memory::GuestMemory::read_slice_at_addr (line 210) ... ok
+test src/guest_memory.rs - guest_memory::GuestMemory::read_to_memory (line 301) ... ok
+test src/guest_memory.rs - guest_memory::GuestMemory::write_from_memory (line 343) ... ok
+test src/guest_memory.rs - guest_memory::GuestMemory::write_obj_at_addr (line 273) ... ok
+test src/guest_memory.rs - guest_memory::GuestMemory::write_slice_at_addr (line 182) ... ok
+test src/mmap.rs - mmap::MemoryMapping::read_obj (line 179) ... ok
+test src/mmap.rs - mmap::MemoryMapping::read_slice (line 124) ... ok
+test src/mmap.rs - mmap::MemoryMapping::read_to_memory (line 212) ... ok
+test src/mmap.rs - mmap::MemoryMapping::write_from_memory (line 253) ... ok
+test src/mmap.rs - mmap::MemoryMapping::write_obj (line 151) ... ok
+test src/mmap.rs - mmap::MemoryMapping::write_slice (line 96) ... ok
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test src/mac.rs - mac::MacAddr::from_bytes (line 106) ... ok
+test src/mac.rs - mac::MacAddr::from_bytes_unchecked (line 82) ... ok
+test src/mac.rs - mac::MacAddr::get_bytes (line 124) ... ok
+test src/mac.rs - mac::MacAddr::parse_str (line 48) ... ok
+test src/pdu/bytes.rs - pdu::bytes (line 26) ... ok
+test src/pdu/bytes.rs - pdu::bytes (line 37) ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 3 tests
+test src/lib.rs -  (line 119) ... ok
+test src/lib.rs -  (line 22) ... ok
+test src/lib.rs -  (line 50) ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+.s
+integration_tests/functional/test_api.py ............
+integration_tests/functional/test_cmd_line_start.py ..
+integration_tests/functional/test_cpu_features.py .........
+integration_tests/functional/test_drives.py Resizing the filesystem on /tmp/firecracker_test_session/d684e04f-ccc2-4d58-8b3b-05d540084da9/fsfiles/scratch.ext4 to 524288 (1k) blocks.
+The filesystem on /tmp/firecracker_test_session/d684e04f-ccc2-4d58-8b3b-05d540084da9/fsfiles/scratch.ext4 is now 524288 (1k) blocks long.
+
+......
+integration_tests/functional/test_logging.py .........
+integration_tests/functional/test_max_vcpus.py .
+integration_tests/functional/test_mmds.py ..
+integration_tests/functional/test_rate_limiter.py ..
+integration_tests/functional/test_serial_io.py 
+*** Current test state:  WaitLogin
+*** Current test state:  WaitPasswordPrompt
+*** Current test state:  WaitIDResult
+*** Current test state:  TestFinished.
+integration_tests/functional/test_shut_down.py .
+integration_tests/functional/test_signals.py ..
+integration_tests/functional/test_vsock.py .
+integration_tests/performance/test_boottime.py FFFF
+integration_tests/performance/test_process_startup_time.py Process startup time is: 23428 us (6601 CPU us)
+.
+integration_tests/security/test_jail.py ..
+integration_tests/security/test_sec_audit.py .
+integration_tests/security/test_seccomp.py .Hello, world!
+...
+
+=================================== FAILURES ===================================
+________________________________ test_coverage _________________________________
+integration_tests/build/test_coverage.py:96: in test_coverage
+    assert coverage >= COVERAGE_TARGET_PCT, coverage_low_msg
+E   AssertionError: Current code coverage (84.7%) is below the target (84.9%).
+E   assert 84.7 >= 84.9
+_______________ test_single_microvm_boottime_no_network[minimal] _______________
+integration_tests/performance/test_boottime.py:30: in test_single_microvm_boottime_no_network
+    boottime_us = _test_microvm_boottime(log_fifo)
+integration_tests/performance/test_boottime.py:98: in _test_microvm_boottime
+    assert boot_time_us < MAX_BOOT_TIME_US
+E   assert 161162 < 150000
+______ test_multiple_microvm_boottime_no_network[minimal, 10 instance(s)] ______
+integration_tests/performance/test_boottime.py:46: in test_multiple_microvm_boottime_no_network
+    _ = _test_microvm_boottime(log_fifos[i])
+integration_tests/performance/test_boottime.py:98: in _test_microvm_boottime
+    assert boot_time_us < MAX_BOOT_TIME_US
+E   assert 167866 < 150000
+------------------------------ Captured log call -------------------------------
+WARNING  retry.api:api.py:40 [Errno 2] No such file or directory: '/srv/jailer/firecracker/bd35735c-56b6-499f-bef7-da58f901e7bc/root/api.socket', retrying in 0.2 seconds...
+WARNING  retry.api:api.py:40 [Errno 2] No such file or directory: '/srv/jailer/firecracker/941ce287-ad9b-481e-bf97-d7fd3d86c5d0/root/api.socket', retrying in 0.2 seconds...
+WARNING  retry.api:api.py:40 [Errno 2] No such file or directory: '/srv/jailer/firecracker/fe4c0389-40e0-485c-a937-ca7068bfcf8b/root/api.socket', retrying in 0.2 seconds...
+WARNING  retry.api:api.py:40 [Errno 2] No such file or directory: '/srv/jailer/firecracker/ebde3ba4-a3b9-427d-a253-cde00f9d883d/root/api.socket', retrying in 0.2 seconds...
+WARNING  retry.api:api.py:40 [Errno 2] No such file or directory: '/srv/jailer/firecracker/8231f9b3-8ef3-4f25-bec2-f78a4b54fa6d/root/api.socket', retrying in 0.2 seconds...
+WARNING  retry.api:api.py:40 [Errno 2] No such file or directory: '/srv/jailer/firecracker/00835977-df84-4476-845c-e82791b18142/root/api.socket', retrying in 0.2 seconds...
+WARNING  retry.api:api.py:40 [Errno 2] No such file or directory: '/srv/jailer/firecracker/e602525d-dc94-4586-9a65-0b690c67a699/root/api.socket', retrying in 0.2 seconds...
+_____ test_multiple_microvm_boottime_with_network[minimal, 10 instance(s)] _____
+integration_tests/performance/test_boottime.py:62: in test_multiple_microvm_boottime_with_network
+    "config": network_config, "iface_id": str(i)
+integration_tests/performance/test_boottime.py:138: in _configure_vm
+    microvm.start()
+framework/microvm.py:469: in start
+    response = self.actions.put(action_type='InstanceStart')
+framework/resources.py:31: in put
+    json=datax
+framework/decorators.py:46: in timed
+    payload
+E   framework.decorators.timed_request.<locals>.ApiTimeoutException: API call exceeded maximum duration: 766.83 ms.
+E   Call: PUT /actions {'action_type': 'InstanceStart'}
+------------------------------ Captured log call -------------------------------
+WARNING  retry.api:api.py:40 [Errno 2] No such file or directory: '/srv/jailer/firecracker/f7742977-1c9e-40d1-9a04-15ce5600130a/root/api.socket', retrying in 0.2 seconds...
+______________ test_single_microvm_boottime_with_network[minimal] ______________
+integration_tests/performance/test_boottime.py:80: in test_single_microvm_boottime_with_network
+    boottime_us = _test_microvm_boottime(log_fifo)
+integration_tests/performance/test_boottime.py:98: in _test_microvm_boottime
+    assert boot_time_us < MAX_BOOT_TIME_US
+E   assert 164095 < 150000
+============================ slowest test durations ============================
+205.82s call     integration_tests/build/test_coverage.py::test_coverage
+176.34s call     integration_tests/build/test_build.py::test_build[-x86_64-unknown-linux-gnu]
+132.49s call     integration_tests/build/test_build.py::test_build[-x86_64-unknown-linux-musl]
+111.20s call     integration_tests/build/test_unittests.py::test_unittests[x86_64-unknown-linux-gnu]
+85.48s call     integration_tests/build/test_style.py::test_python_style
+20.47s call     integration_tests/functional/test_vsock.py::test_vsock[ubuntu_with_ssh]
+19.36s call     integration_tests/functional/test_rate_limiter.py::test_tx_rate_limiting[ubuntu_with_ssh]
+18.89s call     integration_tests/functional/test_rate_limiter.py::test_rx_rate_limiting[ubuntu_with_ssh]
+12.15s call     integration_tests/functional/test_drives.py::test_rescan_dev[ubuntu_with_ssh]
+11.81s call     integration_tests/functional/test_api.py::test_rate_limiters_api_config[ubuntu]
+11.46s call     integration_tests/functional/test_drives.py::test_patch_drive[ubuntu_with_ssh]
+8.74s call     integration_tests/functional/test_api.py::test_drive_patch[ubuntu]
+8.00s call     integration_tests/functional/test_serial_io.py::test_serial_console_login[ubuntu_with_ssh]
+6.05s call     integration_tests/functional/test_api.py::test_api_put_update_pre_boot[ubuntu]
+5.99s setup    integration_tests/security/test_seccomp.py::test_seccomp_ls
+5.75s call     integration_tests/functional/test_api.py::test_send_ctrl_alt_del[minimal_with_atkbd]
+4.42s call     integration_tests/functional/test_drives.py::test_rescan_file[ubuntu_with_ssh]
+4.07s call     integration_tests/functional/test_drives.py::test_non_partuuid_boot[ubuntu_with_ssh]
+3.99s call     integration_tests/performance/test_boottime.py::test_multiple_microvm_boottime_no_network[minimal, 10 instance(s)]
+3.52s call     integration_tests/build/test_style.py::test_rust_style
+3.38s call     integration_tests/functional/test_cpu_features.py::test_1vcpu_ht_disabled[ubuntu_with_ssh]
+3.30s call     integration_tests/functional/test_api.py::test_api_patch_pre_boot[ubuntu]
+3.23s call     integration_tests/functional/test_api.py::test_api_actions[ubuntu]
+3.20s call     integration_tests/functional/test_api.py::test_api_patch_post_boot[ubuntu]
+3.12s call     integration_tests/functional/test_cpu_features.py::test_16vcpu_ht_disabled[ubuntu_with_ssh]
+3.07s call     integration_tests/functional/test_cpu_features.py::test_16vcpu_ht_enabled[ubuntu_with_ssh]
+3.07s call     integration_tests/functional/test_cpu_features.py::test_1vcpu_ht_enabled[ubuntu_with_ssh]
+2.95s call     integration_tests/performance/test_boottime.py::test_multiple_microvm_boottime_with_network[minimal, 10 instance(s)]
+2.81s call     integration_tests/functional/test_cpu_features.py::test_2vcpu_ht_disabled[ubuntu_with_ssh]
+2.77s call     integration_tests/functional/test_cpu_features.py::test_2vcpu_ht_enabled[ubuntu_with_ssh]
+2.66s call     integration_tests/functional/test_mmds.py::test_mmds[ubuntu_with_ssh]
+1.99s call     integration_tests/functional/test_max_vcpus.py::test_max_vcpus[ubuntu_with_ssh]
+1.83s call     integration_tests/functional/test_drives.py::test_partuuid_boot[ubuntu_with_partuuid]
+1.52s call     integration_tests/functional/test_drives.py::test_partuuid_update[ubuntu_with_ssh]
+1.51s call     integration_tests/functional/test_cpu_features.py::test_cpu_template[ubuntu_with_ssh-C3]
+1.45s call     integration_tests/functional/test_cpu_features.py::test_cpu_template[ubuntu_with_ssh-T2]
+1.41s call     integration_tests/functional/test_shut_down.py::test_reboot[ubuntu_with_ssh]
+1.34s call     integration_tests/functional/test_cpu_features.py::test_brand_string[ubuntu_with_ssh]
+1.29s call     integration_tests/security/test_sec_audit.py::test_cargo_audit
+1.26s teardown integration_tests/security/test_seccomp.py::test_seccomp_applies_to_all_threads[ubuntu]
+0.92s call     integration_tests/functional/test_signals.py::test_sigbus_sigsegv[ubuntu-Signals.SIGSEGV]
+0.89s call     integration_tests/functional/test_signals.py::test_sigbus_sigsegv[ubuntu-Signals.SIGBUS]
+0.81s call     integration_tests/performance/test_boottime.py::test_single_microvm_boottime_with_network[minimal]
+0.78s setup    integration_tests/functional/test_vsock.py::test_vsock[ubuntu_with_ssh]
+0.75s call     integration_tests/functional/test_logging.py::test_dirty_page_metrics[ubuntu]
+0.65s teardown integration_tests/functional/test_api.py::test_net_api_put_update_pre_boot[ubuntu]
+0.64s call     integration_tests/performance/test_boottime.py::test_single_microvm_boottime_no_network[minimal]
+0.59s teardown integration_tests/functional/test_api.py::test_rate_limiters_api_config[ubuntu]
+0.58s teardown integration_tests/functional/test_rate_limiter.py::test_tx_rate_limiting[ubuntu_with_ssh]
+0.57s call     integration_tests/performance/test_process_startup_time.py::test_startup_time[ubuntu]
+0.56s setup    integration_tests/functional/test_cpu_features.py::test_1vcpu_ht_disabled[ubuntu_with_ssh]
+0.56s setup    integration_tests/functional/test_drives.py::test_rescan_file[ubuntu_with_ssh]
+0.56s setup    integration_tests/functional/test_serial_io.py::test_serial_console_login[ubuntu_with_ssh]
+0.56s setup    integration_tests/functional/test_cpu_features.py::test_cpu_template[ubuntu_with_ssh-C3]
+0.56s setup    integration_tests/functional/test_cmd_line_start.py::test_config_start_no_api[ubuntu_with_ssh-framework/vm_log_config.json]
+0.56s setup    integration_tests/functional/test_cmd_line_start.py::test_config_start_with_api[ubuntu_with_ssh-framework/vm_config.json]
+0.55s setup    integration_tests/functional/test_drives.py::test_rescan_dev[ubuntu_with_ssh]
+0.55s setup    integration_tests/functional/test_logging.py::test_no_origin_logs[ubuntu_with_ssh]
+0.55s setup    integration_tests/functional/test_mmds.py::test_mmds_dummy[ubuntu_with_ssh]
+0.55s setup    integration_tests/functional/test_logging.py::test_warn_logs[ubuntu_with_ssh]
+0.55s setup    integration_tests/functional/test_cpu_features.py::test_cpu_template[ubuntu_with_ssh-T2]
+0.55s setup    integration_tests/functional/test_cpu_features.py::test_16vcpu_ht_enabled[ubuntu_with_ssh]
+0.55s setup    integration_tests/functional/test_cpu_features.py::test_1vcpu_ht_enabled[ubuntu_with_ssh]
+0.55s setup    integration_tests/functional/test_drives.py::test_patch_drive[ubuntu_with_ssh]
+0.55s setup    integration_tests/functional/test_drives.py::test_non_partuuid_boot[ubuntu_with_ssh]
+0.55s setup    integration_tests/functional/test_drives.py::test_partuuid_update[ubuntu_with_ssh]
+0.55s setup    integration_tests/functional/test_max_vcpus.py::test_max_vcpus[ubuntu_with_ssh]
+0.55s setup    integration_tests/functional/test_cpu_features.py::test_2vcpu_ht_enabled[ubuntu_with_ssh]
+0.55s setup    integration_tests/functional/test_logging.py::test_error_logs[ubuntu_with_ssh]
+0.55s setup    integration_tests/security/test_jail.py::test_default_chroot[ubuntu_with_ssh]
+0.55s setup    integration_tests/functional/test_cpu_features.py::test_16vcpu_ht_disabled[ubuntu_with_ssh]
+0.55s setup    integration_tests/functional/test_logging.py::test_info_logs[ubuntu_with_ssh]
+0.55s setup    integration_tests/functional/test_cpu_features.py::test_brand_string[ubuntu_with_ssh]
+0.55s setup    integration_tests/functional/test_rate_limiter.py::test_tx_rate_limiting[ubuntu_with_ssh]
+0.55s setup    integration_tests/functional/test_logging.py::test_no_nada_logs[ubuntu_with_ssh]
+0.55s setup    integration_tests/functional/test_logging.py::test_no_level_logs[ubuntu_with_ssh]
+0.54s setup    integration_tests/functional/test_shut_down.py::test_reboot[ubuntu_with_ssh]
+0.54s setup    integration_tests/functional/test_cpu_features.py::test_2vcpu_ht_disabled[ubuntu_with_ssh]
+0.54s setup    integration_tests/functional/test_rate_limiter.py::test_rx_rate_limiting[ubuntu_with_ssh]
+0.54s setup    integration_tests/security/test_jail.py::test_empty_jailer_id[ubuntu_with_ssh]
+0.54s setup    integration_tests/functional/test_mmds.py::test_mmds[ubuntu_with_ssh]
+0.50s teardown integration_tests/functional/test_serial_io.py::test_serial_console_login[ubuntu_with_ssh]
+0.48s call     integration_tests/functional/test_api.py::test_net_api_put_update_pre_boot[ubuntu]
+0.47s call     integration_tests/functional/test_api.py::test_api_put_update_post_boot[ubuntu]
+0.44s call     integration_tests/functional/test_logging.py::test_api_requests_logs[ubuntu]
+0.39s call     integration_tests/functional/test_api.py::test_api_vsock[ubuntu]
+0.37s call     integration_tests/functional/test_logging.py::test_no_level_logs[ubuntu_with_ssh]
+0.37s call     integration_tests/functional/test_logging.py::test_warn_logs[ubuntu_with_ssh]
+0.36s call     integration_tests/functional/test_logging.py::test_no_nada_logs[ubuntu_with_ssh]
+0.36s call     integration_tests/functional/test_logging.py::test_info_logs[ubuntu_with_ssh]
+0.36s call     integration_tests/functional/test_logging.py::test_no_origin_logs[ubuntu_with_ssh]
+0.36s call     integration_tests/functional/test_logging.py::test_error_logs[ubuntu_with_ssh]
+0.35s call     integration_tests/functional/test_api.py::test_api_put_machine_config[ubuntu]
+0.34s call     integration_tests/functional/test_api.py::test_api_happy_start[ubuntu]
+0.31s call     integration_tests/functional/test_cmd_line_start.py::test_config_start_with_api[ubuntu_with_ssh-framework/vm_config.json]
+0.31s call     integration_tests/functional/test_mmds.py::test_mmds_dummy[ubuntu_with_ssh]
+0.29s call     integration_tests/security/test_jail.py::test_default_chroot[ubuntu_with_ssh]
+0.27s teardown integration_tests/functional/test_max_vcpus.py::test_max_vcpus[ubuntu_with_ssh]
+0.25s setup    integration_tests/functional/test_api.py::test_api_happy_start[ubuntu]
+0.25s teardown integration_tests/functional/test_api.py::test_api_patch_post_boot[ubuntu]
+0.24s teardown integration_tests/functional/test_api.py::test_api_patch_pre_boot[ubuntu]
+0.23s teardown integration_tests/functional/test_drives.py::test_rescan_dev[ubuntu_with_ssh]
+0.23s teardown integration_tests/functional/test_drives.py::test_partuuid_update[ubuntu_with_ssh]
+0.22s teardown integration_tests/build/test_coverage.py::test_coverage
+0.22s call     integration_tests/functional/test_logging.py::test_flush_metrics[ubuntu]
+0.22s teardown integration_tests/functional/test_cpu_features.py::test_2vcpu_ht_disabled[ubuntu_with_ssh]
+0.22s teardown integration_tests/functional/test_cpu_features.py::test_cpu_template[ubuntu_with_ssh-C3]
+0.22s teardown integration_tests/functional/test_drives.py::test_partuuid_boot[ubuntu_with_partuuid]
+0.22s teardown integration_tests/functional/test_cpu_features.py::test_1vcpu_ht_enabled[ubuntu_with_ssh]
+0.22s teardown integration_tests/functional/test_shut_down.py::test_reboot[ubuntu_with_ssh]
+0.21s teardown integration_tests/functional/test_cpu_features.py::test_1vcpu_ht_disabled[ubuntu_with_ssh]
+0.21s teardown integration_tests/functional/test_api.py::test_api_put_update_post_boot[ubuntu]
+0.21s teardown integration_tests/functional/test_mmds.py::test_mmds[ubuntu_with_ssh]
+0.21s teardown integration_tests/functional/test_cpu_features.py::test_2vcpu_ht_enabled[ubuntu_with_ssh]
+0.20s teardown integration_tests/functional/test_cpu_features.py::test_brand_string[ubuntu_with_ssh]
+0.19s teardown integration_tests/functional/test_cpu_features.py::test_16vcpu_ht_enabled[ubuntu_with_ssh]
+0.19s call     integration_tests/security/test_seccomp.py::test_seccomp_applies_to_all_threads[ubuntu]
+0.19s call     integration_tests/build/test_style.py::test_firecracker_swagger
+0.19s teardown integration_tests/functional/test_drives.py::test_non_partuuid_boot[ubuntu_with_ssh]
+0.15s call     integration_tests/functional/test_cmd_line_start.py::test_config_start_no_api[ubuntu_with_ssh-framework/vm_log_config.json]
+0.14s call     integration_tests/build/test_style.py::test_rust_clippy
+0.12s setup    integration_tests/performance/test_boottime.py::test_multiple_microvm_boottime_with_network[minimal, 10 instance(s)]
+0.12s setup    integration_tests/performance/test_boottime.py::test_multiple_microvm_boottime_no_network[minimal, 10 instance(s)]
+0.11s setup    integration_tests/performance/test_boottime.py::test_single_microvm_boottime_with_network[minimal]
+0.11s setup    integration_tests/functional/test_api.py::test_send_ctrl_alt_del[minimal_with_atkbd]
+0.11s setup    integration_tests/performance/test_boottime.py::test_single_microvm_boottime_no_network[minimal]
+0.10s setup    integration_tests/functional/test_drives.py::test_partuuid_boot[ubuntu_with_partuuid]
+0.10s setup    integration_tests/performance/test_process_startup_time.py::test_startup_time[ubuntu]
+0.10s setup    integration_tests/functional/test_api.py::test_drive_patch[ubuntu]
+0.10s setup    integration_tests/functional/test_logging.py::test_dirty_page_metrics[ubuntu]
+0.10s setup    integration_tests/functional/test_api.py::test_rate_limiters_api_config[ubuntu]
+0.10s setup    integration_tests/functional/test_api.py::test_api_vsock[ubuntu]
+0.10s setup    integration_tests/functional/test_signals.py::test_sigbus_sigsegv[ubuntu-Signals.SIGSEGV]
+0.10s setup    integration_tests/functional/test_api.py::test_api_put_update_pre_boot[ubuntu]
+0.10s setup    integration_tests/functional/test_api.py::test_net_api_put_update_pre_boot[ubuntu]
+0.10s setup    integration_tests/functional/test_signals.py::test_sigbus_sigsegv[ubuntu-Signals.SIGBUS]
+0.10s setup    integration_tests/functional/test_api.py::test_api_actions[ubuntu]
+0.10s setup    integration_tests/functional/test_logging.py::test_flush_metrics[ubuntu]
+0.10s setup    integration_tests/functional/test_api.py::test_api_patch_post_boot[ubuntu]
+0.10s setup    integration_tests/functional/test_api.py::test_api_put_update_post_boot[ubuntu]
+0.10s setup    integration_tests/functional/test_logging.py::test_api_requests_logs[ubuntu]
+0.10s setup    integration_tests/functional/test_api.py::test_api_patch_pre_boot[ubuntu]
+0.10s setup    integration_tests/functional/test_api.py::test_api_put_machine_config[ubuntu]
+0.09s setup    integration_tests/security/test_seccomp.py::test_seccomp_applies_to_all_threads[ubuntu]
+0.07s teardown integration_tests/functional/test_mmds.py::test_mmds_dummy[ubuntu_with_ssh]
+0.07s teardown integration_tests/security/test_jail.py::test_default_chroot[ubuntu_with_ssh]
+0.07s call     integration_tests/security/test_jail.py::test_empty_jailer_id[ubuntu_with_ssh]
+0.07s teardown integration_tests/security/test_jail.py::test_empty_jailer_id[ubuntu_with_ssh]
+0.05s teardown integration_tests/performance/test_boottime.py::test_multiple_microvm_boottime_no_network[minimal, 10 instance(s)]
+0.03s teardown integration_tests/performance/test_boottime.py::test_multiple_microvm_boottime_with_network[minimal, 10 instance(s)]
+0.02s teardown integration_tests/functional/test_api.py::test_api_put_machine_config[ubuntu]
+0.01s teardown integration_tests/performance/test_boottime.py::test_single_microvm_boottime_no_network[minimal]
+0.01s teardown integration_tests/performance/test_process_startup_time.py::test_startup_time[ubuntu]
+0.01s teardown integration_tests/performance/test_boottime.py::test_single_microvm_boottime_with_network[minimal]
+0.01s teardown integration_tests/functional/test_rate_limiter.py::test_rx_rate_limiting[ubuntu_with_ssh]
+0.01s teardown integration_tests/functional/test_logging.py::test_info_logs[ubuntu_with_ssh]
+0.01s teardown integration_tests/functional/test_api.py::test_api_actions[ubuntu]
+0.01s teardown integration_tests/functional/test_logging.py::test_error_logs[ubuntu_with_ssh]
+0.01s teardown integration_tests/functional/test_api.py::test_api_vsock[ubuntu]
+0.01s call     integration_tests/security/test_seccomp.py::test_seccomp_ls
+0.01s teardown integration_tests/functional/test_logging.py::test_dirty_page_metrics[ubuntu]
+0.01s teardown integration_tests/functional/test_cpu_features.py::test_16vcpu_ht_disabled[ubuntu_with_ssh]
+0.01s teardown integration_tests/functional/test_cmd_line_start.py::test_config_start_with_api[ubuntu_with_ssh-framework/vm_config.json]
+0.01s teardown integration_tests/functional/test_cmd_line_start.py::test_config_start_no_api[ubuntu_with_ssh-framework/vm_log_config.json]
+0.01s teardown integration_tests/functional/test_logging.py::test_no_level_logs[ubuntu_with_ssh]
+0.01s teardown integration_tests/functional/test_signals.py::test_sigbus_sigsegv[ubuntu-Signals.SIGSEGV]
+0.01s teardown integration_tests/functional/test_signals.py::test_sigbus_sigsegv[ubuntu-Signals.SIGBUS]
+0.01s teardown integration_tests/functional/test_vsock.py::test_vsock[ubuntu_with_ssh]
+0.01s teardown integration_tests/functional/test_logging.py::test_no_nada_logs[ubuntu_with_ssh]
+0.01s teardown integration_tests/functional/test_logging.py::test_warn_logs[ubuntu_with_ssh]
+0.01s teardown integration_tests/functional/test_logging.py::test_no_origin_logs[ubuntu_with_ssh]
+0.01s teardown integration_tests/functional/test_api.py::test_api_happy_start[ubuntu]
+
+(0.00 durations hidden.  Use -vv to show these durations.)
+============= 5 failed, 64 passed, 1 skipped in 946.56s (0:15:46) ==============
