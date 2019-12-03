@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 # clean
 ip link del tap0

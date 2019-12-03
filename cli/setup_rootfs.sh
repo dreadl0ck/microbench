@@ -17,20 +17,27 @@ mkdir -p /tmp/my-rootfs/usr/bin
 # link static against musl for running in alpine
 go build --ldflags '-linkmode external -extldflags "-static"' -o /tmp/my-rootfs/usr/bin/direct-fs -i github.com/dreadl0ck/firebench/direct-fs
 
-# copy init script
-cp cli/init_alpine.sh /tmp/my-rootfs/init_alpine.sh
+# copy init script(s)
+cp /home/pmieden/go/src/github.com/dreadl0ck/firebench/cli/init_alpine.sh /tmp/my-rootfs/init_alpine.sh
+cp /home/pmieden/go/src/github.com/dreadl0ck/firebench/bin/networking /tmp/my-rootfs/networking
 
 # run docker container with latest alpine image to populate filesystem
 if [ "$1" == "-i" ]; then
+    echo "starting interactive mode"
     # interactive mode
     docker run -it --rm -v /tmp/my-rootfs:/my-rootfs alpine
 else
+    echo "running init_alpine"
     # run init script and exit
-    docker run -it --rm -v /tmp/my-rootfs:/my-rootfs alpine ash /my-rootfs/init_alpine.sh
+    docker run --rm -v /tmp/my-rootfs:/my-rootfs alpine ash /my-rootfs/init_alpine.sh
 fi
 
 # sync & eject
+echo "syncing..."
 sync
+
+echo "unmounting..."
 umount /tmp/my-rootfs
 
+echo "created rootfs at /tmp/rootfs.ext4"
 exit 0

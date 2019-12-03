@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/ash -e
 
 apk update
 apk add openrc vim util-linux
@@ -12,9 +12,6 @@ rc-update add agetty.ttyS0 default
 rc-update add devfs boot
 rc-update add procfs boot
 rc-update add sysfs boot
-
-# Networking
-rc-update add networking boot
 
 # set default password
 passwd -d "root"
@@ -35,6 +32,7 @@ rc-update add serve
 
 # Network config
 cat > /etc/network/interfaces <<EOF
+
 auto lo
 iface lo inet loopback
 
@@ -44,6 +42,10 @@ iface eth0 inet static
     netmask 255.255.255.240
     gateway 145.100.106.17
 EOF
+
+# Networking
+rc-update add networking boot
+#/etc/init.d/networking start
 
 # Optionally add a local.d script for setup tasks during boot time
 # docs: https://wiki.gentoo.org/wiki//etc/local.d
@@ -61,6 +63,10 @@ echo "nameserver 9.9.9.9" > /etc/resolv.conf
 
 hexdump -C /bin/ash > /etc/hexdump
 
+# replace networking script with patched version to surive unclean shutdown
+cp /my-rootfs/networking /etc/init.d/
+chmod +x /etc/init.d/networking
+
 # Then, copy the newly configured system to the rootfs image
 for d in bin etc lib root sbin usr; do tar c "/$d" | tar x -C /my-rootfs; done
 for dir in dev proc run sys var; do mkdir /my-rootfs/${dir}; done
@@ -68,3 +74,6 @@ for dir in dev proc run sys var; do mkdir /my-rootfs/${dir}; done
 mkdir /my-rootfs/run/network
 mkdir /my-rootfs/var/run
 mkdir /my-rootfs/lib/modules
+
+echo "init_alpine done!"
+exit 0

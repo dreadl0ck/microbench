@@ -1,32 +1,48 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"net"
 	"net/http"
 	"os"
 	"os/exec"
-	"syscall"
 	"time"
 )
 
+var flagInteractive = flag.Bool("i", false, "interactive mode")
+var flagIP = flag.String("ip", "", "guest ip")
+
+var flagCreateFS = flag.Bool("createfs", false, "create rootfs and exit")
+var flagRootFS = flag.String("rootfs", "/tmp/rootfs.ext4", "use rootfs at the specified path")
+
+var flagTap = flag.Bool("tap", true, "create tap device")
+
 func main() {
 
-	if len(os.Args) < 2 {
+	flag.Parse()
+
+	if *flagCreateFS {
+		setupRootFS()
+		os.Exit(0)
+	}
+
+	fmt.Println("using rootfs from", *flagRootFS)
+
+	if len(*flagIP) == 0 {
 		log.Fatal("you need to pass an IP")
 	}
 
-	ip := net.ParseIP(os.Args[1])
+	ip := net.ParseIP(*flagIP)
 	if ip == nil {
-		log.Fatal("invalid ip: ", os.Args[1])
+		log.Fatal("invalid ip: ", *flagIP)
 	}
 
-	// setup rootfs - causes kernel panic in VM - TODO
-	//setupRootFS()
-
 	// setup tap interface
-	setupTap()
+	if *flagTap {
+		setupTap()
+	}
 
 	var ether string
 
@@ -51,12 +67,14 @@ func main() {
 	}
 	fmt.Println("PID:", cmd.Process.Pid)
 
-	/*err = cmd.Wait()
-	if err != nil {
-		log.Fatal(err)
-	}*/
-
-	measureBootTime(ip, cmd)
+	if *flagInteractive {
+		err = cmd.Wait()
+		if err != nil {
+			log.Fatal(err)
+		}
+	} else {
+		measureBootTime(ip, cmd)
+	}
 }
 
 func setupRootFS() {
@@ -132,11 +150,15 @@ func measureBootTime(ip net.IP, cmd *exec.Cmd) {
 			serviceDown = false
 			fmt.Println("DELTA:", time.Since(start))
 
-			fmt.Println("killing firecracker process:", cmd.Process.Pid)
+			fmt.Println("waiting for VM to exit")
+			time.Sleep(5 * time.Second)
+
+			/*fmt.Println("killing firecracker process:", cmd.Process.Pid)
 			err := cmd.Process.Signal(syscall.SIGTERM)
 			if err != nil {
 				fmt.Println("failed to kill firecracker process:", err)
-			}
+			}*/
+
 			os.Exit(0)
 		}
 
@@ -151,7 +173,7 @@ func spawnMicroVM(tapEther string) (*exec.Cmd, error) {
 	cmd := exec.Command(
 		"/home/pmieden/go/bin/firectl",
 		"--kernel=/home/pmieden/hello-vmlinux.bin",
-		"--root-drive=/tmp/rootfs.ext4",
+		"--root-drive=" + *flagRootFS,
 		"-t",
 		"--cpu-template=T2",
 		"--log-level=Debug",
@@ -162,9 +184,11 @@ func spawnMicroVM(tapEther string) (*exec.Cmd, error) {
 	)
 
 	// TODO: potentially fucks up the terminal when the firecracker process exits
-	//cmd.Stdin = os.Stdin
-	//cmd.Stdout = os.Stdout
-	//cmd.Stderr = os.Stderr
+	if *flagInteractive {
+		cmd.Stdin = os.Stdin
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
+	}
 
 	return cmd, cmd.Start()
 }

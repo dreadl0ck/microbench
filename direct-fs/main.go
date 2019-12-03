@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"os/exec"
 	"time"
 
 	"github.com/ncw/directio"
@@ -34,6 +35,9 @@ func main() {
 		if err != nil {
 			fmt.Println("failed to write data: ", err)
 		}
+
+		//fmt.Println(exec.Command("/etc/init.d/networking stop").Run())
+		fmt.Println(exec.Command("reboot").Run())
 	})
 
 	log.Fatal(

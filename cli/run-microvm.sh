@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 #toolchain="$(uname -m)-unknown-linux-musl"
 #rm -f /tmp/firecracker.socket

@@ -377,3 +377,9 @@ https://github.com/firecracker-microvm/firecracker/blob/master/docs/network-setu
     dreadl0ck
     cd firebench
     cli/setup_rootfs.sh && bin/firebench 145.100.106.18
+
+### Benchmark kernel boot time
+
+see: https://unix.stackexchange.com/questions/500732/how-to-find-out-time-taken-by-linux-system-for-cold-boot
+
+parse */var/log/boot.msg* or */var/log/kern.log*
