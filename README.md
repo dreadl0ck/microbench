@@ -380,16 +380,16 @@ https://github.com/firecracker-microvm/firecracker/blob/master/docs/network-setu
 
 ### Benchmark kernel boot time
 
-see: https://unix.stackexchange.com/questions/500732/how-to-find-out-time-taken-by-linux-system-for-cold-boot
+Parse */var/log/boot.msg* or */var/log/kern.log* for information regarding kernel boot time.
 
-parse */var/log/boot.msg* or */var/log/kern.log*
+See: https://unix.stackexchange.com/questions/500732/how-to-find-out-time-taken-by-linux-system-for-cold-boot
 
 What values are we interested in?
 
-- Kernel boot time
-- Service startup time
-- Network stack reachability (test via ping?)
-- Time until reachability of a static webservice
+- Kernel boot time (via kernel logs)
+- Service startup time (via kernel logs)
+- Network stack reachability (via ping from outside)
+- Time until reachability of a static webservice (via HTTP GET from outside)
 
 ### Firecracker Linter Output
 
