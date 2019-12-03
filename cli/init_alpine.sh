@@ -19,7 +19,7 @@ passwd -d "root"
 # Now add startup item inside container
 cat > /etc/init.d/serve <<EOF
 #!/sbin/openrc-run
-command="direct-fs"
+command="firebench-agent"
 command_background="yes"
 pidfile="/run/$RC_SVCNAME/$RC_SVCNAME.pid"
 EOF

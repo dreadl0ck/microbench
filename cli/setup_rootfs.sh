@@ -12,10 +12,10 @@ mkfs.ext4 /tmp/rootfs.ext4
 mkdir -p /tmp/my-rootfs
 mount /tmp/rootfs.ext4 /tmp/my-rootfs
 
-# add direct-fs
+# add firebench-agent
 mkdir -p /tmp/my-rootfs/usr/bin
 # link static against musl for running in alpine
-go build --ldflags '-linkmode external -extldflags "-static"' -o /tmp/my-rootfs/usr/bin/direct-fs -i github.com/dreadl0ck/firebench/direct-fs
+go build --ldflags '-linkmode external -extldflags "-static"' -o /tmp/my-rootfs/usr/bin/firebench-agent -i github.com/dreadl0ck/firebench/agent
 
 # copy init script(s)
 cp /home/pmieden/go/src/github.com/dreadl0ck/firebench/cli/init_alpine.sh /tmp/my-rootfs/init_alpine.sh
