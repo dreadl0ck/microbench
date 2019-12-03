@@ -383,3 +383,74 @@ https://github.com/firecracker-microvm/firecracker/blob/master/docs/network-setu
 see: https://unix.stackexchange.com/questions/500732/how-to-find-out-time-taken-by-linux-system-for-cold-boot
 
 parse */var/log/boot.msg* or */var/log/kern.log*
+
+What values are we interested in?
+
+- Kernel boot time
+- Service startup time
+- Network stack reachability (test via ping?)
+- Time until reachability of a static webservice
+
+### Firecracker Linter Output
+
+- 9x warning: unsafe function's docs miss `# Safety` (all in memory_model)
+- 1x deprecated symbol used (in devices)
+
+### Firecracker Test Output
+
+What security aspects are tested?
+
+- seccomp
+- sec_audit
+- jailing
+
+Search test logs:
+
+    $ grep "security" logs/firecracker_tests.log
+    integration_tests/security/test_jail.py ..
+    integration_tests/security/test_sec_audit.py .
+    integration_tests/security/test_seccomp.py .Hello, world!
+    5.99s setup    integration_tests/security/test_seccomp.py::test_seccomp_ls
+    1.29s call     integration_tests/security/test_sec_audit.py::test_cargo_audit
+    1.26s teardown integration_tests/security/test_seccomp.py::test_seccomp_applies_to_all_threads[ubuntu]
+    0.55s setup    integration_tests/security/test_jail.py::test_default_chroot[ubuntu_with_ssh]
+    0.54s setup    integration_tests/security/test_jail.py::test_empty_jailer_id[ubuntu_with_ssh]
+    0.29s call     integration_tests/security/test_jail.py::test_default_chroot[ubuntu_with_ssh]
+    0.19s call     integration_tests/security/test_seccomp.py::test_seccomp_applies_to_all_threads[ubuntu]
+    0.09s setup    integration_tests/security/test_seccomp.py::test_seccomp_applies_to_all_threads[ubuntu]
+    0.07s teardown integration_tests/security/test_jail.py::test_default_chroot[ubuntu_with_ssh]
+    0.07s call     integration_tests/security/test_jail.py::test_empty_jailer_id[ubuntu_with_ssh]
+    0.07s teardown integration_tests/security/test_jail.py::test_empty_jailer_id[ubuntu_with_ssh]
+    0.01s call     integration_tests/security/test_seccomp.py::test_seccomp_ls
+
+Performance measurements:
+
+    $ grep "performance" logs/firecracker_tests.log
+    integration_tests/performance/test_boottime.py FFFF
+    integration_tests/performance/test_process_startup_time.py Process startup time is: 23428 us (6601 CPU us)
+    integration_tests/performance/test_boottime.py:30: in test_single_microvm_boottime_no_network
+    integration_tests/performance/test_boottime.py:98: in _test_microvm_boottime
+    integration_tests/performance/test_boottime.py:46: in test_multiple_microvm_boottime_no_network
+    integration_tests/performance/test_boottime.py:98: in _test_microvm_boottime
+    integration_tests/performance/test_boottime.py:62: in test_multiple_microvm_boottime_with_network
+    integration_tests/performance/test_boottime.py:138: in _configure_vm
+    integration_tests/performance/test_boottime.py:80: in test_single_microvm_boottime_with_network
+    integration_tests/performance/test_boottime.py:98: in _test_microvm_boottime
+    3.99s call     integration_tests/performance/test_boottime.py::test_multiple_microvm_boottime_no_network[minimal, 10 instance(s)]
+    2.95s call     integration_tests/performance/test_boottime.py::test_multiple_microvm_boottime_with_network[minimal, 10 instance(s)]
+    0.81s call     integration_tests/performance/test_boottime.py::test_single_microvm_boottime_with_network[minimal]
+    0.64s call     integration_tests/performance/test_boottime.py::test_single_microvm_boottime_no_network[minimal]
+    0.57s call     integration_tests/performance/test_process_startup_time.py::test_startup_time[ubuntu]
+    0.12s setup    integration_tests/performance/test_boottime.py::test_multiple_microvm_boottime_with_network[minimal, 10 instance(s)]
+    0.12s setup    integration_tests/performance/test_boottime.py::test_multiple_microvm_boottime_no_network[minimal, 10 instance(s)]
+    0.11s setup    integration_tests/performance/test_boottime.py::test_single_microvm_boottime_with_network[minimal]
+    0.11s setup    integration_tests/performance/test_boottime.py::test_single_microvm_boottime_no_network[minimal]
+    0.10s setup    integration_tests/performance/test_process_startup_time.py::test_startup_time[ubuntu]
+    0.05s teardown integration_tests/performance/test_boottime.py::test_multiple_microvm_boottime_no_network[minimal, 10 instance(s)]
+    0.03s teardown integration_tests/performance/test_boottime.py::test_multiple_microvm_boottime_with_network[minimal, 10 instance(s)]
+    0.01s teardown integration_tests/performance/test_boottime.py::test_single_microvm_boottime_no_network[minimal]
+    0.01s teardown integration_tests/performance/test_process_startup_time.py::test_startup_time[ubuntu]
+    0.01s teardown integration_tests/performance/test_boottime.py::test_single_microvm_boottime_with_network[minimal]
+
+- integration_tests/performance/test_process_startup_time.py Process startup time is: 23428 us (6601 CPU us)
+- Total: 5 failed, 64 passed, 1 skipped in 946.56s (0:15:46)
