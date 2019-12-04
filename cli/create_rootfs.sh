@@ -29,7 +29,7 @@ if [ "$1" == "-i" ]; then
 else
     echo "running init_alpine"
     # run init script and exit
-    docker run --rm -v /tmp/my-rootfs:/my-rootfs alpine ash /my-rootfs/init_alpine.sh
+    docker run --rm -v /tmp/my-rootfs:/my-rootfs alpine ash /my-rootfs/init_alpine.sh $1 $2
 fi
 
 # sync & eject

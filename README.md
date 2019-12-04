@@ -330,7 +330,7 @@ Invoke:
 
 Source: https://github.com/firecracker-microvm/firecracker/blob/master/docs/rootfs-and-kernel-setup.md
 
-- setup_rootfs.sh (outside)
+- create_rootfs.sh (outside)
 - init_alpine.sh (run inside container):
 
 Hint: You can also copy the binary from the outside into the container:
@@ -376,13 +376,22 @@ https://github.com/firecracker-microvm/firecracker/blob/master/docs/network-setu
     
     dreadl0ck
     cd firebench
-    cli/setup_rootfs.sh && bin/firebench 145.100.106.18
+    cli/create_rootfs.sh && bin/firebench 145.100.106.18
 
 ### Benchmark kernel boot time
 
 Parse */var/log/boot.msg* or */var/log/kern.log* for information regarding kernel boot time.
 
 See: https://unix.stackexchange.com/questions/500732/how-to-find-out-time-taken-by-linux-system-for-cold-boot
+
+Those do not seem to be present in alpine.
+
+Check *cat /proc/uptime* and *dmesg* output.
+
+Alternatively:
+
+- https://wiki.archlinux.org/index.php/Bootchart
+- http://people.redhat.com/berrange/systemtap/bootprobe/
 
 What values are we interested in?
 

@@ -14,7 +14,7 @@ func main() {
 	flag.Parse()
 
 	if *flagCreateFS {
-		setupRootFS()
+		createRootFS()
 		os.Exit(0)
 	}
 

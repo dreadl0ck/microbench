@@ -1,5 +1,22 @@
 #!/bin/ash -e
 
+# usage: ./init_alpine.sh <ip> <gw>
+
+vm_ip="$1"
+vm_gw_ip="$2"
+
+if [ -z "$vm_ip" ]; then
+    echo "you must pass an ip for the vm as parameter #1"
+    echo "usage: ./init_alpine.sh <ip> <gw>"
+    exit 1
+fi
+
+if [ -z "$vm_gw_ip" ]; then
+    echo "you must pass a gateway ip as parameter #2"
+    echo "usage: ./init_alpine.sh <ip> <gw>"
+    exit 1
+fi
+
 apk update
 apk add openrc vim util-linux
 
@@ -30,6 +47,9 @@ chmod 755 /etc/init.d/serve
 # register to launch at startup
 rc-update add serve
 
+echo "vm_ip: $vm_ip"
+echo "vm_gw_ip: $vm_gw_ip"
+
 # Network config
 cat > /etc/network/interfaces <<EOF
 
@@ -38,10 +58,13 @@ iface lo inet loopback
 
 auto eth0
 iface eth0 inet static
-    address 145.100.106.18
+    address $vm_ip
     netmask 255.255.255.240
-    gateway 145.100.106.17
+    gateway $vm_gw_ip
 EOF
+
+echo "/etc/network/interfaces:"
+cat /etc/network/interfaces
 
 # Networking
 rc-update add networking boot

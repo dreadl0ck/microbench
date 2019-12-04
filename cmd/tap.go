@@ -13,7 +13,7 @@ func setupTap() {
 
 	cmd := exec.Command(
 		"/bin/bash",
-		"/home/pmieden/go/src/github.com/dreadl0ck/firebench/cli/network_setup_host.sh",
+		"/home/pmieden/go/src/github.com/dreadl0ck/firebench/cli/create_tap.sh",
 	)
 
 	cmd.Stderr = os.Stderr

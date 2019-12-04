@@ -7,13 +7,15 @@ import (
 	"os/exec"
 )
 
-func setupRootFS() {
+func createRootFS() {
 
-	fmt.Println("setting up rootfs...")
+	fmt.Println("creating rootfs for ip", *flagIP, "and gateway", *flagGateway)
 
 	cmd := exec.Command(
 		"/bin/bash",
-		"/home/pmieden/go/src/github.com/dreadl0ck/firebench/cli/setup_rootfs.sh",
+		"/home/pmieden/go/src/github.com/dreadl0ck/firebench/cli/create_rootfs.sh",
+		*flagIP,
+		*flagGateway,
 	)
 
 	cmd.Stderr = os.Stderr

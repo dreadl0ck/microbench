@@ -4,7 +4,8 @@ import "flag"
 
 var (
 	flagInteractive = flag.Bool("i", false, "interactive mode")
-	flagIP          = flag.String("ip", "", "guest ip")
+	flagIP          = flag.String("ip", "145.100.106.18", "guest ip")
+	flagGateway     = flag.String("gw", "145.100.106.17", "gateway ip")
 
 	flagCreateFS = flag.Bool("createfs", false, "create rootfs and exit")
 	flagRootFS   = flag.String("rootfs", "/tmp/rootfs.ext4", "use rootfs at the specified path")

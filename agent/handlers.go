@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"os"
 	"os/exec"
@@ -15,7 +14,7 @@ import (
 
 var statsHandler = func(w http.ResponseWriter, r *http.Request) {
 
-	c, err := ioutil.ReadFile("/var/log/boot.msg")
+	c, err := exec.Command("dmesg").CombinedOutput()
 	if err != nil {
 		fmt.Println("Error on read:", err)
 		w.WriteHeader(http.StatusInternalServerError)
@@ -66,9 +65,6 @@ var serveHexdump = func(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println("failed to write data: ", err)
 	}
-
-	//fmt.Println(exec.Command("/etc/init.d/networking stop").Run())
-	fmt.Println(exec.Command("reboot").Run())
 }
 
 var shutdown = func(w http.ResponseWriter, r *http.Request) {

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net"
 	"net/http"
@@ -56,6 +57,22 @@ func measureBootTime(start time.Time, ip net.IP, cmd *exec.Cmd) {
 
 			serviceDown = false
 			fmt.Println("Time until HTTP reply from webservice:", time.Since(start))
+
+			// retrieve VM stats
+			resp, err := http.Get("http://" + ip.String() + "/stats")
+			if err != nil {
+				fmt.Println(err)
+			} else {
+				statsData, err := ioutil.ReadAll(resp.Body)
+				if err != nil {
+					log.Fatal(err)
+				}
+
+				fmt.Println("statsData:", string(statsData))
+			}
+
+			// trigger VM shutdown
+			http.Get("http://" + ip.String() + "/shutdown")
 
 			fmt.Println("waiting for VM to exit")
 			err = cmd.Wait()
