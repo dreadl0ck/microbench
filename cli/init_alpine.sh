@@ -45,7 +45,7 @@ EOF
 chmod 755 /etc/init.d/serve
 
 # register to launch at startup
-rc-update add serve
+rc-update add serve boot
 
 echo "vm_ip: $vm_ip"
 echo "vm_gw_ip: $vm_gw_ip"
