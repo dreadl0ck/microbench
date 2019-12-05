@@ -1,12 +1,22 @@
 #!/bin/bash -e
 
+gw_ip=$1
+
+if [ -z "$gw_ip" ]; then
+    echo "you must pass a gateway ip as parameter #2"
+    echo "usage: ./create_tap.sh <gw>"
+    exit 1
+fi
+
+
+
 # clean
 ip link del tap0
 
 iptables -F
 
 ip tuntap add tap0 mode tap
-ip addr add 145.100.106.17/28 dev tap0
+ip addr add "$gw_ip"/28 dev tap0
 
 ip link set tap0 up
 
