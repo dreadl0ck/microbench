@@ -1,5 +1,20 @@
 #!/bin/bash
 
+vm_ip="$1"
+gw_ip="$2"
+
+if [ -z "$vm_ip" ]; then
+    echo "you must pass an ip for the vm as parameter #1"
+    echo "usage: ./create_rootfs.sh <ip> <gw>"
+    exit 1
+fi
+
+if [ -z "$gw_ip" ]; then
+    echo "you must pass a gateway ip as parameter #2"
+    echo "usage: ./create_rootfs.sh <ip> <gw>"
+    exit 1
+fi
+
 # hotfix for dangling network interfaces
 systemctl restart docker
 
@@ -29,7 +44,7 @@ if [ "$1" == "-i" ]; then
 else
     echo "running init_alpine"
     # run init script and exit
-    docker run --rm -v /tmp/my-rootfs:/my-rootfs alpine ash /my-rootfs/init_alpine.sh $1 $2
+    docker run --rm -v /tmp/my-rootfs:/my-rootfs alpine ash /my-rootfs/init_alpine.sh "$vm_ip" "$gw_ip"
 fi
 
 # sync & eject
