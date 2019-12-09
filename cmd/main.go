@@ -15,6 +15,8 @@ func main() {
 
 	flag.Parse()
 
+	fmt.Println("EngineType:", EngineType)
+
 	if *flagCreateFS {
 		createRootFS()
 		os.Exit(0)
