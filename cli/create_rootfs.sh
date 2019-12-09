@@ -33,8 +33,8 @@ mkdir -p /tmp/my-rootfs/usr/bin
 go build --ldflags '-linkmode external -extldflags "-static"' -o /tmp/my-rootfs/usr/bin/firebench-agent -i github.com/dreadl0ck/firebench/agent
 
 # copy init script(s)
-cp /home/pmieden/go/src/github.com/dreadl0ck/firebench/cli/init_alpine.sh /tmp/my-rootfs/init_alpine.sh
-cp /home/pmieden/go/src/github.com/dreadl0ck/firebench/bin/networking /tmp/my-rootfs/networking
+cp $HOME/go/src/github.com/dreadl0ck/firebench/cli/init_alpine.sh /tmp/my-rootfs/init_alpine.sh
+cp $HOME/go/src/github.com/dreadl0ck/firebench/bin/networking /tmp/my-rootfs/networking
 
 # run docker container with latest alpine image to populate filesystem
 if [ "$1" == "-i" ]; then
