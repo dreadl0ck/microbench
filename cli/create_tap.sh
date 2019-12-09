@@ -13,7 +13,7 @@ fi
 # clean
 ip link del tap0
 
-iptables -F
+#iptables -F
 
 ip tuntap add tap0 mode tap
 ip addr add "$gw_ip"/28 dev tap0
