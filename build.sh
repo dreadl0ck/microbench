@@ -1,7 +1,9 @@
 #!/bin/bash
 
-if [ $1 == "qemu" ]; then
-  GOOS=linux go build -o bin/firebench -i github.com/dreadl0ck/firebench/cmd -ldflags="-X main.EngineType=qemu"
+if [[ "$1" == "qemu" ]]; then
+  echo "building firebench tool with QEMU support"
+  GOOS=linux go build -ldflags="-X main.EngineType=qemu" -o bin/firebench -i github.com/dreadl0ck/firebench/cmd
 else
-  GOOS=linux go build -o bin/firebench -i github.com/dreadl0ck/firebench/cmd -ldflags="-X main.EngineType=fc"
+  echo "building firebench tool with Firecracker support"
+  GOOS=linux go build -ldflags="-X main.EngineType=fc" -o bin/firebench -i github.com/dreadl0ck/firebench/cmd
 fi
