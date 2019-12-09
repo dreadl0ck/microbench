@@ -5,7 +5,7 @@
 #firecracker/build/cargo_target/${toolchain}/debug/firecracker --config-file vm-config.json --api-sock /tmp/firecracker.socket
 
 firectl \
-  --kernel=/home/pmieden/hello-vmlinux.bin \
+  --kernel=$HOME/hello-vmlinux.bin \
   --root-drive=/tmp/rootfs.ext4 -t \
   --cpu-template=T2 \
   --firecracker-log=firecracker-vmm.log \

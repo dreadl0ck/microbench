@@ -23,7 +23,7 @@ func parseKernelLog(contents []byte) (s *stats, err error) {
 		if strings.Contains(line, "random: fast init done") {
 
 			// ex: [   17.567752] random: fast init done
-			duration := strings.TrimSpace(tsRegExp.FindString(lines[i-1])) + "s"
+			duration := strings.TrimSpace(tsRegExp.FindString(lines[i])) + "s"
 			fmt.Println("found duration:", duration)
 
 			d, err := time.ParseDuration(duration)

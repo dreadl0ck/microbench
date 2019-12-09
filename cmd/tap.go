@@ -13,7 +13,8 @@ func setupTap() {
 
 	cmd := exec.Command(
 		"/bin/bash",
-		"/home/pmieden/go/src/github.com/dreadl0ck/firebench/cli/create_tap.sh",
+		os.ExpandEnv("$HOME/go/src/github.com/dreadl0ck/firebench/cli/create_tap.sh"),
+		*flagGateway,
 	)
 
 	cmd.Stderr = os.Stderr

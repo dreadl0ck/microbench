@@ -9,6 +9,7 @@ var (
 
 	flagCreateFS = flag.Bool("createfs", false, "create rootfs and exit")
 	flagRootFS   = flag.String("rootfs", "/tmp/rootfs.ext4", "use rootfs at the specified path")
-
+	//flagKernel = flag.String("kernel", "$HOME/hello-vmlinux.bin", "kernel to use")
+	flagKernel = flag.String("kernel", "$HOME/vmlinuz", "kernel to use")
 	flagTap = flag.Bool("tap", true, "create tap device")
 )

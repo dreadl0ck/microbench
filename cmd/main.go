@@ -9,6 +9,8 @@ import (
 	"time"
 )
 
+var EngineType string
+
 func main() {
 
 	flag.Parse()

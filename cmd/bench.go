@@ -35,7 +35,7 @@ func measureBootTime(start time.Time, ip net.IP, cmd *exec.Cmd) {
 		//fmt.Print("CHECKING... ")
 
 		http.DefaultClient = &http.Client{
-			Timeout: 10 * time.Millisecond,
+			Timeout: 50 * time.Millisecond,
 		}
 
 		resp, err := http.Get("http://" + ip.String())

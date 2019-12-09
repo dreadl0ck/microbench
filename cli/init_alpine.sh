@@ -57,6 +57,7 @@ auto lo
 iface lo inet loopback
 
 auto eth0
+iface eth0 inet manual
 iface eth0 inet static
     address $vm_ip
     netmask 255.255.255.240
@@ -65,6 +66,9 @@ EOF
 
 echo "/etc/network/interfaces:"
 cat /etc/network/interfaces
+
+echo "disabling IPv6..."
+echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
 
 # Networking
 rc-update add networking boot
