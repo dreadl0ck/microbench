@@ -29,16 +29,7 @@ func spawnMicroVM(tapEther string) (*exec.Cmd, error) {
 		)
 	case "qemu":
 		cmd = exec.Command(
-			os.ExpandEnv("$HOME/go/bin/firectl"),
-			"--kernel=" + os.ExpandEnv(*flagKernel),
-			"--root-drive="+*flagRootFS,
-			"-t",
-			"--cpu-template=T2",
-			"--log-level=Debug",
-			"--firecracker-log=firecracker-vmm.log",
-			"--kernel-opts='console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw'",
-			//"--metadata='{"foo":"bar"}' ""
-			"--tap-device=tap0/"+tapEther,
+			os.ExpandEnv("$HOME/go/src/github.com/dreadl0ck/firebench/cli/run-microvm.sh"),
 		)
 	default:
 		log.Fatal("invalid engine type: ", EngineType)
