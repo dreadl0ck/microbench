@@ -71,6 +71,7 @@ func main() {
 		start := time.Now()
 		go ping(start, ip)
 		measureBootTime(start, ip, cmd)
+		measureResponseTime(ip, 10000)
 		stopVM(ip, cmd)
 	}
 }

@@ -7,6 +7,7 @@ import (
 	"net"
 	"net/http"
 	"os/exec"
+	"strconv"
 	"time"
 )
 
@@ -73,5 +74,21 @@ func measureBootTime(start time.Time, ip net.IP, cmd *exec.Cmd) {
 		}
 
 		time.Sleep(1000 * time.Millisecond)
+	}
+}
+
+func measureResponseTime(ip net.IP, requests int) {
+	fmt.Println("measuring response time...")
+
+	out, err := exec.Command("ab",
+		"-n" + strconv.Itoa(requests),
+		"-k"
+		"http://" + ip.String() + ":80" + "/ping",
+	).CombinedOutput()
+	if err != nil {
+		fmt.Println(string(out))
+		fmt.Println("ab failed: ", err)
+	} else {
+		fmt.Println(string(out))
 	}
 }
