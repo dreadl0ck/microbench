@@ -6,7 +6,6 @@ import (
 	"log"
 	"net"
 	"net/http"
-	"os"
 	"os/exec"
 	"time"
 )
@@ -69,24 +68,8 @@ func measureBootTime(start time.Time, ip net.IP, cmd *exec.Cmd) {
 				}
 
 				fmt.Println("statsData:", string(statsData))
+				break
 			}
-
-			// trigger VM shutdown
-			http.Get("http://" + ip.String() + "/shutdown")
-
-			fmt.Println("waiting for VM to exit")
-			err = cmd.Wait()
-			if err != nil {
-				log.Fatal(err)
-			}
-
-			/*fmt.Println("killing firecracker process:", cmd.Process.Pid)
-			err := cmd.Process.Signal(syscall.SIGTERM)
-			if err != nil {
-				fmt.Println("failed to kill firecracker process:", err)
-			}*/
-
-			os.Exit(0)
 		}
 
 		time.Sleep(1000 * time.Millisecond)
