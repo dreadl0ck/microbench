@@ -82,7 +82,7 @@ func measureResponseTime(ip net.IP, requests int) {
 
 	out, err := exec.Command("ab",
 		"-n" + strconv.Itoa(requests),
-		"-k"
+		"-k",
 		"http://" + ip.String() + ":80" + "/ping",
 	).CombinedOutput()
 	if err != nil {
