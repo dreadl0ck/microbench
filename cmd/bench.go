@@ -92,3 +92,27 @@ func measureResponseTime(ip net.IP, requests int) {
 		fmt.Println(string(out))
 	}
 }
+
+func measureThroughput(ip net.IP, filepath string) {
+	fmt.Println("measuring throughput by uploading file: ", filepath)
+
+	// TODO: get throughput metrics from postFile
+	postFile(ip, filepath)
+}
+
+func startCompilation(ip net.IP)  {
+	http.DefaultClient = &http.Client{
+		Timeout: 50 * time.Millisecond,
+	}
+
+	resp, err := http.Get("http://" + ip.String() + "/compile")
+	if err != nil {
+		fmt.Println("compilation err: " + err.Error())
+	} else {
+		resp, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println(string(resp))
+	}
+}

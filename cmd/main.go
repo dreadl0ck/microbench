@@ -71,7 +71,9 @@ func main() {
 		start := time.Now()
 		go ping(start, ip)
 		measureBootTime(start, ip, cmd)
-		measureResponseTime(ip, 10000)
+		measureResponseTime(ip, 100)
+		measureThroughput(ip, "hello.txt")
+		startCompilation(ip)
 		stopVM(ip, cmd)
 	}
 }
