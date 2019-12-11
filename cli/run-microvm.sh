@@ -14,7 +14,7 @@
 #   --metadata='{"foo":"bar"}' \
 #   --tap-device="tap0/$1"
 
-sudo qemu-system-x86_64 -M microvm \
+sudo qemu-system-x86_64 -M microvm,rtc=off \
 	-enable-kvm \
 	-smp 2 \
 	-m 1g \
