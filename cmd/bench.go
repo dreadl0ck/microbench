@@ -81,9 +81,9 @@ func measureResponseTime(ip net.IP, requests int) {
 	fmt.Println("measuring response time...")
 
 	out, err := exec.Command("ab",
-		"-n" + strconv.Itoa(requests),
+		"-n"+strconv.Itoa(requests),
 		"-k",
-		"http://" + ip.String() + ":80" + "/ping",
+		"http://"+ip.String()+":80"+"/ping",
 	).CombinedOutput()
 	if err != nil {
 		fmt.Println(string(out))
@@ -100,7 +100,7 @@ func measureThroughput(ip net.IP, filepath string) {
 	postFile(ip, filepath)
 }
 
-func startCompilation(ip net.IP)  {
+func startCompilation(ip net.IP) {
 	http.DefaultClient = &http.Client{
 		Timeout: 50 * time.Millisecond,
 	}
