@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# exit script on error
+set -e
+
 vm_ip="$1"
 gw_ip="$2"
 
@@ -19,7 +22,9 @@ fi
 systemctl restart docker
 
 # bootstrap filesystem
-umount -f /tmp/my-rootfs
+if mount | grep -q "/tmp/my-rootfs"; then
+	umount -f /tmp/my-rootfs
+fi
 dd if=/dev/zero of=/tmp/rootfs.ext4 bs=1M count=250
 mkfs.ext4 /tmp/rootfs.ext4
 
