@@ -80,7 +80,7 @@ var shutdown = func(w http.ResponseWriter, r *http.Request) {
 }
 
 var uploadHandler = func(w http.ResponseWriter, r *http.Request) {
-	err := r.ParseMultipartForm(3000 << 20) // maxMemory 3000MB
+	err := r.ParseMultipartForm(30 << 20) // maxMemory 30MB
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte("failed to parse multipart message: " + err.Error() + "\n"))

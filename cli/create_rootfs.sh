@@ -25,7 +25,7 @@ systemctl restart docker
 if mount | grep -q "/tmp/my-rootfs"; then
 	umount -f /tmp/my-rootfs
 fi
-dd if=/dev/zero of=/tmp/rootfs.ext4 bs=1M count=250
+dd if=/dev/zero of=/tmp/rootfs.ext4 bs=1M count=4500
 mkfs.ext4 /tmp/rootfs.ext4
 
 # mount it
@@ -40,6 +40,8 @@ go build --ldflags '-linkmode external -extldflags "-static"' -o /tmp/my-rootfs/
 # copy init script(s)
 cp $HOME/go/src/github.com/dreadl0ck/firebench/cli/init_alpine.sh /tmp/my-rootfs/init_alpine.sh
 cp $HOME/go/src/github.com/dreadl0ck/firebench/bin/networking /tmp/my-rootfs/networking
+cp $HOME/go/src/github.com/dreadl0ck/firebench/bin/kcbench /tmp/my-rootfs/kcbench
+cp -r $HOME/linux.git /tmp/my-rootfs/linux.git
 
 # run docker container with latest alpine image to populate filesystem
 if [ "$1" == "-i" ]; then

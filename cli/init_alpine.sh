@@ -18,7 +18,8 @@ if [ -z "$vm_gw_ip" ]; then
 fi
 
 apk update
-apk add openrc vim util-linux
+apk add openrc vim util-linux bash
+apk add build-base flex bison linux-headers openssl-dev elfutils-dev elfutils-libelf-dev # linux kernel compilation deps
 
 # Set up a login terminal on the serial console (ttyS0):
 ln -s agetty /etc/init.d/agetty.ttyS0
