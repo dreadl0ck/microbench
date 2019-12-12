@@ -5,17 +5,19 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"strconv"
 )
 
-func createRootFS() {
+func createRootFS(ip, gw string, num int) {
 
-	fmt.Println("creating rootfs for ip", *flagIP, "and gateway", *flagGateway)
+	fmt.Println("creating rootfs for ip", ip, "and gateway", gw)
 
 	cmd := exec.Command(
 		"/bin/bash",
 		os.ExpandEnv("$HOME/go/src/github.com/dreadl0ck/firebench/cli/create_rootfs.sh"),
-		*flagIP,
-		*flagGateway,
+		ip,
+		gw,
+		strconv.Itoa(num),
 	)
 
 	cmd.Stderr = os.Stderr

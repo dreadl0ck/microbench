@@ -6,6 +6,8 @@ import (
 	"log"
 	"net"
 	"os"
+	"strconv"
+	"sync"
 	"time"
 )
 
@@ -17,26 +19,54 @@ func main() {
 
 	fmt.Println("EngineType:", EngineType)
 
+	if len(*flagIP) == 0 || len(*flagGateway) == 0 {
+		log.Fatal("you need to pass an IP and gateway")
+	}
+
 	if *flagCreateFS {
-		createRootFS()
+		createRootFS(*flagIP, *flagGateway, 0)
 		os.Exit(0)
 	}
 
-	fmt.Println("using rootfs from", *flagRootFS)
-
-	if len(*flagIP) == 0 {
-		log.Fatal("you need to pass an IP")
+	if !*flagMulti {
+		initVM(*flagIP, *flagGateway, 0)
+		os.Exit(0)
 	}
 
-	ip := net.ParseIP(*flagIP)
+	var wg sync.WaitGroup
+
+	for num, cfg := range parseConfig().Vms {
+		wg.Add(1)
+		fmt.Printf("bootstrapping machine #%d (IP: %s, GW: %s)\n", num, cfg.IP, cfg.Gateway)
+
+		// prevent capturing loop vars
+		var (
+			ip = cfg.IP
+			gw = cfg.Gateway
+			n  = num
+		)
+
+		go func() {
+			createRootFS(ip, gw, n)
+			initVM(ip, gw, n)
+			wg.Done()
+		}()
+	}
+
+	fmt.Println("waiting...")
+	wg.Wait()
+	fmt.Println("done. bye")
+}
+
+func initVM(ipAddr, gwAddr string, num int) {
+
+	ip := net.ParseIP(ipAddr)
 	if ip == nil {
-		log.Fatal("invalid ip: ", *flagIP)
+		log.Fatal("invalid ip: ", ipAddr)
 	}
 
 	// setup tap interface
-	if *flagTap {
-		setupTap()
-	}
+	setupTap(gwAddr, num)
 
 	var ether string
 
@@ -47,7 +77,7 @@ func main() {
 
 	// get hardware addr of tap interface
 	for _, i := range ifaces {
-		if i.Name == "tap0" {
+		if i.Name == "tap"+strconv.Itoa(num) {
 			ether = i.HardwareAddr.String()
 		}
 	}
@@ -55,7 +85,7 @@ func main() {
 	fmt.Println("tap ether:", ether)
 
 	// start VM
-	cmd, err := spawnMicroVM(ether)
+	cmd, err := spawnMicroVM(ether, num)
 	if err != nil {
 		log.Fatal("failed to start microVM: ", err)
 	}

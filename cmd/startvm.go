@@ -5,20 +5,23 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"strconv"
 )
 
-func spawnMicroVM(tapEther string) (*exec.Cmd, error) {
+func spawnMicroVM(tapEther string, num int) (*exec.Cmd, error) {
 
-	fmt.Println("spawning VM")
-
-	var cmd *exec.Cmd
+	var (
+		cmd    *exec.Cmd
+		rootfs = "/tmp/rootfs" + strconv.Itoa(num) + ".ext4"
+	)
+	fmt.Println("spawning microVM with rootfs:", rootfs, ", ether:", tapEther)
 
 	switch EngineType {
 	case "fc":
 		cmd = exec.Command(
 			os.ExpandEnv("$HOME/go/bin/firectl"),
-			"--kernel=" + os.ExpandEnv(*flagKernel),
-			"--root-drive="+*flagRootFS,
+			"--kernel="+os.ExpandEnv(*flagKernel),
+			"--root-drive="+rootfs,
 			"-t",
 			"--cpu-template=T2",
 			"--log-level=Debug",

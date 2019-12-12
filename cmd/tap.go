@@ -5,16 +5,18 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"strconv"
 )
 
-func setupTap() {
+func setupTap(address string, num int) {
 
 	fmt.Println("setting up tap interface...")
 
 	cmd := exec.Command(
 		"/bin/bash",
 		os.ExpandEnv("$HOME/go/src/github.com/dreadl0ck/firebench/cli/create_tap.sh"),
-		*flagGateway,
+		address,
+		strconv.Itoa(num),
 	)
 
 	cmd.Stderr = os.Stderr

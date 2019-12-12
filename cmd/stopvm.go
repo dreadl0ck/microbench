@@ -5,7 +5,6 @@ import (
 	"log"
 	"net"
 	"net/http"
-	"os"
 	"os/exec"
 )
 
@@ -18,6 +17,4 @@ func stopVM(ip net.IP, cmd *exec.Cmd) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	os.Exit(0)
 }
-
