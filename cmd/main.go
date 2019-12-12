@@ -82,7 +82,7 @@ func initVM(ipAddr, gwAddr string, num int) {
 		}
 	}
 
-	fmt.Println("tap ether:", ether)
+	fmt.Println("tap"+strconv.Itoa(num), "ether:", ether)
 
 	// start VM
 	cmd, err := spawnMicroVM(ether, num)

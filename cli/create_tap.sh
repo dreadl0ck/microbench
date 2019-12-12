@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 
 gw_ip=$1
 num=$2
@@ -15,7 +15,7 @@ if [ -z "$num" ]; then
     exit 1
 fi
 
-echo "createtap: tap$num"
+echo "create tap: tap$num"
 
 # clean
 ip link del tap$num

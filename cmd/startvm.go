@@ -14,7 +14,7 @@ func spawnMicroVM(tapEther string, num int) (*exec.Cmd, error) {
 		cmd    *exec.Cmd
 		rootfs = "/tmp/rootfs" + strconv.Itoa(num) + ".ext4"
 	)
-	fmt.Println("spawning microVM with rootfs:", rootfs, ", ether:", tapEther)
+	fmt.Println("spawning microVM with rootfs:", rootfs+", ether:", tapEther)
 
 	switch EngineType {
 	case "fc":
@@ -28,7 +28,7 @@ func spawnMicroVM(tapEther string, num int) (*exec.Cmd, error) {
 			"--firecracker-log=firecracker-vmm.log",
 			"--kernel-opts='console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw'",
 			//"--metadata='{"foo":"bar"}' ""
-			"--tap-device=tap0/"+tapEther,
+			"--tap-device=tap"+strconv.Itoa(num)+"/"+tapEther,
 		)
 	case "qemu":
 		cmd = exec.Command(
@@ -38,7 +38,6 @@ func spawnMicroVM(tapEther string, num int) (*exec.Cmd, error) {
 		log.Fatal("invalid engine type: ", EngineType)
 	}
 
-	// TODO: potentially fucks up the terminal when the firecracker process exits
 	if *flagInteractive {
 		cmd.Stdin = os.Stdin
 		cmd.Stdout = os.Stdout
