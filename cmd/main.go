@@ -2,8 +2,7 @@ package main
 
 import (
 	"flag"
-	"fmt"
-	"log"
+	"github.com/sirupsen/logrus"
 	"net"
 	"os"
 	"strconv"
@@ -13,31 +12,44 @@ import (
 
 var EngineType string
 
+var l = logrus.New()
+
 func main() {
 
 	flag.Parse()
 
-	fmt.Println("EngineType:", EngineType)
+	l.Info("EngineType:", EngineType)
 
 	if len(*flagIP) == 0 || len(*flagGateway) == 0 {
-		log.Fatal("you need to pass an IP and gateway")
+		l.Fatal("you need to pass an IP and gateway")
 	}
 
 	if *flagCreateFS {
-		createRootFS(*flagIP, *flagGateway, 0)
+		createRootFS(l, *flagIP, *flagGateway, 0)
 		os.Exit(0)
 	}
 
 	if !*flagMulti {
-		initVM(*flagIP, *flagGateway, 0)
+		initVM(l, *flagIP, *flagGateway, 0)
 		os.Exit(0)
 	}
 
 	var wg sync.WaitGroup
 
 	for num, cfg := range parseConfig().Vms {
+
 		wg.Add(1)
-		fmt.Printf("bootstrapping machine #%d (IP: %s, GW: %s)\n", num, cfg.IP, cfg.Gateway)
+
+		f, err := os.Create(cfg.IP + ".log")
+		if err != nil {
+			l.Fatal(err)
+		}
+		defer f.Close()
+
+		l := logrus.New()
+		l.SetOutput(f)
+
+		l.Info("bootstrapping machine #%d (IP: %s, GW: %s)\n", num, cfg.IP, cfg.Gateway)
 
 		// prevent capturing loop vars
 		var (
@@ -47,22 +59,22 @@ func main() {
 		)
 
 		go func() {
-			createRootFS(ip, gw, n)
-			initVM(ip, gw, n)
+			createRootFS(l, ip, gw, n)
+			initVM(l, ip, gw, n)
 			wg.Done()
 		}()
 	}
 
-	fmt.Println("waiting...")
+	l.Info("waiting...")
 	wg.Wait()
-	fmt.Println("done. bye")
+	l.Info("done. bye")
 }
 
-func initVM(ipAddr, gwAddr string, num int) {
+func initVM(l *logrus.Logger, ipAddr, gwAddr string, num int) {
 
 	ip := net.ParseIP(ipAddr)
 	if ip == nil {
-		log.Fatal("invalid ip: ", ipAddr)
+		l.Fatal("invalid ip: ", ipAddr)
 	}
 
 	// setup tap interface
@@ -72,7 +84,7 @@ func initVM(ipAddr, gwAddr string, num int) {
 
 	ifaces, err := net.Interfaces()
 	if err != nil {
-		log.Fatal("failed to read interfaces")
+		l.Fatal("failed to read interfaces")
 	}
 
 	// get hardware addr of tap interface
@@ -82,27 +94,27 @@ func initVM(ipAddr, gwAddr string, num int) {
 		}
 	}
 
-	fmt.Println("tap"+strconv.Itoa(num), "ether:", ether)
+	l.Info("tap"+strconv.Itoa(num), "ether:", ether)
 
 	// start VM
 	cmd, err := spawnMicroVM(ether, num)
 	if err != nil {
-		log.Fatal("failed to start microVM: ", err)
+		l.Fatal("failed to start microVM: ", err)
 	}
-	fmt.Println("PID:", cmd.Process.Pid)
+	l.Info("PID:", cmd.Process.Pid)
 
 	if *flagInteractive {
-		fmt.Println("waiting for VM to exit")
+		l.Info("waiting for VM to exit")
 		err = cmd.Wait()
 		if err != nil {
-			log.Fatal(err)
+			l.Fatal(err)
 		}
 	} else {
 		start := time.Now()
-		go ping(start, ip)
-		measureBootTime(start, ip, cmd)
-		measureResponseTime(ip, 1000)
-		startHashing(ip)
-		stopVM(ip, cmd)
+		go ping(l, start, ip)
+		measureBootTime(l, start, ip, cmd)
+		measureResponseTime(l, ip, 1000)
+		startHashing(l, ip)
+		stopVM(l, ip, cmd)
 	}
 }

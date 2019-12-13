@@ -1,9 +1,10 @@
 package main
 
 import (
-	"fmt"
+	"encoding/json"
+	"github.com/sirupsen/logrus"
+	"github.com/dreadl0ck/firebench/stats"
 	"io/ioutil"
-	"log"
 	"net"
 	"net/http"
 	"os/exec"
@@ -11,22 +12,22 @@ import (
 	"time"
 )
 
-func ping(start time.Time, ip net.IP) {
+func ping(l *logrus.Logger, start time.Time, ip net.IP) {
 
-	fmt.Println("measuring time until network stack at", ip, "becomes available...")
+	l.Info("measuring time until network stack at", ip, "becomes available...")
 
 	out, err := exec.Command("ping", "-c 1", ip.String()).CombinedOutput()
 	if err != nil {
-		fmt.Println(string(out))
-		fmt.Println("ping failed: ", err)
+		l.Info(string(out))
+		l.Info("ping failed: ", err)
 	} else {
-		fmt.Println("Time until ping response:", time.Since(start))
+		l.Info("Time until ping response:", time.Since(start))
 	}
 }
 
-func measureBootTime(start time.Time, ip net.IP, cmd *exec.Cmd) {
+func measureBootTime(l *logrus.Logger, start time.Time, ip net.IP, cmd *exec.Cmd) {
 
-	fmt.Println("measuring time until service at", ip, "becomes available...")
+	l.Info("measuring time until service at", ip, "becomes available...")
 
 	var serviceDown bool
 
@@ -40,35 +41,41 @@ func measureBootTime(start time.Time, ip net.IP, cmd *exec.Cmd) {
 
 		resp, err := http.Get("http://" + ip.String())
 		if err != nil || resp.StatusCode != http.StatusOK {
-			//fmt.Println(err)
+			//l.Info(err)
 			if !serviceDown {
 				start = time.Now()
 				serviceDown = true
-				fmt.Println("SERVICE DOWN:", start)
+				l.Info("SERVICE DOWN:", start)
 				time.Sleep(10 * time.Millisecond)
 			}
 			continue
 		}
 
-		fmt.Println("SERVICE UP:", resp.Status)
+		l.Info("SERVICE UP:", resp.Status)
 
 		// check if the service became reachable again
 		if serviceDown && resp.StatusCode == http.StatusOK {
 
 			serviceDown = false
-			fmt.Println("Time until HTTP reply from webservice:", time.Since(start))
+			l.Info("Time until HTTP reply from webservice:", time.Since(start))
 
 			// retrieve VM stats
 			resp, err := http.Get("http://" + ip.String() + "/stats")
 			if err != nil {
-				fmt.Println(err)
+				l.Info(err)
 			} else {
 				statsData, err := ioutil.ReadAll(resp.Body)
 				if err != nil {
-					log.Fatal(err)
+					l.Fatal(err)
 				}
 
-				fmt.Println("statsData:", string(statsData))
+				var s = new(stats.Summary)
+				err = json.Unmarshal(statsData, &s)
+				if err != nil {
+					l.Fatal(err)
+				}
+
+				l.Info("Kernel Boot Time:", s.KernelBootup)
 				break
 			}
 		}
@@ -77,8 +84,8 @@ func measureBootTime(start time.Time, ip net.IP, cmd *exec.Cmd) {
 	}
 }
 
-func measureResponseTime(ip net.IP, requests int) {
-	fmt.Println("measuring response time...")
+func measureResponseTime(l *logrus.Logger, ip net.IP, requests int) {
+	l.Info("measuring response time...")
 
 	out, err := exec.Command("ab",
 		"-n"+strconv.Itoa(requests),
@@ -86,26 +93,26 @@ func measureResponseTime(ip net.IP, requests int) {
 		"http://"+ip.String()+":80"+"/ping",
 	).CombinedOutput()
 	if err != nil {
-		fmt.Println(string(out))
-		fmt.Println("ab failed: ", err)
+		l.Info(string(out))
+		l.Info("ab failed: ", err)
 	} else {
-		fmt.Println(string(out))
+		l.Info(string(out))
 	}
 }
 
-func startHashing(ip net.IP)  {
+func startHashing(l *logrus.Logger, ip net.IP)  {
 	http.DefaultClient = &http.Client{
 		Timeout: 0,
 	}
 
 	resp, err := http.Get("http://" + ip.String() + "/hash")
 	if err != nil {
-		fmt.Println("hashing error: " + err.Error())
+		l.Info("hashing error: " + err.Error())
 	} else {
 		resp, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
-			log.Fatal(err)
+			l.Fatal(err)
 		}
-		fmt.Println(string(resp))
+		l.Info(string(resp))
 	}
 }

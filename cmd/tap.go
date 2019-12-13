@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-	"log"
 	"os"
 	"os/exec"
 	"strconv"
@@ -10,7 +8,7 @@ import (
 
 func setupTap(address string, num int) {
 
-	fmt.Println("setting up tap interface...")
+	l.Info("setting up tap interface...")
 
 	cmd := exec.Command(
 		"/bin/bash",
@@ -24,6 +22,6 @@ func setupTap(address string, num int) {
 
 	err := cmd.Run()
 	if err != nil {
-		log.Fatal("failed to setup tap interface: ", err)
+		l.Fatal("failed to setup tap interface: ", err)
 	}
 }

@@ -1,16 +1,15 @@
 package main
 
 import (
-	"fmt"
-	"log"
+	"github.com/sirupsen/logrus"
 	"os"
 	"os/exec"
 	"strconv"
 )
 
-func createRootFS(ip, gw string, num int) {
+func createRootFS(l *logrus.Logger, ip, gw string, num int) {
 
-	fmt.Println("creating rootfs for ip", ip, "and gateway", gw)
+	l.Info("creating rootfs for ip", ip, "and gateway", gw)
 
 	cmd := exec.Command(
 		"/bin/bash",
@@ -25,6 +24,6 @@ func createRootFS(ip, gw string, num int) {
 
 	err := cmd.Run()
 	if err != nil {
-		log.Fatal("failed to setup rootfs: ", err)
+		l.Fatal("failed to setup rootfs: ", err)
 	}
 }

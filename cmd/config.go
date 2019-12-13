@@ -1,10 +1,8 @@
 package main
 
 import (
-	"io/ioutil"
-	"log"
-
 	"gopkg.in/yaml.v2"
+	"io/ioutil"
 )
 
 type machineConfig struct {
@@ -22,12 +20,12 @@ func parseConfig() *config {
 
 	data, err := ioutil.ReadFile("config.yml")
 	if err != nil {
-		log.Fatal("failed to read config:", err)
+		l.Fatal("failed to read config:", err)
 	}
 
 	err = yaml.Unmarshal(data, &c)
 	if err != nil {
-		log.Fatal("failed to parse config:", err)
+		l.Fatal("failed to parse config:", err)
 	}
 
 	return c

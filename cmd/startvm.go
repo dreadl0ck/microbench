@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-	"log"
 	"os"
 	"os/exec"
 	"strconv"
@@ -14,7 +12,7 @@ func spawnMicroVM(tapEther string, num int) (*exec.Cmd, error) {
 		cmd    *exec.Cmd
 		rootfs = "/tmp/rootfs" + strconv.Itoa(num) + ".ext4"
 	)
-	fmt.Println("spawning microVM with rootfs:", rootfs+", ether:", tapEther)
+	l.Info("spawning microVM with rootfs:", rootfs+", ether:", tapEther)
 
 	switch EngineType {
 	case "fc":
@@ -35,7 +33,7 @@ func spawnMicroVM(tapEther string, num int) (*exec.Cmd, error) {
 			os.ExpandEnv("$HOME/go/src/github.com/dreadl0ck/firebench/cli/run-microvm.sh"),
 		)
 	default:
-		log.Fatal("invalid engine type: ", EngineType)
+		l.Fatal("invalid engine type: ", EngineType)
 	}
 
 	if *flagInteractive {

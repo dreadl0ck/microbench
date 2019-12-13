@@ -1,20 +1,19 @@
 package main
 
 import (
-	"fmt"
-	"log"
+	"github.com/sirupsen/logrus"
 	"net"
 	"net/http"
 	"os/exec"
 )
 
-func stopVM(ip net.IP, cmd *exec.Cmd) {
+func stopVM(l *logrus.Logger, ip net.IP, cmd *exec.Cmd) {
 	// trigger VM shutdown
 	http.Get("http://" + ip.String() + "/shutdown")
 
-	fmt.Println("waiting for VM to exit")
+	l.Info("waiting for VM to exit")
 	err := cmd.Wait()
 	if err != nil {
-		log.Fatal(err)
+		l.Fatal(err)
 	}
 }

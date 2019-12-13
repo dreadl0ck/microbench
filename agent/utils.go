@@ -1,22 +1,17 @@
 package main
 
 import (
-	"fmt"
+	"github.com/dreadl0ck/firebench/stats"
 	"regexp"
 	"strings"
 	"time"
 )
 
-type stats struct {
-	KernelBootup time.Duration `json:"kernelBootup"`
-	ServiceInit  time.Duration `json:"serviceInit"`
-}
-
 var tsRegExp = regexp.MustCompile("[0-9]*\\.[0-9]*")
 
-func parseKernelLog(contents []byte) (s *stats, err error) {
+func parseKernelLog(contents []byte) (s *stats.Summary, err error) {
 
-	s = &stats{}
+	s = &stats.Summary{}
 
 	lines := strings.Split(string(contents), "\n")
 	for i, line := range lines {
@@ -24,7 +19,7 @@ func parseKernelLog(contents []byte) (s *stats, err error) {
 
 			// ex: [   17.567752] random: fast init done
 			duration := strings.TrimSpace(tsRegExp.FindString(lines[i])) + "s"
-			fmt.Println("found duration:", duration)
+			l.Info("found duration:", duration)
 
 			d, err := time.ParseDuration(duration)
 			if err != nil {
