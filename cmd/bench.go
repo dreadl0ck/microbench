@@ -93,21 +93,14 @@ func measureResponseTime(ip net.IP, requests int) {
 	}
 }
 
-func measureThroughput(ip net.IP, filepath string) {
-	fmt.Println("measuring throughput by uploading file: ", filepath)
-
-	// TODO: get throughput metrics from postFile
-	postFile(ip, filepath)
-}
-
-func startCompilation(ip net.IP) {
+func startHashing(ip net.IP)  {
 	http.DefaultClient = &http.Client{
-		Timeout: 50 * time.Millisecond,
+		Timeout: 0,
 	}
 
-	resp, err := http.Get("http://" + ip.String() + "/compile")
+	resp, err := http.Get("http://" + ip.String() + "/hash")
 	if err != nil {
-		fmt.Println("compilation err: " + err.Error())
+		fmt.Println("hashing error: " + err.Error())
 	} else {
 		resp, err := ioutil.ReadAll(resp.Body)
 		if err != nil {

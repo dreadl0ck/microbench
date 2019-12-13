@@ -17,7 +17,7 @@
 sudo qemu-system-x86_64 -M microvm,rtc=off \
 	-enable-kvm \
 	-smp 2 \
-	-m 1g \
+	-m 4g \
 	-kernel /root/vmlinux \
 	-append "earlyprintk=ttyS0 console=ttyS0 root=/dev/vda" \
 	-nodefaults \

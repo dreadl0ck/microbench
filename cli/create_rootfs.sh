@@ -27,6 +27,7 @@ num=$3
 if mount | grep -q "/tmp/my-rootfs$num"; then
 	umount -f /tmp/my-rootfs$num
 fi
+
 dd if=/dev/zero of=/tmp/rootfs$num.ext4 bs=1M count=250
 mkfs.ext4 /tmp/rootfs$num.ext4
 
@@ -40,8 +41,14 @@ mkdir -p /tmp/my-rootfs$num/usr/bin
 go build --ldflags '-linkmode external -extldflags "-static"' -o /tmp/my-rootfs$num/usr/bin/firebench-agent -i github.com/dreadl0ck/firebench/agent
 
 # copy init script(s)
+<<<<<<< HEAD
 cp $HOME/go/src/github.com/dreadl0ck/firebench/cli/init_alpine.sh /tmp/my-rootfs$num/init_alpine.sh
 cp $HOME/go/src/github.com/dreadl0ck/firebench/bin/networking /tmp/my-rootfs$num/networking
+=======
+cp $HOME/go/src/github.com/dreadl0ck/firebench/cli/init_alpine.sh /tmp/my-rootfs/init_alpine.sh
+cp $HOME/go/src/github.com/dreadl0ck/firebench/bin/networking /tmp/my-rootfs/networking
+cp $HOME/go/src/github.com/dreadl0ck/firebench/random.txt /tmp/my-rootfs/random.txt
+>>>>>>> wip/memory-benchmark
 
 # run docker container with latest alpine image to populate filesystem
 if [ "$1" == "-i" ]; then
