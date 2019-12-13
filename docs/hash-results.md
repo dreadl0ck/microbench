@@ -32,20 +32,20 @@ root@moscow:~/go/src/github.com/dreadl0ck/firebench# sudo qemu-system-x86_64 -M 
 ```bash
 (none):~# time sha256sum /random.txt
 84549ba4553e9897c38062ede225c315d97bfbde06016470c174ba09f514fe64  /random.txt
-real    0m 19.14s
-user    0m 17.97s
-sys     0m 1.16s
+real    0m 20.42s
+user    0m 17.84s
+sys     0m 1.33s
 (none):~# time sha256sum /random.txt
-[  699.426481] random: crng init done
+[   58.875005] random: crng init done
 84549ba4553e9897c38062ede225c315d97bfbde06016470c174ba09f514fe64  /random.txt
-real    0m 18.89s
-user    0m 17.78s
-sys     0m 1.11s
+real    0m 19.19s
+user    0m 17.75s
+sys     0m 1.43s
 (none):~# time sha256sum /random.txt
 84549ba4553e9897c38062ede225c315d97bfbde06016470c174ba09f514fe64  /random.txt
-real    0m 18.92s
-user    0m 17.88s
-sys     0m 1.04s
+real    0m 19.05s
+user    0m 17.63s
+sys     0m 1.41s
 ```
 
 ## Firecracker
@@ -83,6 +83,8 @@ real    0m 19.28s
 user    0m 17.58s
 sys     0m 1.55s
 ```
+
+## Memory sanity check
 ### Firecracker mem
 
 ```bash
@@ -142,39 +144,39 @@ DirectMap2M:     1030144 kB
 ```bash
 (none):~# cat /proc/meminfo
 MemTotal:        1012620 kB
-MemFree:          983832 kB
-MemAvailable:     917588 kB
-Buffers:             684 kB
-Cached:             8400 kB
+MemFree:           72080 kB
+MemAvailable:     865108 kB
+Buffers:             688 kB
+Cached:           918292 kB
 SwapCached:            0 kB
-Active:             4352 kB
-Inactive:           6004 kB
-Active(anon):       1308 kB
+Active:             8868 kB
+Inactive:         911444 kB
+Active(anon):       1360 kB
 Inactive(anon):       68 kB
-Active(file):       3044 kB
-Inactive(file):     5936 kB
+Active(file):       7508 kB
+Inactive(file):   911376 kB
 Unevictable:           0 kB
 Mlocked:               0 kB
 SwapTotal:             0 kB
 SwapFree:              0 kB
-Dirty:                36 kB
+Dirty:                 0 kB
 Writeback:             0 kB
 AnonPages:          1332 kB
-Mapped:             5684 kB
+Mapped:             5552 kB
 Shmem:                96 kB
-KReclaimable:       1408 kB
-Slab:               6888 kB
-SReclaimable:       1408 kB
-SUnreclaim:         5480 kB
-KernelStack:         928 kB
-PageTables:          244 kB
+KReclaimable:       3792 kB
+Slab:               8940 kB
+SReclaimable:       3792 kB
+SUnreclaim:         5148 kB
+KernelStack:         912 kB
+PageTables:          224 kB
 NFS_Unstable:          0 kB
 Bounce:                0 kB
 WritebackTmp:          0 kB
 CommitLimit:      506308 kB
-Committed_AS:     136184 kB
+Committed_AS:     136396 kB
 VmallocTotal:   34359738367 kB
-VmallocUsed:        1144 kB
+VmallocUsed:        1128 kB
 VmallocChunk:          0 kB
 Percpu:              408 kB
 AnonHugePages:         0 kB
