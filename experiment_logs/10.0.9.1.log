@@ -1,0 +1,75 @@
+[36mINFO[0m[16 Dec 2019 15:55:58] bootstrapping machine                         [36mgateway[0m=10.0.9.2 [36mip[0m=10.0.9.1 [36mlogfile[0m=10.0.9.1.log [36mnum[0m=8
+[36mINFO[0m[16 Dec 2019 15:55:58] creating rootfs                               [36mgateway[0m=10.0.9.2 [36mip[0m=10.0.9.1 [36mnum[0m=8
+[36mINFO[0m[16 Dec 2019 15:57:27] configured tap interface                      [36mether[0m="62:db:01:b2:7f:4c" [36mtap[0m=8
+[36mINFO[0m[16 Dec 2019 15:57:27] VM started                                    [36mpid[0m=32000
+[36mINFO[0m[16 Dec 2019 15:57:27] measuring time until web service becomes reachable...  [36mip[0m=10.0.9.1
+[36mINFO[0m[16 Dec 2019 15:57:27] measuring time until network stack becomes available...  [36mip[0m=10.0.9.1
+[36mINFO[0m[16 Dec 2019 15:57:27] SERVICE DOWN:2019-12-16 15:57:27.699864475 +0100 CET m=+88.790224001 
+[36mINFO[0m[16 Dec 2019 15:57:28] received ping response                        [36mdelta[0m=1.347317406s
+[36mINFO[0m[16 Dec 2019 15:57:29] SERVICE UP:200 OK                            
+[36mINFO[0m[16 Dec 2019 15:57:29] Time until HTTP reply from webservice:1.648725352s 
+[36mINFO[0m[16 Dec 2019 15:57:29] Kernel Boot Time:748.095ms                   
+[36mINFO[0m[16 Dec 2019 15:57:29] measuring response time...                    [36mip[0m=10.0.9.1
+[36mINFO[0m[16 Dec 2019 15:57:36] This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 10.0.9.1 (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:        
+Server Hostname:        10.0.9.1
+Server Port:            80
+
+Document Path:          /ping
+Document Length:        81920 bytes
+
+Concurrency Level:      1
+Time taken for tests:   6.833 seconds
+Complete requests:      1000
+Failed requests:        0
+Keep-Alive requests:    0
+Total transferred:      82017000 bytes
+HTML transferred:       81920000 bytes
+Requests per second:    146.34 [#/sec] (mean)
+Time per request:       6.833 [ms] (mean)
+Time per request:       6.833 [ms] (mean, across all concurrent requests)
+Transfer rate:          11721.25 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    1   0.2      0       4
+Processing:     3    6   1.6      6      19
+Waiting:        1    2   0.8      2      14
+Total:          4    7   1.7      6      19
+ERROR: The median and mean for the initial connection time are more than twice the standard
+       deviation apart. These results are NOT reliable.
+
+Percentage of the requests served within a certain time (ms)
+  50%      6
+  66%      7
+  75%      7
+  80%      7
+  90%      9
+  95%     11
+  98%     13
+  99%     14
+ 100%     19 (longest request) 
+[36mINFO[0m[16 Dec 2019 15:57:40] a962e606a7bf7c4ded34479924cba4b4b433bb95aaf8133e98d20cb0965ede1f  /random.data
+real	0m 4.21s
+user	0m 2.94s
+sys	0m 0.62s
+
+random data size:105 MB 
+[36mINFO[0m[16 Dec 2019 15:57:40] waiting for VM to exit                       

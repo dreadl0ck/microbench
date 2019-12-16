@@ -1,0 +1,502 @@
+Running Firecracker v0.19.0
+2019-12-16T15:46:30.793848685 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:46:30.794474893 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:46:30.794711502 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:46:30.795150971 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:46:30.795263944 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:46:30.796076886 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:46:30.796372051 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:46:30.797051536 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs1.ext4\"}\n".
+2019-12-16T15:46:30.797281342 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:46:30.797971470 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"d6:c7:53:fe:3a:59\",\"host_dev_name\":\"tap1\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:46:30.798346547 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:46:30.798986715 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:46:30.799152110 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:46:30.799259033 [anonymous-instance:INFO] Guest memory starts at 7f0caa4e7000
+Running Firecracker v0.19.0
+2019-12-16T15:46:30.823861217 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:46:30.824534566 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:46:30.824722052 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:46:30.825138058 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:46:30.825259709 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:46:30.826049881 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:46:30.826362203 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:46:30.827028768 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs0.ext4\"}\n".
+2019-12-16T15:46:30.827268599 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:46:30.828021843 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"ca:9c:89:a1:15:fb\",\"host_dev_name\":\"tap0\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:46:30.828457493 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:46:30.828820612 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:46:30.829104844 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:46:30.829261550 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:46:30.829368346 [anonymous-instance:INFO] Guest memory starts at 7f0292919000
+2019-12-16T15:46:30.832242563 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:46:30.854232501 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:46:30.856234911 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:46:38.772433422 [anonymous-instance:INFO] Vmm is stopping.
+2019-12-16T15:46:38.859216018 [anonymous-instance:INFO] Vmm is stopping.
+Running Firecracker v0.19.0
+2019-12-16T15:50:38.046587480 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.050879757 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:50:38.051411640 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.051994250 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:50:38.052155196 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:50:38.052967492 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:50:38.053229852 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.053869988 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs0.ext4\"}\n".
+2019-12-16T15:50:38.054090482 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.054688563 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"ba:71:32:66:fb:e5\",\"host_dev_name\":\"tap0\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:50:38.055131607 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.055849410 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:50:38.056016685 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:50:38.056146040 [anonymous-instance:INFO] Guest memory starts at 7f0d9e37f000
+2019-12-16T15:50:38.094971340 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:50:38.097287358 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+Running Firecracker v0.19.0
+2019-12-16T15:50:38.129142188 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.130036604 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:50:38.130708302 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.131313281 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:50:38.131548547 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:50:38.132531569 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:50:38.132883737 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.133806936 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs5.ext4\"}\n".
+2019-12-16T15:50:38.134289144 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.139254363 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"4e:76:db:10:3b:50\",\"host_dev_name\":\"tap5\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:50:38.139606475 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.140459680 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:50:38.140621987 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:50:38.140797137 [anonymous-instance:INFO] Guest memory starts at 7fbc5011c000
+2019-12-16T15:50:38.172859139 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:50:38.175547073 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+Running Firecracker v0.19.0
+2019-12-16T15:50:38.232397123 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.233167123 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:50:38.233369523 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.233867744 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:50:38.234007188 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:50:38.234851953 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:50:38.235120674 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.235983732 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs1.ext4\"}\n".
+2019-12-16T15:50:38.236180053 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.236810631 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"06:96:32:63:30:44\",\"host_dev_name\":\"tap1\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:50:38.238439976 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.239251425 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:50:38.239586150 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:50:38.239728919 [anonymous-instance:INFO] Guest memory starts at 7f1a3d236000
+Running Firecracker v0.19.0
+2019-12-16T15:50:38.251721427 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.252414879 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:50:38.252624533 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.253021086 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:50:38.253132853 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:50:38.253785159 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:50:38.254062508 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.254661207 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs3.ext4\"}\n".
+2019-12-16T15:50:38.254872793 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.255465456 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"ae:6e:3d:ae:8f:35\",\"host_dev_name\":\"tap3\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:50:38.255954556 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.256884221 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:50:38.257070897 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:50:38.257210004 [anonymous-instance:INFO] Guest memory starts at 7f0f727b9000
+2019-12-16T15:50:38.278877677 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:50:38.281925820 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.290365096 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:50:38.294582124 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+Running Firecracker v0.19.0
+2019-12-16T15:50:38.832724263 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.833391336 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:50:38.833674174 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.834161426 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:50:38.834327932 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:50:38.835060355 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:50:38.835351071 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.836031025 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs4.ext4\"}\n".
+2019-12-16T15:50:38.836290997 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.836938586 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"9e:42:b5:98:44:c8\",\"host_dev_name\":\"tap4\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:50:38.837441169 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:38.838168558 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:50:38.838297350 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:50:38.838397959 [anonymous-instance:INFO] Guest memory starts at 7f9e63c4e000
+2019-12-16T15:50:38.865453553 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:50:38.867471138 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+Running Firecracker v0.19.0
+2019-12-16T15:50:39.366114829 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:39.366815826 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:50:39.367015682 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:39.367489735 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:50:39.367866144 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:50:39.368685877 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:50:39.368981862 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:39.369737563 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs2.ext4\"}\n".
+2019-12-16T15:50:39.370143957 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:39.371005891 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"7a:6f:1c:da:05:ae\",\"host_dev_name\":\"tap2\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:50:39.372748995 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:39.373752682 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:50:39.374161324 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:50:39.374299597 [anonymous-instance:INFO] Guest memory starts at 7f5a68dbd000
+2019-12-16T15:50:39.412298724 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:50:39.416441204 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:50:48.754419539 [anonymous-instance:INFO] Vmm is stopping.
+2019-12-16T15:50:48.973524565 [anonymous-instance:INFO] Vmm is stopping.
+2019-12-16T15:50:49.543952567 [anonymous-instance:INFO] Vmm is stopping.
+2019-12-16T15:50:50.083331491 [anonymous-instance:INFO] Vmm is stopping.
+2019-12-16T15:50:50.291123204 [anonymous-instance:INFO] Vmm is stopping.
+2019-12-16T15:50:50.492945458 [anonymous-instance:INFO] Vmm is stopping.
+Running Firecracker v0.19.0
+2019-12-16T15:54:06.263294350 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.264170729 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:54:06.264386226 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.265626876 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:54:06.265853689 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:54:06.266746528 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:54:06.267043184 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.268156111 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs4.ext4\"}\n".
+2019-12-16T15:54:06.268414675 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.269153001 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"2e:e3:ae:b0:39:1c\",\"host_dev_name\":\"tap4\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:54:06.269853119 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.270808521 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:54:06.271174162 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:54:06.271289753 [anonymous-instance:INFO] Guest memory starts at 7fb9f4172000
+Running Firecracker v0.19.0
+2019-12-16T15:54:06.263315017 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.264223377 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:54:06.264458905 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.265039430 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:54:06.265213968 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:54:06.266969169 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:54:06.267243703 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.268186462 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs7.ext4\"}\n".
+2019-12-16T15:54:06.268409732 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.269147950 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"76:0d:7c:eb:01:26\",\"host_dev_name\":\"tap7\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:54:06.270660761 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.271449511 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:54:06.271596310 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:54:06.271701366 [anonymous-instance:INFO] Guest memory starts at 7f0b7894f000
+Running Firecracker v0.19.0
+2019-12-16T15:54:06.263397818 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+Running Firecracker v0.19.0
+2019-12-16T15:54:06.263288311 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.264307855 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:54:06.264570372 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.265152069 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:54:06.265341514 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:54:06.267883018 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:54:06.268145572 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.269161115 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs9.ext4\"}\n".
+2019-12-16T15:54:06.269396692 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.270235055 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"c2:49:49:09:ce:de\",\"host_dev_name\":\"tap9\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:54:06.270643184 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.264186248 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:54:06.264770627 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.265296166 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:54:06.265473011 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:54:06.266343852 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:54:06.266640572 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.267606902 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs6.ext4\"}\n".
+2019-12-16T15:54:06.267871024 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.268690804 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"ba:97:08:a7:3d:ae\",\"host_dev_name\":\"tap6\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:54:06.269823494 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.270603410 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:54:06.270769993 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:54:06.270909147 [anonymous-instance:INFO] Guest memory starts at 7efe9dc66000
+Running Firecracker v0.19.0
+2019-12-16T15:54:06.263395541 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.272364598 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:54:06.264245013 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:54:06.264475823 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.264988649 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:54:06.265143435 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:54:06.266530038 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:54:06.268150584 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+Running Firecracker v0.19.0
+2019-12-16T15:54:06.263288399 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+Running Firecracker v0.19.0
+2019-12-16T15:54:06.264388551 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+Running Firecracker v0.19.0
+2019-12-16T15:54:06.264420606 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.264860481 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:54:06.265053821 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.265645369 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:54:06.265825520 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:54:06.266683972 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:54:06.266962131 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.267874000 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs5.ext4\"}\n".
+2019-12-16T15:54:06.268373869 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.269163540 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"2e:09:7e:9d:52:4e\",\"host_dev_name\":\"tap5\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:54:06.270227487 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.271180568 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:54:06.271377610 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:54:06.271514009 [anonymous-instance:INFO] Guest memory starts at 7f6c1bb78000
+2019-12-16T15:54:06.265383135 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:54:06.265605310 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.266124370 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:54:06.266266451 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:54:06.267128782 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:54:06.267409390 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.268371512 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs8.ext4\"}\n".
+2019-12-16T15:54:06.268616555 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.265250693 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:54:06.265499016 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.266007700 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:54:06.266149696 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:54:06.271700320 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:54:06.272147885 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+Running Firecracker v0.19.0
+2019-12-16T15:54:06.263387668 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+Running Firecracker v0.19.0
+2019-12-16T15:54:06.263301695 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.266088029 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:54:06.266315709 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.266749783 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:54:06.266987985 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.267615517 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:54:06.267804840 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:54:06.268789944 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:54:06.269050336 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.270444986 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs1.ext4\"}\n".
+2019-12-16T15:54:06.266882968 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:54:06.267064250 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:54:06.268020154 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:54:06.268366287 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.269214004 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs2.ext4\"}\n".
+2019-12-16T15:54:06.269479586 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.270450838 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"16:c0:09:90:ce:fd\",\"host_dev_name\":\"tap2\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:54:06.271054079 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.271958160 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:54:06.272147290 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:54:06.272269169 [anonymous-instance:INFO] Guest memory starts at 7fc4ab174000
+2019-12-16T15:54:06.272601200 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:54:06.272733593 [anonymous-instance:INFO] Guest memory starts at 7f78d83fe000
+2019-12-16T15:54:06.273239587 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs0.ext4\"}\n".
+2019-12-16T15:54:06.273677798 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs3.ext4\"}\n".
+2019-12-16T15:54:06.273923017 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.274125000 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.274666525 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"56:2f:3d:86:76:50\",\"host_dev_name\":\"tap0\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:54:06.274820596 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"fa:b9:53:b1:ee:75\",\"host_dev_name\":\"tap3\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:54:06.275057452 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.275195224 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.275855990 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:54:06.276130090 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:54:06.276285573 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:54:06.276397076 [anonymous-instance:INFO] Guest memory starts at 7f17e98e6000
+2019-12-16T15:54:06.276062984 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:54:06.276180683 [anonymous-instance:INFO] Guest memory starts at 7f0deb0ea000
+2019-12-16T15:54:06.279841939 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"da:72:c1:a1:7d:95\",\"host_dev_name\":\"tap8\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:54:06.279897833 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.280155302 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.280704947 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"16:89:b1:b9:05:d1\",\"host_dev_name\":\"tap1\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:54:06.280838493 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:54:06.281110766 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.280971696 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:54:06.281460321 [anonymous-instance:INFO] Guest memory starts at 7fd3281f1000
+2019-12-16T15:54:06.281814463 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:54:06.281961928 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:54:06.282084843 [anonymous-instance:INFO] Guest memory starts at 7f1c52602000
+2019-12-16T15:54:06.592039282 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:54:06.592096524 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:54:06.592124950 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:54:06.592131477 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:54:06.592086276 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:54:06.592221507 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:54:06.592940525 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:54:06.593294362 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:54:06.594034876 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:54:06.594393844 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:54:06.596686472 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.597052779 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.597220521 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.598196462 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.598189137 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.599175761 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.600441838 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.602698292 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.603859183 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:06.607710704 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:54:21.058582852 [anonymous-instance:INFO] Vmm is stopping.
+2019-12-16T15:54:21.124160093 [anonymous-instance:INFO] Vmm is stopping.
+2019-12-16T15:54:21.301576844 [anonymous-instance:INFO] Vmm is stopping.
+2019-12-16T15:54:21.412388093 [anonymous-instance:INFO] Vmm is stopping.
+2019-12-16T15:54:22.059089540 [anonymous-instance:INFO] Vmm is stopping.
+2019-12-16T15:54:22.179891299 [anonymous-instance:INFO] Vmm is stopping.
+2019-12-16T15:54:22.226135439 [anonymous-instance:INFO] Vmm is stopping.
+2019-12-16T15:54:22.474341944 [anonymous-instance:INFO] Vmm is stopping.
+Running Firecracker v0.19.0
+2019-12-16T15:57:26.582958912 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:26.583480893 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:57:26.583632803 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:26.583996898 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:57:26.584125250 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:57:26.584841830 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:57:26.585069323 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:26.585678412 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs7.ext4\"}\n".
+2019-12-16T15:57:26.585873311 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:26.586420035 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"a6:48:bf:0e:2a:55\",\"host_dev_name\":\"tap7\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:57:26.586817514 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:26.587407625 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:57:26.587562586 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:57:26.587675890 [anonymous-instance:INFO] Guest memory starts at 7f33b82f0000
+2019-12-16T15:57:26.615337613 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:57:26.617250448 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+Running Firecracker v0.19.0
+2019-12-16T15:57:27.439473984 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.440183690 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:57:27.440443130 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.440928387 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:57:27.441080800 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:57:27.443207339 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:57:27.443508203 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.447387662 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs6.ext4\"}\n".
+2019-12-16T15:57:27.447664163 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.448565580 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"7e:04:e0:94:81:98\",\"host_dev_name\":\"tap6\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:57:27.449090952 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.450658802 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:57:27.450841729 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:57:27.450969337 [anonymous-instance:INFO] Guest memory starts at 7f2376f70000
+2019-12-16T15:57:27.492316444 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:57:27.497206824 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+Running Firecracker v0.19.0
+2019-12-16T15:57:27.506135150 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.507012812 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:57:27.507272023 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.507715620 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:57:27.508227767 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:57:27.508863823 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:57:27.509121386 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.509685771 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs4.ext4\"}\n".
+2019-12-16T15:57:27.509892606 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.510609907 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"72:f8:36:8f:15:7d\",\"host_dev_name\":\"tap4\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:57:27.511083721 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.512015724 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:57:27.512242109 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:57:27.512374977 [anonymous-instance:INFO] Guest memory starts at 7ff1f792f000
+Running Firecracker v0.19.0
+2019-12-16T15:57:27.545501655 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.546529622 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:57:27.546825200 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.547610055 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:57:27.547964661 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:57:27.549973445 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:57:27.550376516 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.551446746 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs3.ext4\"}\n".
+2019-12-16T15:57:27.551709244 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.552643004 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"82:b4:ea:8d:29:6d\",\"host_dev_name\":\"tap3\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:57:27.553479234 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.555310538 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:57:27.555525082 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:57:27.555663441 [anonymous-instance:INFO] Guest memory starts at 7fd3281e9000
+2019-12-16T15:57:27.595819026 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:57:27.603363838 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.606688737 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:57:27.614710048 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+Running Firecracker v0.19.0
+2019-12-16T15:57:27.701297998 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.702662996 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:57:27.702880189 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.703839997 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:57:27.704072247 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:57:27.705817254 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:57:27.706218001 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.707548035 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs5.ext4\"}\n".
+2019-12-16T15:57:27.707886101 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.709070922 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"de:26:45:bb:b0:82\",\"host_dev_name\":\"tap5\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:57:27.709696917 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.710760066 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:57:27.710976962 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:57:27.711115368 [anonymous-instance:INFO] Guest memory starts at 7fb2f2404000
+Running Firecracker v0.19.0
+2019-12-16T15:57:27.766712420 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.768698388 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:57:27.769507078 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.770161148 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:57:27.770405933 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:57:27.772049614 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:57:27.772778204 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.773943389 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs2.ext4\"}\n".
+2019-12-16T15:57:27.774301962 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.775850547 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"f6:7c:0f:3c:44:26\",\"host_dev_name\":\"tap2\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:57:27.776803964 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.777994322 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:57:27.778900294 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:57:27.779429623 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:57:27.779557307 [anonymous-instance:INFO] Guest memory starts at 7fb809732000
+Running Firecracker v0.19.0
+2019-12-16T15:57:27.784450996 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+Running Firecracker v0.19.0
+2019-12-16T15:57:27.784432515 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.785340723 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:57:27.785389758 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:57:27.785623225 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.785806815 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.786426434 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:57:27.786583341 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:57:27.786631459 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:57:27.786857836 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:57:27.788026008 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:57:27.788063318 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:57:27.788532237 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.788547306 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.789718259 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs8.ext4\"}\n".
+2019-12-16T15:57:27.789859966 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs1.ext4\"}\n".
+2019-12-16T15:57:27.790135150 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.791120261 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"62:db:01:b2:7f:4c\",\"host_dev_name\":\"tap8\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:57:27.792693209 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.792718708 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.793807825 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"52:69:08:9a:30:4e\",\"host_dev_name\":\"tap1\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:57:27.794196882 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:57:27.794464197 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.794465083 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:57:27.794847074 [anonymous-instance:INFO] Guest memory starts at 7fd73d6ef000
+2019-12-16T15:57:27.796164591 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:57:27.796350006 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:57:27.796428133 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.796782079 [anonymous-instance:INFO] Guest memory starts at 7fef2b1aa000
+Running Firecracker v0.19.0
+2019-12-16T15:57:27.819711208 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.820861447 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:57:27.821141634 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.821787422 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:57:27.822268023 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:57:27.824147359 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:57:27.824572860 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.826779427 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs0.ext4\"}\n".
+2019-12-16T15:57:27.827103982 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.828451255 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"de:52:89:9e:c8:a4\",\"host_dev_name\":\"tap0\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:57:27.830643979 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.832545004 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:57:27.832807753 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:57:27.832950321 [anonymous-instance:INFO] Guest memory starts at 7f6ca246c000
+Running Firecracker v0.19.0
+2019-12-16T15:57:27.834973543 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.836526540 [anonymous-instance:INFO] The API server received a synchronous Put request on "/machine-config" with body "{\"cpu_template\":\"T2\",\"ht_enabled\":false,\"mem_size_mib\":512,\"vcpu_count\":1}\n".
+2019-12-16T15:57:27.836967926 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.838124552 [anonymous-instance:INFO] The API server received a synchronous Get request on "/machine-config".
+2019-12-16T15:57:27.838425174 [anonymous-instance:INFO] The request was executed successfully. Status code: 200 OK.
+2019-12-16T15:57:27.839652320 [anonymous-instance:INFO] The API server received a synchronous Put request on "/boot-source" with body "{\"boot_args\":\"\'console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw\'\",\"kernel_image_path\":\"/home/pmieden/vmlinuz\"}\n".
+2019-12-16T15:57:27.840007705 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.840995925 [anonymous-instance:INFO] The API server received a synchronous Put request on "/drives/1" with body "{\"drive_id\":\"1\",\"is_read_only\":false,\"is_root_device\":true,\"path_on_host\":\"/tmp/rootfs9.ext4\"}\n".
+2019-12-16T15:57:27.841303988 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.842308266 [anonymous-instance:INFO] The API server received a synchronous Put request on "/network-interfaces/1" with body "{\"guest_mac\":\"b6:e4:5e:ce:72:fb\",\"host_dev_name\":\"tap9\",\"iface_id\":\"1\"}\n".
+2019-12-16T15:57:27.846186883 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.847032332 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:57:27.848139264 [anonymous-instance:INFO] The API server received a synchronous Put request on "/actions" with body "{\"action_type\":\"InstanceStart\"}\n".
+2019-12-16T15:57:27.848370618 [anonymous-instance:INFO] VMM received instance start command
+2019-12-16T15:57:27.848511885 [anonymous-instance:INFO] Guest memory starts at 7fbe5b376000
+2019-12-16T15:57:27.860405679 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.884501161 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:57:27.885111945 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:57:27.885610773 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:57:27.893537382 [anonymous-instance:WARN] Could not add stdin event to epoll. Operation not permitted (os error 1)
+2019-12-16T15:57:27.897211300 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.901062342 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.906365234 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:27.906468006 [anonymous-instance:INFO] The request was executed successfully. Status code: 204 No Content.
+2019-12-16T15:57:42.732790210 [anonymous-instance:INFO] Vmm is stopping.
+2019-12-16T15:57:42.802533101 [anonymous-instance:INFO] Vmm is stopping.
+2019-12-16T15:57:43.950158399 [anonymous-instance:INFO] Vmm is stopping.
+2019-12-16T15:57:44.563970938 [anonymous-instance:INFO] Vmm is stopping.
+2019-12-16T15:57:44.808546907 [anonymous-instance:INFO] Vmm is stopping.
+2019-12-16T15:57:45.558206943 [anonymous-instance:INFO] Vmm is stopping.
+2019-12-16T15:57:45.625383880 [anonymous-instance:INFO] Vmm is stopping.
+2019-12-16T15:57:45.728227539 [anonymous-instance:INFO] Vmm is stopping.
+2019-12-16T15:57:45.746160630 [anonymous-instance:INFO] Vmm is stopping.
+2019-12-16T15:57:45.773107727 [anonymous-instance:INFO] Vmm is stopping.

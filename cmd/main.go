@@ -5,6 +5,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"net"
 	"os"
+	"path/filepath"
 	"strconv"
 	"sync"
 	"time"
@@ -34,13 +35,20 @@ func main() {
 		os.Exit(0)
 	}
 
-	var wg sync.WaitGroup
+	var (
+		wg sync.WaitGroup
+	 	logDir = "experiment_logs"
+	)
+
+	// ignore error from creating logDir
+	// we dont care if it exists already
+	os.MkdirAll(logDir, 755)
 
 	for num, cfg := range parseConfig().Vms {
 
 		wg.Add(1)
 
-		f, err := os.Create(cfg.IP + ".log")
+		f, err := os.Create(filepath.Join(logDir, cfg.IP + ".log"))
 		if err != nil {
 			l.Fatal(err)
 		}
@@ -127,7 +135,7 @@ func initVM(l *logrus.Logger, ipAddr, gwAddr string, num int) {
 		}
 	} else {
 		start := time.Now()
-		go ping(l, start, ip)
+		//go ping(l, start, ip)
 		measureWebserviceTime(l, start, ip, cmd)
 		measureResponseTime(l, ip, 1000)
 		startHashing(l, ip)
