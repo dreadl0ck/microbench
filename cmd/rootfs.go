@@ -9,7 +9,11 @@ import (
 
 func createRootFS(l *logrus.Logger, ip, gw string, num int) {
 
-	l.Info("creating rootfs for ip", ip, "and gateway", gw)
+	l.WithFields(logrus.Fields{
+		"num": num,
+		"ip": ip,
+		"gateway": gw,
+	}).Info("creating rootfs")
 
 	cmd := exec.Command(
 		"/bin/bash",
@@ -24,6 +28,6 @@ func createRootFS(l *logrus.Logger, ip, gw string, num int) {
 
 	err := cmd.Run()
 	if err != nil {
-		l.Fatal("failed to setup rootfs: ", err)
+		l.WithError(err).Fatal("failed to setup rootfs")
 	}
 }

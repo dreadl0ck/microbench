@@ -49,7 +49,11 @@ func main() {
 		l := logrus.New()
 		l.SetOutput(f)
 
-		l.Info("bootstrapping machine #%d (IP: %s, GW: %s)\n", num, cfg.IP, cfg.Gateway)
+		l.WithFields(logrus.Fields{
+			"num": num,
+			"ip": cfg.IP,
+			"gateway": cfg.Gateway,
+		}).Info("bootstrapping machine")
 
 		// prevent capturing loop vars
 		var (
@@ -94,20 +98,23 @@ func initVM(l *logrus.Logger, ipAddr, gwAddr string, num int) {
 		}
 	}
 
-	l.Info("tap"+strconv.Itoa(num), "ether:", ether)
+	l.WithFields(logrus.Fields{
+		"tap": num,
+		"ether": ether,
+	}).Info("configured tap interface")
 
 	// start VM
 	cmd, err := spawnMicroVM(ether, num)
 	if err != nil {
-		l.Fatal("failed to start microVM: ", err)
+		l.WithError(err).Fatal("failed to start microVM")
 	}
-	l.Info("PID:", cmd.Process.Pid)
+	l.WithField("pid", cmd.Process.Pid).Info("VM started")
 
 	if *flagInteractive {
 		l.Info("waiting for VM to exit")
 		err = cmd.Wait()
 		if err != nil {
-			l.Fatal(err)
+			l.WithError(err).Fatal("failed to wait for VM")
 		}
 	} else {
 		start := time.Now()

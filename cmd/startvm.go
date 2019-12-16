@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/sirupsen/logrus"
 	"os"
 	"os/exec"
 	"strconv"
@@ -12,7 +13,10 @@ func spawnMicroVM(tapEther string, num int) (*exec.Cmd, error) {
 		cmd    *exec.Cmd
 		rootfs = "/tmp/rootfs" + strconv.Itoa(num) + ".ext4"
 	)
-	l.Info("spawning microVM with rootfs:", rootfs+", ether:", tapEther)
+	l.WithFields(logrus.Fields{
+		"rootfs": rootfs,
+		"ether": tapEther,
+	}).Info("spawning microVM")
 
 	switch EngineType {
 	case "fc":

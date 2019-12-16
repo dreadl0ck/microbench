@@ -22,7 +22,7 @@ var statsHandler = func(w http.ResponseWriter, r *http.Request) {
 
 	stats, err := parseKernelLog(c)
 	if err != nil {
-		l.Error("failde to parse kernel logs: ", err)
+		l.Error("failed to parse kernel logs: ", err)
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}

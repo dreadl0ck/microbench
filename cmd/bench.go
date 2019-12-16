@@ -14,14 +14,14 @@ import (
 
 func ping(l *logrus.Logger, start time.Time, ip net.IP) {
 
-	l.Info("measuring time until network stack at", ip, "becomes available...")
+	l.WithField("ip", ip).Info("measuring time until network stack becomes available...")
 
 	out, err := exec.Command("ping", "-c 1", ip.String()).CombinedOutput()
 	if err != nil {
 		l.Info(string(out))
-		l.Info("ping failed: ", err)
+		l.WithError(err).Info("ping failed")
 	} else {
-		l.Info("Time until ping response:", time.Since(start))
+		l.WithField("delta", time.Since(start)).Info("received ping response")
 	}
 }
 
@@ -85,7 +85,8 @@ func measureBootTime(l *logrus.Logger, start time.Time, ip net.IP, cmd *exec.Cmd
 }
 
 func measureResponseTime(l *logrus.Logger, ip net.IP, requests int) {
-	l.Info("measuring response time...")
+
+	l.WithField("ip", ip).Info("measuring response time...")
 
 	out, err := exec.Command("ab",
 		"-n"+strconv.Itoa(requests),
@@ -94,7 +95,7 @@ func measureResponseTime(l *logrus.Logger, ip net.IP, requests int) {
 	).CombinedOutput()
 	if err != nil {
 		l.Info(string(out))
-		l.Info("ab failed: ", err)
+		l.WithError(err).Info("apache bench failed")
 	} else {
 		l.Info(string(out))
 	}
@@ -107,11 +108,11 @@ func startHashing(l *logrus.Logger, ip net.IP)  {
 
 	resp, err := http.Get("http://" + ip.String() + "/hash")
 	if err != nil {
-		l.Info("hashing error: " + err.Error())
+		l.WithError(err).Info("hashing failed")
 	} else {
 		resp, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
-			l.Fatal(err)
+			l.WithError(err).Fatal("failed to read response body")
 		}
 		l.Info(string(resp))
 	}

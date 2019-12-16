@@ -22,6 +22,6 @@ func setupTap(address string, num int) {
 
 	err := cmd.Run()
 	if err != nil {
-		l.Fatal("failed to setup tap interface: ", err)
+		l.WithError(err).Fatal("failed to setup tap interface")
 	}
 }

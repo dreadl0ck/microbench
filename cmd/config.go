@@ -20,12 +20,12 @@ func parseConfig() *config {
 
 	data, err := ioutil.ReadFile("config.yml")
 	if err != nil {
-		l.Fatal("failed to read config:", err)
+		l.WithError(err).Fatal("failed to read config")
 	}
 
 	err = yaml.Unmarshal(data, &c)
 	if err != nil {
-		l.Fatal("failed to parse config:", err)
+		l.WithError(err).Fatal("failed to parse config")
 	}
 
 	return c

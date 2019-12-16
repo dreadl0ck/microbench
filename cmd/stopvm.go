@@ -8,12 +8,13 @@ import (
 )
 
 func stopVM(l *logrus.Logger, ip net.IP, cmd *exec.Cmd) {
+
 	// trigger VM shutdown
 	http.Get("http://" + ip.String() + "/shutdown")
 
 	l.Info("waiting for VM to exit")
 	err := cmd.Wait()
 	if err != nil {
-		l.Fatal(err)
+		l.WithError(err).Fatal("failed to wait for VM")
 	}
 }

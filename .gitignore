@@ -2,4 +2,3 @@ random.data
 .idea
 bin/firebench
 bin/qemubench
-config.yml

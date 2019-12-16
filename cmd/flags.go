@@ -13,3 +13,4 @@ var (
 	flagKernel = flag.String("kernel", "$HOME/vmlinuz", "kernel to use")
 	flagMulti  = flag.Bool("multi", false, "spawn multiple vms as specified in config file")
 )
+
