@@ -125,8 +125,8 @@ func initVM(l *logrus.Logger, ipAddr, gwAddr string, num int) {
 		}
 	} else {
 		start := time.Now()
-		go ping(l, start, ip)
-		measureBootTime(l, start, ip, cmd)
+		//go ping(l, start, ip)
+		measureWebserviceTime(l, start, ip, cmd)
 		measureResponseTime(l, ip, 1000)
 		startHashing(l, ip)
 		stopVM(l, ip, cmd)

@@ -25,9 +25,9 @@ func ping(l *logrus.Logger, start time.Time, ip net.IP) {
 	}
 }
 
-func measureBootTime(l *logrus.Logger, start time.Time, ip net.IP, cmd *exec.Cmd) {
+func measureWebserviceTime(l *logrus.Logger, start time.Time, ip net.IP, cmd *exec.Cmd) {
 
-	l.Info("measuring time until service at", ip, "becomes available...")
+	l.WithField("ip", ip).Info("measuring time until web service becomes reachable...")
 
 	var serviceDown bool
 
