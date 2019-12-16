@@ -85,7 +85,7 @@ var hashHandler = func(w http.ResponseWriter, r *http.Request) {
 
 	s, err := os.Stat("/random.data")
 	if err != nil {
-		l.Fatal(err)
+		l.WithError(err).Fatal("failed to stat file")
 	}
 
 	out, err := exec.Command("time", "sha256sum", "/random.data").CombinedOutput()

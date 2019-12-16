@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"github.com/sirupsen/logrus"
+	"io"
 	"net"
 	"os"
 	"strconv"
@@ -47,12 +48,18 @@ func main() {
 		defer f.Close()
 
 		l := logrus.New()
-		l.SetOutput(f)
+		l.SetOutput(io.MultiWriter(os.Stdout, f))
+		l.Formatter = &logrus.TextFormatter{
+			ForceColors:               true,
+			FullTimestamp:             true,
+			TimestampFormat:           "2 Jan 2006 15:04:05",
+		}
 
 		l.WithFields(logrus.Fields{
 			"num": num,
 			"ip": cfg.IP,
 			"gateway": cfg.Gateway,
+			"logfile": cfg.IP + ".log",
 		}).Info("bootstrapping machine")
 
 		// prevent capturing loop vars
