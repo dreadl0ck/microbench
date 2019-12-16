@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"github.com/sirupsen/logrus"
-	"io"
 	"net"
 	"os"
 	"strconv"
@@ -48,7 +47,10 @@ func main() {
 		defer f.Close()
 
 		l := logrus.New()
-		l.SetOutput(io.MultiWriter(os.Stdout, f))
+
+		//l.SetOutput(io.MultiWriter(os.Stdout, f))
+		l.SetOutput(f)
+
 		l.Formatter = &logrus.TextFormatter{
 			ForceColors:               true,
 			FullTimestamp:             true,
@@ -125,7 +127,7 @@ func initVM(l *logrus.Logger, ipAddr, gwAddr string, num int) {
 		}
 	} else {
 		start := time.Now()
-		//go ping(l, start, ip)
+		go ping(l, start, ip)
 		measureWebserviceTime(l, start, ip, cmd)
 		measureResponseTime(l, ip, 1000)
 		startHashing(l, ip)

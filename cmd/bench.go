@@ -36,7 +36,7 @@ func measureWebserviceTime(l *logrus.Logger, start time.Time, ip net.IP, cmd *ex
 		//fmt.Print("CHECKING... ")
 
 		http.DefaultClient = &http.Client{
-			Timeout: 50 * time.Millisecond,
+			Timeout: 100 * time.Millisecond,
 		}
 
 		resp, err := http.Get("http://" + ip.String())
