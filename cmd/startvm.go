@@ -13,10 +13,6 @@ func spawnMicroVM(tapEther string, num int) (*exec.Cmd, error) {
 		cmd    *exec.Cmd
 		rootfs = "/tmp/rootfs" + strconv.Itoa(num) + ".ext4"
 	)
-	l.WithFields(logrus.Fields{
-		"rootfs": rootfs,
-		"ether": tapEther,
-	}).Info("spawning microVM")
 
 	switch EngineType {
 	case "fc":
@@ -45,6 +41,13 @@ func spawnMicroVM(tapEther string, num int) (*exec.Cmd, error) {
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 	}
+
+	l.WithFields(logrus.Fields{
+		"rootfs": rootfs,
+		"ether": tapEther,
+		"path": cmd.Path,
+		"args": cmd.Args,
+	}).Info("spawning microVM")
 
 	return cmd, cmd.Start()
 }

@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"github.com/sirupsen/logrus"
 	"github.com/dustin/go-humanize"
 	"github.com/ncw/directio"
 	"io"
@@ -15,28 +16,28 @@ var statsHandler = func(w http.ResponseWriter, r *http.Request) {
 
 	c, err := exec.Command("dmesg").CombinedOutput()
 	if err != nil {
-		l.Error("Error on read: ", err)
+		l.WithError(err).Error("Error on read")
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
 
 	stats, err := parseKernelLog(c)
 	if err != nil {
-		l.Error("failed to parse kernel logs: ", err)
+		l.WithError(err).Error("failed to parse kernel logs")
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
 
 	data, err := json.Marshal(stats)
 	if err != nil {
-		l.Error("failed to marshal stats: ", err)
+		l.WithError(err).Error("failed to marshal stats")
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
 
 	_, err = w.Write(data)
 	if err != nil {
-		l.Info("failed to write data: ", err)
+		l.WithError(err).Info("failed to write data")
 	}
 
 }
@@ -45,7 +46,7 @@ var serveHexdump = func(w http.ResponseWriter, r *http.Request) {
 
 	in, err := directio.OpenFile("/etc/hexdump", os.O_RDONLY, 0666)
 	if err != nil {
-		l.Error("Error on open: ", err)
+		l.WithError(err).Error("Error on open")
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
@@ -55,14 +56,17 @@ var serveHexdump = func(w http.ResponseWriter, r *http.Request) {
 	start := time.Now()
 	n, err := io.ReadFull(in, block)
 	if err != nil {
-		l.Info("Error on read: ", err)
+		l.WithError(err).Info("Error on read")
 	}
 
-	l.Info("read", n, "bytes from file, in", time.Since(start))
+	l.WithFields(logrus.Fields{
+		"numBytes": n,
+		"delta": time.Since(start),
+	}).Info("read data from file")
 
 	_, err = w.Write(block)
 	if err != nil {
-		l.Info("failed to write data: ", err)
+		l.WithError(err).Error("failed to write data")
 	}
 }
 
@@ -92,6 +96,6 @@ var hashHandler = func(w http.ResponseWriter, r *http.Request) {
 
 	_, err = w.Write(append(out, []byte("\nrandom data size:" + humanize.Bytes(uint64(s.Size())))...))
 	if err != nil {
-		l.Info("failed to write data: ", err)
+		l.WithError(err).Info("failed to write data")
 	}
 }
