@@ -14,7 +14,7 @@ func spawnMicroVM(tapEther string, num int) (*exec.Cmd, error) {
 		rootfs = "/tmp/rootfs" + strconv.Itoa(num) + ".ext4"
 	)
 
-	switch EngineType {
+	switch *flagEngineType {
 	case "fc":
 		cmd = exec.Command(
 			os.ExpandEnv("$HOME/go/bin/firectl"),
@@ -33,7 +33,7 @@ func spawnMicroVM(tapEther string, num int) (*exec.Cmd, error) {
 			os.ExpandEnv("$HOME/go/src/github.com/dreadl0ck/firebench/cli/run-microvm.sh"),
 		)
 	default:
-		l.Fatal("invalid engine type: ", EngineType)
+		l.Fatal("invalid engine type: ", *flagEngineType)
 	}
 
 	if *flagInteractive {

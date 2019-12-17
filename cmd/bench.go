@@ -45,7 +45,7 @@ func measureWebserviceTime(l *logrus.Logger, start time.Time, ip net.IP, cmd *ex
 			if !serviceDown {
 				start = time.Now()
 				serviceDown = true
-				l.Info("SERVICE DOWN:", start)
+				l.Info("SERVICE DOWN")
 				time.Sleep(10 * time.Millisecond)
 			}
 			continue
@@ -57,7 +57,7 @@ func measureWebserviceTime(l *logrus.Logger, start time.Time, ip net.IP, cmd *ex
 		if serviceDown && resp.StatusCode == http.StatusOK {
 
 			serviceDown = false
-			l.Info("Time until HTTP reply from webservice:", time.Since(start))
+			l.WithField("delta", time.Since(start)).Info("time until HTTP reply from webservice")
 
 			// retrieve VM stats
 			resp, err := http.Get("http://" + ip.String() + "/stats")
@@ -75,7 +75,7 @@ func measureWebserviceTime(l *logrus.Logger, start time.Time, ip net.IP, cmd *ex
 					l.Fatal(err)
 				}
 
-				l.Info("Kernel Boot Time:", s.KernelBootup)
+				l.WithField("delta", s.KernelBootup).Info("kernel boot time received")
 				break
 			}
 		}
@@ -86,7 +86,7 @@ func measureWebserviceTime(l *logrus.Logger, start time.Time, ip net.IP, cmd *ex
 
 func measureResponseTime(l *logrus.Logger, ip net.IP, requests int) {
 
-	l.WithField("ip", ip).Info("measuring response time...")
+	l.WithField("ip", ip).Info("executing apache bench")
 
 	out, err := exec.Command("ab",
 		"-n"+strconv.Itoa(requests),
@@ -97,7 +97,7 @@ func measureResponseTime(l *logrus.Logger, ip net.IP, requests int) {
 		l.Info(string(out))
 		l.WithError(err).Info("apache bench failed")
 	} else {
-		l.Info(string(out))
+		//l.Info(string(out))
 	}
 }
 
