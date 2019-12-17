@@ -11,15 +11,13 @@ import (
 	"time"
 )
 
-var EngineType string
-
 var l = logrus.New()
 
 func main() {
 
 	flag.Parse()
 
-	l.Info("EngineType:", EngineType)
+	l.Info("EngineType:", *flagEngineType)
 
 	if len(*flagIP) == 0 || len(*flagGateway) == 0 {
 		l.Fatal("you need to pass an IP and gateway")
@@ -120,7 +118,7 @@ func initVM(l *logrus.Logger, ipAddr, gwAddr string, num int) {
 		"ether": ether,
 	}).Info("configured tap interface")
 
-	// start VM
+	// start VMx
 	cmd, err := spawnMicroVM(ether, num)
 	if err != nil {
 		l.WithError(err).Fatal("failed to start microVM")
