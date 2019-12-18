@@ -14,5 +14,6 @@ var (
 	flagMulti  = flag.Bool("multi", false, "spawn multiple vms as specified in config file")
 
 	flagEngineType = flag.String("e", "fc", "set engine type")
+	flagNumRepetitions = flag.Int("n", 1, "set number of repetitions")
 )
 

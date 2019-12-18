@@ -5,7 +5,6 @@ import (
 	"github.com/sirupsen/logrus"
 	"net"
 	"os"
-	"path/filepath"
 	"strconv"
 	"sync"
 	"time"
@@ -29,39 +28,30 @@ func main() {
 	}
 
 	if !*flagMulti {
-		initVM(l, *flagIP, *flagGateway, 0)
+
+		var count int
+		for {
+			count++
+
+			l, f := makeLogger(*flagIP+"-"+strconv.Itoa(count))
+			defer f.Close()
+
+			initVM(l, *flagIP, *flagGateway, 0)
+			if count == *flagNumRepetitions {
+				break
+			}
+		}
 		os.Exit(0)
 	}
 
-	var (
-		wg sync.WaitGroup
-	 	logDir = "experiment_logs"
-	)
-
-	// ignore error from creating logDir
-	// we dont care if it exists already
-	os.MkdirAll(logDir, 755)
+	var wg sync.WaitGroup
 
 	for num, cfg := range parseConfig().Vms {
 
 		wg.Add(1)
 
-		f, err := os.Create(filepath.Join(logDir, cfg.IP + ".log"))
-		if err != nil {
-			l.Fatal(err)
-		}
+		l, f := makeLogger(cfg.IP)
 		defer f.Close()
-
-		l := logrus.New()
-
-		//l.SetOutput(io.MultiWriter(os.Stdout, f))
-		l.SetOutput(f)
-
-		l.Formatter = &logrus.TextFormatter{
-			ForceColors:               true,
-			FullTimestamp:             true,
-			TimestampFormat:           "2 Jan 2006 15:04:05",
-		}
 
 		l.WithFields(logrus.Fields{
 			"num": num,
@@ -134,8 +124,8 @@ func initVM(l *logrus.Logger, ipAddr, gwAddr string, num int) {
 	} else {
 		start := time.Now()
 		measureWebserviceTime(l, start, ip, cmd)
-		measureResponseTime(l, ip, 1000)
-		measureThroughput(l, ip, 500000, 5, 30)
+		//measureResponseTime(l, ip, 1000)
+		//measureThroughput(l, ip, 500000, 5, 30)
 		startHashing(l, ip)
 		stopVM(l, ip, cmd)
 	}
