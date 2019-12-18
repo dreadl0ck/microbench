@@ -26,6 +26,7 @@ function runQemu() {
 		-no-user-config \
 		-nographic \
 		-serial stdio \
+		-cpu host \
 		-drive id=test,file="$ROOTFS",format=raw,if=none \
 		-device virtio-blk-device,drive=test \
 		-netdev tap,id="$INTERFACE",ifname="$INTERFACE",script=no,downscript=no \
