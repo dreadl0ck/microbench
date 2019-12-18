@@ -12,5 +12,7 @@ var (
 	//flagKernel = flag.String("kernel", "$HOME/hello-vmlinux.bin", "kernel to use")
 	flagKernel = flag.String("kernel", "$HOME/vmlinuz", "kernel to use")
 	flagMulti  = flag.Bool("multi", false, "spawn multiple vms as specified in config file")
+
+	flagEngineType = flag.String("e", "fc", "set engine type")
 )
 
