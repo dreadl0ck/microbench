@@ -1,0 +1,32 @@
+strace: -t has no effect with -c
+strace: Process 5799 attached with 2 threads
+strace: Process 5814 attached
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 45.39    0.088884          71      1256         2 ioctl
+ 29.23    0.057239         165       346           epoll_pwait
+ 12.29    0.024077        2408        10           futex
+ 11.24    0.022011          15      1490        19 read
+  1.07    0.002102           2      1183           lseek
+  0.44    0.000864           2       472           write
+  0.21    0.000416          83         5           prctl
+  0.03    0.000049           8         6           brk
+  0.02    0.000031           8         4           mmap
+  0.01    0.000029           2        17         1 epoll_ctl
+  0.01    0.000023           8         3           rt_sigprocmask
+  0.01    0.000020           3         7           dup
+  0.01    0.000017           6         3           timerfd_create
+  0.01    0.000012          12         1           mprotect
+  0.01    0.000012           6         2           sigaltstack
+  0.01    0.000012           2         5           eventfd2
+  0.01    0.000011          11         1           clone
+  0.01    0.000010          10         1           stat
+  0.01    0.000010          10         1           fstat
+  0.00    0.000007           7         1           timerfd_settime
+  0.00    0.000004           1         3           fcntl
+  0.00    0.000002           1         3           open
+  0.00    0.000000           0         1           close
+  0.00    0.000000           0         2           recvfrom
+  0.00    0.000000           0         1           clock_gettime
+------ ----------- ----------- --------- --------- ----------------
+100.00    0.195842                  4824        22 total
