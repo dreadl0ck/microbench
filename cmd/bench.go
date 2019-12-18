@@ -41,7 +41,6 @@ func measureWebserviceTime(l *logrus.Logger, start time.Time, ip net.IP, cmd *ex
 		if err != nil || resp.StatusCode != http.StatusOK {
 			//l.Info(err)
 			if !serviceDown {
-				start = time.Now()
 				serviceDown = true
 				l.Info("SERVICE DOWN")
 				time.Sleep(10 * time.Millisecond)
