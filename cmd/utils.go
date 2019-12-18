@@ -52,6 +52,7 @@ func initVM(l *logrus.Logger, ipAddr, gwAddr string, num int) {
 	} else {
 		start := time.Now()
 		measureWebserviceTime(l, start, ip, cmd)
+		fetchStats(l, ip)
 		//measureResponseTime(l, ip, 1000)
 		//measureThroughput(l, ip, 500000, 5, 30)
 		//startHashingFile(l, ip)

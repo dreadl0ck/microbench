@@ -28,6 +28,7 @@ func parseKernelLog(contents []byte) (s *stats.Summary, err error) {
 
 			s.KernelBootup = d
 			s.KernelLogLines = i+1
+			//s.KernelLogs = string(contents)
 			break
 		}
 	}
