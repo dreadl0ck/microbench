@@ -76,6 +76,7 @@ func measureWebserviceTime(l *logrus.Logger, start time.Time, ip net.IP, cmd *ex
 				}
 
 				l.WithField("delta", s.KernelBootup).Info("kernel boot time received")
+				l.WithField("lines", s.KernelLogLines).Info("number of kernel log lines received")
 				break
 			}
 		}
