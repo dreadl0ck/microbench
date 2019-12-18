@@ -98,7 +98,7 @@ func measureResponseTime(l *logrus.Logger, ip net.IP, requests int) {
 		l.Info(string(out))
 		l.WithError(err).Info("apache bench failed")
 	} else {
-		l.Info(string(out))
+		//l.Info(string(out))
 	}
 }
 
