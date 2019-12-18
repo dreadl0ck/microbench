@@ -16,12 +16,12 @@ echo $ROOTFS
 echo $INTERFACE
 
 function runQemu() {
-	sudo qemu-system-x86_64 -M microvm,rtc=off \
+	sudo qemu-system-x86_64 -M microvm,isa-serial=off,rtc=off \
 		-enable-kvm \
 		-smp 2 \
 		-m 1g \
 		-kernel "$KERNEL" \
-		-append "earlyprintk=ttyS0 console=ttyS0 root=/dev/vda" \
+		-append "console=ttyS0 root=/dev/vda pci=lastbus=0 reboot=k panic=1 noapic nomodules" \
 		-nodefaults \
 		-no-user-config \
 		-nographic \
