@@ -15,5 +15,6 @@ var (
 
 	flagEngineType = flag.String("e", "fc", "set engine type")
 	flagNumRepetitions = flag.Int("n", 1, "set number of repetitions")
+	flagVersion = flag.Bool("version", false, "print firebench version and exit")
 )
 
