@@ -91,6 +91,27 @@ func measureResponseTime(l *logrus.Logger, ip net.IP, requests int) {
 	out, err := exec.Command("ab",
 		"-n"+strconv.Itoa(requests),
 		"-k",
+		"-e", "./logs/apache/responseTime/" + ip.String() + ".log",
+		"http://"+ip.String()+":80"+"/ping",
+	).CombinedOutput()
+	if err != nil {
+		l.Info(string(out))
+		l.WithError(err).Info("apache bench failed")
+	} else {
+		l.Info(string(out))
+	}
+}
+
+func measureThroughput(l *logrus.Logger, ip net.IP, requests int, concurrentRequests int, timeInSeconds int) {
+
+	l.WithField("ip", ip).Info("measuring throughput...")
+
+	out, err := exec.Command("ab",
+		"-n"+strconv.Itoa(requests),
+		"-k",
+		"-t",strconv.Itoa(timeInSeconds),
+		 "-c",strconv.Itoa(concurrentRequests),
+		"-e", "./logs/apache/throughput/" + ip.String() + ".log",
 		"http://"+ip.String()+":80"+"/ping",
 	).CombinedOutput()
 	if err != nil {

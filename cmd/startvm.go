@@ -30,7 +30,10 @@ func spawnMicroVM(tapEther string, num int) (*exec.Cmd, error) {
 		)
 	case "qemu":
 		cmd = exec.Command(
-			os.ExpandEnv("$HOME/go/src/github.com/dreadl0ck/firebench/cli/run-microvm.sh"),
+			os.ExpandEnv("$HOME/go/src/github.com/dreadl0ck/firebench/cli/run-qemu-microvm.sh"),
+			"-k", os.ExpandEnv(*flagKernel),
+			"-r", rootfs,
+			"-i", "tap" + strconv.Itoa(num),
 		)
 	default:
 		l.Fatal("invalid engine type: ", EngineType)

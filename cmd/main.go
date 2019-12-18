@@ -138,6 +138,7 @@ func initVM(l *logrus.Logger, ipAddr, gwAddr string, num int) {
 		//go ping(l, start, ip)
 		measureWebserviceTime(l, start, ip, cmd)
 		measureResponseTime(l, ip, 1000)
+		measureThroughput(l, ip, 50000, 5, 15)
 		startHashing(l, ip)
 		stopVM(l, ip, cmd)
 	}
