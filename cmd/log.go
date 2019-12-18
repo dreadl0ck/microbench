@@ -15,7 +15,7 @@ func makeLogger(name string) (*logrus.Logger, func()) {
 	// we dont care if it exists already
 	os.MkdirAll(logDir, 755)
 
-	f, err := os.Create(filepath.Join(logDir, name + ".log"))
+	f, err := os.Create(filepath.Join(logDir, *flagEngineType + "-" + name + ".log"))
 	if err != nil {
 		l.Fatal(err)
 	}
