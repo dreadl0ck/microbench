@@ -4,7 +4,6 @@ import (
 	"flag"
 	"fmt"
 	"github.com/sirupsen/logrus"
-	"os"
 	"strconv"
 )
 
@@ -28,7 +27,7 @@ func main() {
 
 	if *flagCreateFS {
 		createRootFS(l, *flagIP, *flagGateway, 0)
-		os.Exit(0)
+		return
 	}
 
 	if !*flagMulti {
@@ -37,15 +36,15 @@ func main() {
 		for {
 			count++
 
-			l, f := makeLogger(*flagIP+"-"+strconv.Itoa(count))
-			defer f.Close()
+			l, cleanup := makeLogger(*flagIP+"-"+strconv.Itoa(count))
+			defer cleanup()
 
 			initVM(l, *flagIP, *flagGateway, 0)
 			if count == *flagNumRepetitions {
 				break
 			}
 		}
-		os.Exit(0)
+		return
 	}
 
 	runMulti()

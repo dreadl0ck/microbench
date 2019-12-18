@@ -122,12 +122,30 @@ func measureThroughput(l *logrus.Logger, ip net.IP, requests int, concurrentRequ
 	}
 }
 
-func startHashing(l *logrus.Logger, ip net.IP)  {
+func startHashingFile(l *logrus.Logger, ip net.IP)  {
 	http.DefaultClient = &http.Client{
 		Timeout: 0,
 	}
 
-	resp, err := http.Get("http://" + ip.String() + "/hash")
+	resp, err := http.Get("http://" + ip.String() + "/hashFile")
+	if err != nil {
+		l.WithError(err).Info("hashing failed")
+	} else {
+		resp, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			l.WithError(err).Fatal("failed to read response body")
+		}
+		l.Info(string(resp))
+	}
+}
+
+func startHashingLoop(l *logrus.Logger, ip net.IP)  {
+
+	http.DefaultClient = &http.Client{
+		Timeout: 0,
+	}
+
+	resp, err := http.Get("http://" + ip.String() + "/hashLoop")
 	if err != nil {
 		l.WithError(err).Info("hashing failed")
 	} else {

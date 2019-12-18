@@ -1,6 +1,8 @@
 package main
 
 import (
+	"math/rand"
+	"crypto/sha256"
 	"encoding/json"
 	"github.com/sirupsen/logrus"
 	"github.com/dustin/go-humanize"
@@ -81,7 +83,7 @@ var shutdown = func(w http.ResponseWriter, r *http.Request) {
 	l.Info(exec.Command("reboot").Run())
 }
 
-var hashHandler = func(w http.ResponseWriter, r *http.Request) {
+var hashFileHandler = func(w http.ResponseWriter, r *http.Request) {
 
 	s, err := os.Stat("/random.data")
 	if err != nil {
@@ -94,7 +96,33 @@ var hashHandler = func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("\nfailed to hash file: " + err.Error() + "\n"))
 	}
 
-	_, err = w.Write(append(out, []byte("\nrandom data size:" + humanize.Bytes(uint64(s.Size())))...))
+	_, err = w.Write(append(out, []byte("\nrandom data size: " + humanize.Bytes(uint64(s.Size())))...))
+	if err != nil {
+		l.WithError(err).Info("failed to write data")
+	}
+}
+
+var hashLoopHandler = func(w http.ResponseWriter, r *http.Request) {
+
+	var d = make([]byte, 1024)
+
+	_, err := rand.Read(d)
+	if err != nil {
+		l.WithError(err).Fatal("failed to read random data")
+	}
+
+	l.Info("starting hash loop")
+
+	start := time.Now()
+	for i := 0; i < 100; i++ {
+		h := sha256.New()
+		h.Sum(d)
+	}
+
+	res := "hash loop benchmark: " + time.Since(start).String()
+	l.Info("result: ", res)
+
+	_, err = w.Write([]byte(res))
 	if err != nil {
 		l.WithError(err).Info("failed to write data")
 	}

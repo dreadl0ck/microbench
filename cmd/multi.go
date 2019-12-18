@@ -17,8 +17,8 @@ func runMulti() {
 		wg.Add(1)
 		wgRootFS.Add(1)
 
-		l, f := makeLogger(cfg.IP)
-		defer f.Close()
+		l, cleanup := makeLogger(cfg.IP)
+		defer cleanup()
 
 		l.WithFields(logrus.Fields{
 			"num": num,

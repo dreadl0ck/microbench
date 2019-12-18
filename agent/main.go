@@ -16,7 +16,8 @@ func main() {
 	http.HandleFunc("/", serveHexdump)
 	http.HandleFunc("/shutdown", shutdown)
 	http.HandleFunc("/stats", statsHandler)
-	http.HandleFunc("/hash", hashHandler)
+	http.HandleFunc("/hashFile", hashFileHandler)
+	http.HandleFunc("/hashLoop", hashLoopHandler)
 
 	l.Fatal(
 		"failed to serve: ",

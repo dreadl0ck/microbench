@@ -1,12 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"github.com/sirupsen/logrus"
 	"os"
 	"path/filepath"
 )
 
-func makeLogger(name string) (*logrus.Logger, *os.File) {
+func makeLogger(name string) (*logrus.Logger, func()) {
 
 	const logDir = "experiment_logs"
 
@@ -30,5 +31,8 @@ func makeLogger(name string) (*logrus.Logger, *os.File) {
 		TimestampFormat:           "2 Jan 2006 15:04:05",
 	}
 
-	return l, f
+	return l, func() {
+		fmt.Println("closing file handle for logfile:", f.Name())
+		f.Close()
+	}
 }
