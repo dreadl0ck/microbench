@@ -18,8 +18,9 @@ echo $INTERFACE
 function runQemu() {
 	sudo qemu-system-x86_64 -M microvm,isa-serial=off,rtc=off \
 		-enable-kvm \
+		-cpu host \
 		-smp 2 \
-		-m 1g \
+		-m 512m \
 		-kernel "$KERNEL" \
 		-append "console=ttyS0 root=/dev/vda pci=lastbus=0 reboot=k panic=1 noapic nomodules" \
 		-nodefaults \
