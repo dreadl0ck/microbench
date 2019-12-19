@@ -1,0 +1,27 @@
+strace: Process 9988 attached with 2 threads
+strace: Process 10004 attached
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 58.12    0.305839         852       359         1 epoll_pwait
+ 32.99    0.173577         133      1303         3 ioctl
+  4.22    0.022199        1850        12         3 futex
+  3.47    0.018261          13      1370        23 read
+  0.54    0.002860           3      1103           lseek
+  0.49    0.002582           5       544           write
+  0.11    0.000604         121         5           prctl
+  0.01    0.000065           8         8           brk
+  0.01    0.000047           4        11         1 epoll_ctl
+  0.01    0.000029          10         3           mmap
+  0.00    0.000024          12         2           sigaltstack
+  0.00    0.000020           7         3           rt_sigprocmask
+  0.00    0.000016          16         1           tkill
+  0.00    0.000014          14         1           clone
+  0.00    0.000012           3         4           dup
+  0.00    0.000011          11         1           mprotect
+  0.00    0.000011          11         1         1 rt_sigreturn
+  0.00    0.000009           9         1           timerfd_settime
+  0.00    0.000006           2         3           timerfd_create
+  0.00    0.000005           5         1           rt_sigaction
+  0.00    0.000000           0         1           fstat
+------ ----------- ----------- --------- --------- ----------------
+100.00    0.526191                  4737        32 total

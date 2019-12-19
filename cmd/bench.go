@@ -1,9 +1,7 @@
 package main
 
 import (
-	"encoding/json"
 	"github.com/sirupsen/logrus"
-	"github.com/dreadl0ck/firebench/stats"
 	"io/ioutil"
 	"net"
 	"net/http"
@@ -43,7 +41,6 @@ func measureWebserviceTime(l *logrus.Logger, start time.Time, ip net.IP, cmd *ex
 		if err != nil || resp.StatusCode != http.StatusOK {
 			//l.Info(err)
 			if !serviceDown {
-				start = time.Now()
 				serviceDown = true
 				l.Info("SERVICE DOWN")
 				time.Sleep(10 * time.Millisecond)
@@ -58,26 +55,7 @@ func measureWebserviceTime(l *logrus.Logger, start time.Time, ip net.IP, cmd *ex
 
 			serviceDown = false
 			l.WithField("delta", time.Since(start)).Info("time until HTTP reply from webservice")
-
-			// retrieve VM stats
-			resp, err := http.Get("http://" + ip.String() + "/stats")
-			if err != nil {
-				l.Info(err)
-			} else {
-				statsData, err := ioutil.ReadAll(resp.Body)
-				if err != nil {
-					l.Fatal(err)
-				}
-
-				var s = new(stats.Summary)
-				err = json.Unmarshal(statsData, &s)
-				if err != nil {
-					l.Fatal(err)
-				}
-
-				l.WithField("delta", s.KernelBootup).Info("kernel boot time received")
-				break
-			}
+			break
 		}
 
 		time.Sleep(1000 * time.Millisecond)

@@ -7,9 +7,9 @@ import (
 	"path/filepath"
 )
 
-func makeLogger(name string) (*logrus.Logger, func()) {
+const logDir = "experiment_logs"
 
-	const logDir = "experiment_logs"
+func makeLogger(name string) (*logrus.Logger, func()) {
 
 	// ignore error from creating logDir
 	// we dont care if it exists already

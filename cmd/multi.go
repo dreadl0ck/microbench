@@ -2,8 +2,13 @@ package main
 
 import (
 	"github.com/sirupsen/logrus"
+	"strconv"
 	"sync"
 )
+
+func makeLocalAddrPair(num int) (string, string) {
+	return "10.0." + strconv.Itoa(num) + ".1", "10.0." + strconv.Itoa(num) + ".2"
+}
 
 func runMulti() {
 
@@ -12,33 +17,33 @@ func runMulti() {
 		wgRootFS sync.WaitGroup
 	)
 
-	for num, cfg := range parseConfig().Vms {
+	for i := 1; i <= *flagNumVMs; i++ {
+
+		ipAddr, gateway := makeLocalAddrPair(i)
 
 		wg.Add(1)
 		wgRootFS.Add(1)
 
-		l, cleanup := makeLogger(cfg.IP)
+		l, cleanup := makeLogger(ipAddr)
 		defer cleanup()
 
 		l.WithFields(logrus.Fields{
-			"num": num,
-			"ip": cfg.IP,
-			"gateway": cfg.Gateway,
-			"logfile": cfg.IP + ".log",
+			"num": i,
+			"ip": ipAddr,
+			"gateway": gateway,
+			"logfile": ipAddr + ".log",
 		}).Info("bootstrapping machine")
 
 		// prevent capturing loop vars
 		var (
-			ip = cfg.IP
-			gw = cfg.Gateway
-			n  = num
+			n  = i
 		)
 
 		go func() {
-			createRootFS(l, ip, gw, n)
+			createRootFS(l, ipAddr, gateway, n)
 			wgRootFS.Done()
 			wgRootFS.Wait()
-			initVM(l, ip, gw, n)
+			initVM(l, ipAddr, gateway, n)
 			wg.Done()
 		}()
 	}

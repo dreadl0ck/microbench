@@ -11,6 +11,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"strconv"
 	"time"
 )
 
@@ -104,7 +105,11 @@ var hashFileHandler = func(w http.ResponseWriter, r *http.Request) {
 
 var hashLoopHandler = func(w http.ResponseWriter, r *http.Request) {
 
-	var d = make([]byte, 1024)
+	var (
+		numBytes = 1024*1024
+		numIterations = 100
+		d = make([]byte, numBytes)
+	)
 
 	_, err := rand.Read(d)
 	if err != nil {
@@ -114,12 +119,12 @@ var hashLoopHandler = func(w http.ResponseWriter, r *http.Request) {
 	l.Info("starting hash loop")
 
 	start := time.Now()
-	for i := 0; i < 100; i++ {
+	for i := 0; i < numIterations; i++ {
 		h := sha256.New()
 		h.Sum(d)
 	}
 
-	res := "hash loop benchmark: " + time.Since(start).String()
+	res := "hash loop benchmark: " + time.Since(start).String() + ", " + strconv.Itoa(numBytes) + " bytes of random data hashed with sha256 " + strconv.Itoa(numIterations) + " times."
 	l.Info("result: ", res)
 
 	_, err = w.Write([]byte(res))

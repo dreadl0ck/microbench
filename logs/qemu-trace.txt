@@ -1,0 +1,61 @@
+strace: Process 12033 attached
+strace: [ Process PID=12033 runs in x32 mode. ]
+strace: [ Process PID=12033 runs in 64 bit mode. ]
+strace: Process 12039 attached
+strace: Process 12043 attached
+strace: Process 12044 attached
+strace: Process 12045 attached
+strace: Process 12049 attached
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 50.55   26.219274          37    718315     32686 ioctl
+ 30.58   15.857785       14184      1118           ppoll
+ 18.81    9.755435        6257      1559       121 futex
+  0.03    0.015933        3187         5           nanosleep
+  0.01    0.004454           4       990        18 read
+  0.00    0.001653           3       633           write
+  0.00    0.001371           3       403           tgkill
+  0.00    0.001320          12       108           preadv
+  0.00    0.001060          29        36           madvise
+  0.00    0.000993         166         6           fdatasync
+  0.00    0.000962           6       169           pread64
+  0.00    0.000956           2       403       402 rt_sigreturn
+  0.00    0.000801           2       403           getpid
+  0.00    0.000662          13        51           writev
+  0.00    0.000324           4        90           mmap
+  0.00    0.000269           2       148           rt_sigprocmask
+  0.00    0.000207           1       147           mprotect
+  0.00    0.000142           3        42           brk
+  0.00    0.000127           4        36           pwrite64
+  0.00    0.000101           7        14           munmap
+  0.00    0.000088          88         1           mremap
+  0.00    0.000075           5        15           eventfd2
+  0.00    0.000073           3        26         1 fcntl
+  0.00    0.000053           2        31           close
+  0.00    0.000043           2        21           openat
+  0.00    0.000038           6         6           set_robust_list
+  0.00    0.000033           3        10           rt_sigaction
+  0.00    0.000031           6         5           clone
+  0.00    0.000028           7         4           gettid
+  0.00    0.000017           1        14           lseek
+  0.00    0.000014           1        11         7 access
+  0.00    0.000012          12         1           readlink
+  0.00    0.000005           5         1           uname
+  0.00    0.000003           0        14           fstat
+  0.00    0.000002           2         1         1 seccomp
+  0.00    0.000002           1         2           memfd_create
+  0.00    0.000001           1         1           sysinfo
+  0.00    0.000001           1         2           prctl
+  0.00    0.000001           1         2           epoll_create1
+  0.00    0.000001           1         2           prlimit64
+  0.00    0.000000           0         3         1 stat
+  0.00    0.000000           0         4           getdents
+  0.00    0.000000           0         2         2 statfs
+  0.00    0.000000           0         1           fstatfs
+  0.00    0.000000           0         1           sched_getaffinity
+  0.00    0.000000           0         1           set_tid_address
+  0.00    0.000000           0         1           signalfd
+  0.00    0.000000           0         7           pwritev
+  0.00    0.000000           0         1           getrandom
+------ ----------- ----------- --------- --------- ----------------
+100.00   51.864350                724867     33239 total

@@ -4,6 +4,7 @@ import "time"
 
 type Summary struct {
 	KernelBootup time.Duration `json:"kernelBootup"`
-	ServiceInit  time.Duration `json:"serviceInit"`
+	KernelLogLines  int `json:"kernelLogLines"`
+	KernelLogs string `json:"kernelLogs"`
 }
 
