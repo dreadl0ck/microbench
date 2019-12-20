@@ -37,7 +37,7 @@ func initVM(l *logrus.Logger, ipAddr, gwAddr string, num int) {
 	}).Info("configured tap interface")
 
 	// start VMx
-	cmd, err := spawnMicroVM(ether, num)
+	cmd, err := spawnMicroVM(l, ether, num)
 	if err != nil {
 		l.WithError(err).Fatal("failed to start microVM")
 	}
