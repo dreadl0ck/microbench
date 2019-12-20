@@ -18,7 +18,6 @@ echo $INTERFACE
 function runQemu() {
 	sudo qemu-system-x86_64 -M microvm,isa-serial=off,rtc=off \
 		-enable-kvm \
-		-cpu host \
 		-smp 2 \
 		-m 512m \
 		-kernel "$KERNEL" \

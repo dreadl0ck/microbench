@@ -9,14 +9,18 @@ var (
 
 	flagCreateFS = flag.Bool("createfs", false, "create rootfs and exit")
 	flagRootFS   = flag.String("rootfs", "/tmp/rootfs.ext4", "use rootfs at the specified path")
+
 	//flagKernel = flag.String("kernel", "$HOME/hello-vmlinux.bin", "kernel to use")
 	flagKernel = flag.String("kernel", "$HOME/vmlinuz", "kernel to use")
 	flagMulti  = flag.Bool("multi", false, "spawn multiple vms as specified in config file")
 
-	flagEngineType = flag.String("e", "fc", "set engine type")
-	flagNumRepetitions = flag.Int("n", 1, "set number of repetitions")
+	flagEngineType = flag.String("engine", "firecracker", "set engine type")
+	flagNumRepetitions = flag.Int("num", 1, "set number of repetitions")
 	flagVersion = flag.Bool("version", false, "print firebench version and exit")
 
 	flagNumVMs = flag.Int("numVMs", 10, "number of vms for multi mode")
+	flagTag = flag.String("tag", "", "add custom tag to experiment logs")
+
+	flagQEMUEmulatedCPU = flag.Bool("qemu-cpu-emulated", false, "use emulated cpu instead of host one for qemu")
 )
 
