@@ -73,6 +73,9 @@ func makeLogger(name string) (*logrus.Logger, func()) {
 
 	l.Info("system: ", string(unameOut))
 
+	// TODO: make params configurable
+	l.Info("VM config: 2 CPUs and 512MB of RAM")
+
 	return l, func() {
 		fmt.Println("closing file handle for logfile:", f.Name())
 		f.Close()
