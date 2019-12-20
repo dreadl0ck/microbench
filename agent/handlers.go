@@ -124,7 +124,7 @@ var hashLoopHandler = func(w http.ResponseWriter, r *http.Request) {
 		h.Sum(d)
 	}
 
-	res := "hash loop benchmark: " + time.Since(start).String() + ", " + strconv.Itoa(numBytes) + " bytes of random data hashed with sha256 " + strconv.Itoa(numIterations) + " times."
+	res := "hash loop benchmark: delta=" + time.Since(start).String() + " " + strconv.Itoa(numBytes) + " bytes of random data hashed with sha256 " + strconv.Itoa(numIterations) + " times."
 	l.Info("result: ", res)
 
 	_, err = w.Write([]byte(res))

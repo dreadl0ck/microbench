@@ -20,7 +20,7 @@ func makeLogger(name string) (*logrus.Logger, func()) {
 	os.MkdirAll(logDir, 755)
 
 	var (
-		fileName string
+		fileName    string
 		multiSuffix string
 	)
 
@@ -29,9 +29,9 @@ func makeLogger(name string) (*logrus.Logger, func()) {
 	}
 
 	if *flagTag != "" {
-		fileName = filepath.Join(logDir, *flagEngineType + "-" + name + "-" + *flagTag + multiSuffix + ".log")
+		fileName = filepath.Join(logDir, *flagEngineType+"-"+name+"-"+*flagTag+multiSuffix+".log")
 	} else {
-		fileName = filepath.Join(logDir, *flagEngineType + "-" + name + multiSuffix + ".log")
+		fileName = filepath.Join(logDir, *flagEngineType+"-"+name+multiSuffix+".log")
 	}
 
 	f, err := os.Create(fileName)
@@ -48,9 +48,10 @@ func makeLogger(name string) (*logrus.Logger, func()) {
 	}
 
 	l.Formatter = &logrus.TextFormatter{
-		ForceColors:               true,
-		FullTimestamp:             true,
-		TimestampFormat:           "2 Jan 2006 15:04:05",
+		ForceColors:     false,
+		DisableColors:   true,
+		FullTimestamp:   true,
+		TimestampFormat: "2 Jan 2006 15:04:05",
 	}
 
 	var version string
@@ -87,14 +88,14 @@ func makeLogger(name string) (*logrus.Logger, func()) {
 	}
 
 	l.Info("host system: ", string(unameOut))
-	l.Info("VM config: ", *flagNumCPUs, " CPUs and ", *flagMemorySize," MB of RAM")
+	l.Info("VM config: ", *flagNumCPUs, " CPUs and ", *flagMemorySize, " MB of RAM")
 
 	l.WithFields(logrus.Fields{
 		"engine": *flagEngineType,
-		"tag": *flagTag,
-		"num": *flagNumRepetitions,
+		"tag":    *flagTag,
+		"num":    *flagNumRepetitions,
 		"numVMs": *flagNumVMs,
-		"multi": *flagMulti,
+		"multi":  *flagMulti,
 	}).Info("experiment config")
 
 	return l, func() {
