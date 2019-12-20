@@ -28,7 +28,7 @@ if mount | grep -q "/tmp/my-rootfs$num"; then
 	umount -f /tmp/my-rootfs$num
 fi
 
-dd if=/dev/zero of=/tmp/rootfs$num.ext4 bs=1M count=250
+dd if=/dev/zero of=/tmp/rootfs$num.ext4 bs=1M count=100
 mkfs.ext4 /tmp/rootfs$num.ext4
 
 # mount it
