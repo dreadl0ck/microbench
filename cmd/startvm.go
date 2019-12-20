@@ -21,12 +21,12 @@ func spawnMicroVM(tapEther string, num int) (*exec.Cmd, error) {
 			"--kernel="+os.ExpandEnv(*flagKernel),
 			"--root-drive="+rootfs,
 			"-t",
-			"--cpu-template=T2",
-			"-c=2",
+			"--cpu-template="+*flagFirecrackerCPUTemplate,
+			"-c="+strconv.Itoa(*flagNumCPUs),
+			"-m="+strconv.Itoa(*flagMemorySize),
 			"--log-level=Debug",
 			"--firecracker-log=firecracker-vmm.log",
 			"--kernel-opts='console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw'",
-			//"--metadata='{"foo":"bar"}' ""
 			"--tap-device=tap"+strconv.Itoa(num)+"/"+tapEther,
 		)
 	case "qemu":
@@ -36,6 +36,8 @@ func spawnMicroVM(tapEther string, num int) (*exec.Cmd, error) {
 				"-k", os.ExpandEnv(*flagKernel),
 				"-r", rootfs,
 				"-i", "tap" + strconv.Itoa(num),
+				"-c", strconv.Itoa(*flagNumCPUs),
+				"-m", strconv.Itoa(*flagMemorySize),
 			)
 		} else {
 			cmd = exec.Command(
@@ -43,6 +45,8 @@ func spawnMicroVM(tapEther string, num int) (*exec.Cmd, error) {
 				"-k", os.ExpandEnv(*flagKernel),
 				"-r", rootfs,
 				"-i", "tap" + strconv.Itoa(num),
+				"-c", strconv.Itoa(*flagNumCPUs),
+				"-m", strconv.Itoa(*flagMemorySize),
 			)
 		}
 

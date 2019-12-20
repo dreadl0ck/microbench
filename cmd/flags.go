@@ -22,5 +22,9 @@ var (
 	flagTag = flag.String("tag", "", "add custom tag to experiment logs")
 
 	flagQEMUEmulatedCPU = flag.Bool("qemu-cpu-emulated", false, "use emulated cpu instead of host one for qemu")
+	flagFirecrackerCPUTemplate = flag.String("firecracker-cpu-template", "T2", "set CPU template to use for firecracker")
+
+	flagNumCPUs = flag.Int("cpus", 2, "set num of CPUs for each VM")
+	flagMemorySize = flag.Int("mem", 512, "set memory in MB for each VM")
 )
 

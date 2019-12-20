@@ -49,6 +49,8 @@ func makeLogger(name string) (*logrus.Logger, func()) {
 			l.WithError(err).Fatal("failed to get firecracker version")
 		}
 		version = string(out)
+
+		l.Info("using CPU template: ", *flagFirecrackerCPUTemplate)
 	case "qemu":
 		out, err := exec.Command("qemu-system-x86_64", "--version").CombinedOutput()
 		if err != nil {
@@ -72,9 +74,7 @@ func makeLogger(name string) (*logrus.Logger, func()) {
 	}
 
 	l.Info("system: ", string(unameOut))
-
-	// TODO: make params configurable
-	l.Info("VM config: 2 CPUs and 512MB of RAM")
+	l.Info("VM config: ", *flagNumCPUs, " CPUs and ", *flagMemorySize," MB of RAM")
 
 	return l, func() {
 		fmt.Println("closing file handle for logfile:", f.Name())
