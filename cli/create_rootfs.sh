@@ -43,7 +43,7 @@ go build --ldflags '-linkmode external -extldflags "-static"' -o /tmp/my-rootfs$
 # copy init script(s)
 cp $HOME/go/src/github.com/dreadl0ck/firebench/cli/init_alpine.sh /tmp/my-rootfs$num/init_alpine.sh
 cp $HOME/go/src/github.com/dreadl0ck/firebench/bin/networking /tmp/my-rootfs$num/networking
-cp $HOME/go/src/github.com/dreadl0ck/firebench/random.data /tmp/my-rootfs$num/random.data
+#cp $HOME/go/src/github.com/dreadl0ck/firebench/random.data /tmp/my-rootfs$num/random.data
 
 # run docker container with latest alpine image to populate filesystem
 if [ "$1" == "-i" ]; then
