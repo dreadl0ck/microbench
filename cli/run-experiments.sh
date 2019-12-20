@@ -51,5 +51,5 @@ bin/firebench -num 10 -kernel /root/hello-vmlinux.bin -tag "sequential-default-k
 bin/firebench -multi -numVMs 10 -kernel /root/hello-vmlinux.bin -tag "default-kernel-C3" -firecracker-cpu-template "C3"
 bin/firebench -multi -numVMs 20 -kernel /root/hello-vmlinux.bin -tag "default-kernel-C3" -firecracker-cpu-template "C3"
 
-tree experiments_logs
+tree experiment_logs
 echo "done."
