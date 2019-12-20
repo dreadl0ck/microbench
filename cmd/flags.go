@@ -26,5 +26,7 @@ var (
 
 	flagNumCPUs = flag.Int("cpus", 2, "set num of CPUs for each VM")
 	flagMemorySize = flag.Int("mem", 512, "set memory in MB for each VM")
+
+	flagDebug = flag.Bool("debug", false, "toggle debug mode")
 )
 

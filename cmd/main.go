@@ -19,7 +19,15 @@ func main() {
 		return
 	}
 
-	l.Info("EngineType: ", *flagEngineType)
+	l.WithFields(logrus.Fields{
+		"engine": *flagEngineType,
+		"tag": *flagTag,
+		"num": *flagNumRepetitions,
+		"numVMs": *flagNumVMs,
+		"multi": *flagMulti,
+		"cpu": *flagNumCPUs,
+		"mem": *flagMemorySize,
+	}).Info("starting firebench")
 
 	if len(*flagIP) == 0 || len(*flagGateway) == 0 {
 		l.Fatal("you need to pass an IP and gateway")

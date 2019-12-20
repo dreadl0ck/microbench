@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/sirupsen/logrus"
+	"io"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -31,8 +32,11 @@ func makeLogger(name string) (*logrus.Logger, func()) {
 
 	l := logrus.New()
 
-	//l.SetOutput(io.MultiWriter(os.Stdout, f))
-	l.SetOutput(f)
+	if *flagDebug {
+		l.SetOutput(io.MultiWriter(os.Stdout, f))
+	} else {
+		l.SetOutput(f)
+	}
 
 	l.Formatter = &logrus.TextFormatter{
 		ForceColors:               true,
@@ -66,15 +70,23 @@ func makeLogger(name string) (*logrus.Logger, func()) {
 		l.WithError(err).Fatal("failed to get hardware infos")
 	}
 
-	l.Info("hardware: ", string(hwOut))
+	l.Info("host hardware: ", string(hwOut))
 
 	unameOut, err := exec.Command("uname", "-a").CombinedOutput()
 	if err != nil {
 		l.WithError(err).Fatal("failed to get uname infos")
 	}
 
-	l.Info("system: ", string(unameOut))
+	l.Info("host system: ", string(unameOut))
 	l.Info("VM config: ", *flagNumCPUs, " CPUs and ", *flagMemorySize," MB of RAM")
+
+	l.WithFields(logrus.Fields{
+		"engine": *flagEngineType,
+		"tag": *flagTag,
+		"num": *flagNumRepetitions,
+		"numVMs": *flagNumVMs,
+		"multi": *flagMulti,
+	}).Info("experiment config")
 
 	return l, func() {
 		fmt.Println("closing file handle for logfile:", f.Name())
