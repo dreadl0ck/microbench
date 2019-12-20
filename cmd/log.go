@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strconv"
 	"strings"
 )
 
@@ -18,11 +19,19 @@ func makeLogger(name string) (*logrus.Logger, func()) {
 	// we dont care if it exists already
 	os.MkdirAll(logDir, 755)
 
-	var fileName string
+	var (
+		fileName string
+		multiSuffix string
+	)
+
+	if *flagMulti {
+		multiSuffix = "-x" + strconv.Itoa(*flagNumVMs)
+	}
+
 	if *flagTag != "" {
-		fileName = filepath.Join(logDir, *flagEngineType + "-" + name + "-" + *flagTag + ".log")
+		fileName = filepath.Join(logDir, *flagEngineType + "-" + name + "-" + *flagTag + multiSuffix + ".log")
 	} else {
-		fileName = filepath.Join(logDir, *flagEngineType + "-" + name + ".log")
+		fileName = filepath.Join(logDir, *flagEngineType + "-" + name + multiSuffix + ".log")
 	}
 
 	f, err := os.Create(fileName)
