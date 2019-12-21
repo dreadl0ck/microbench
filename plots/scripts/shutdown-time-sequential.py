@@ -15,7 +15,7 @@ ax.set_title('Shutdown Time')
 plt.ylabel('Time (ms)')
 ax.boxplot(data, labels=labels)
 
-plt.gcf().subplots_adjust(bottom=0.30)
+plt.gcf().subplots_adjust(bottom=0.35)
 plt.xticks(rotation=45)
 
 #plt.show()

@@ -199,12 +199,12 @@ qemu_x20 = [
 
 
 import statistics as stats
-print(stats.mean(qemu_x10))
-print(stats.mean(qemu_x20))
 print(stats.mean(firecracker_x10))
 print(stats.mean(firecracker_x20))
 print(stats.mean(qemu_x10_emulated))
 print(stats.mean(qemu_x20_emulated))
+print(stats.mean(qemu_x10))
+print(stats.mean(qemu_x20))
 
 
 import matplotlib.pyplot as plt; plt.rcdefaults()

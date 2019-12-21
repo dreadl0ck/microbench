@@ -1,6 +1,19 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+qemu_sequential = [
+	1106.60577,
+	1174.30180,
+	2039.68959,
+	2042.32914,
+	1144.12149,
+	1141.54589,
+	1167.05263,
+	1147.44122,
+	1112.47571,
+	1170.27711
+]
+
 firecracker_sequential = [
 	1190.23436,
 	1253.17204,
@@ -103,19 +116,6 @@ qemu_sequential_emulated = [
 	1340.94562
 ]
 
-qemu_sequential = [
-	1106.60577,
-	1174.30180,
-	2039.68959,
-	2042.32914,
-	1144.12149,
-	1141.54589,
-	1167.05263,
-	1147.44122,
-	1112.47571,
-	1170.27711
-]
-
 
 
 labels = ['qemu sequential','qemu sequential emulated','firecracker sequential','firecracker sequential C3','firecracker sequential default kernel']
@@ -134,7 +134,7 @@ ax.set_title("Webservice Startup Time")
 plt.ylabel('Time (ms)')
 ax.boxplot(data, labels=labels)
 
-plt.gcf().subplots_adjust(bottom=0.30)
+plt.gcf().subplots_adjust(bottom=0.35)
 plt.xticks(rotation=45)
 
 #plt.show()

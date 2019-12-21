@@ -1,16 +1,3 @@
-host_cpu = [
-	64.47949,
-	85.34255,
-	43.27411,
-	46.60391,
-	70.67962,
-	61.71825,
-	83.48621,
-	76.69465,
-	68.02085,
-	80.86654
-]
-
 T2_cpu = [
 	91.46145,
 	122.82453,
@@ -113,14 +100,27 @@ emulated_cpu = [
 	82.90538
 ]
 
+host_cpu = [
+	64.47949,
+	85.34255,
+	43.27411,
+	46.60391,
+	70.67962,
+	61.71825,
+	83.48621,
+	76.69465,
+	68.02085,
+	80.86654
+]
+
 
 
 import statistics as stats
+print(stats.mean(C3_cpu))
+print(stats.mean(default_kernel))
 print(stats.mean(emulated_cpu))
 print(stats.mean(host_cpu))
 print(stats.mean(T2_cpu))
-print(stats.mean(C3_cpu))
-print(stats.mean(default_kernel))
 
 
 import matplotlib.pyplot as plt; plt.rcdefaults()
