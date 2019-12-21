@@ -40,15 +40,15 @@ func main() {
 		{
 			fileKeywords:        []string{"qemu", "sequential"},
 			excludeFileKeywords: []string{"emulated"},
-			name:                "qemu",
+			name:                "qemu_host_cpu",
 		},
 		{
 			fileKeywords: 	[]string{"qemu", "sequential", "emulated"},
-			name: 			"qemu_emulated",
+			name: 			"qemu_emulated_cpu",
 		},
 		{
 			fileKeywords: 	[]string{"firecracker", "sequential"},
-			name: 			"firecracker",
+			name: 			"firecracker_T2",
 		},
 		{
 			fileKeywords: 	[]string{"firecracker", "sequential", "C3"},
@@ -66,11 +66,11 @@ func main() {
 			excludeFileKeywords: []string{"emulated"},
 		},
 		{
-			fileKeywords:        []string{"qemu", "x20"},
-			excludeFileKeywords: []string{"emulated"},
+			fileKeywords:        []string{"qemu", "x10", "emulated"},
 		},
 		{
-			fileKeywords:        []string{"qemu", "x10", "emulated"},
+			fileKeywords:        []string{"qemu", "x20"},
+			excludeFileKeywords: []string{"emulated"},
 		},
 		{
 			fileKeywords:        []string{"qemu", "x20", "emulated"},
@@ -134,6 +134,24 @@ func main() {
 		nil,
 		"plots/scripts/mean-webservice-time-concurrent.py",
 		identWebService,
+		concurrentJobs...,
+	)
+
+	// mean-shutdown-time-sequential.png
+	go generate(
+		true,
+		nil,
+		"plots/scripts/mean-shutdown-time-sequential.py",
+		identShutdownTime,
+		sequentialJobs...,
+	)
+
+	// mean-webservice-time-concurrent.png
+	go generate(
+		true,
+		nil,
+		"plots/scripts/mean-shutdown-time-concurrent.py",
+		identShutdownTime,
 		concurrentJobs...,
 	)
 

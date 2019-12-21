@@ -203,12 +203,12 @@ import matplotlib.pyplot as plt; plt.rcdefaults()
 import numpy as np
 import matplotlib.pyplot as plt
 
-objects = ('qemu x10','qemu x20','qemu x10 emulated','qemu x20 emulated','firecracker x10','firecracker x20')
+objects = ('qemu x10','qemu x10 emulated','qemu x20','qemu x20 emulated','firecracker x10','firecracker x20')
 y_pos = np.arange(len(objects))
 performance = [
 	stats.mean(qemu_x10),
-	stats.mean(qemu_x20),
 	stats.mean(qemu_x10_emulated),
+	stats.mean(qemu_x20),
 	stats.mean(qemu_x20_emulated),
 	stats.mean(firecracker_x10),
 	stats.mean(firecracker_x20)

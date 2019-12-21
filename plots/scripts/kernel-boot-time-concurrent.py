@@ -13,6 +13,8 @@ data=[
 fig, ax = plt.subplots()
 ax.set_title("Kernel Boot Time (Concurrent)")
 plt.ylabel('Time (ms)')
+
+#plt.yticks(np.arange(0, 4000, 500))
 ax.boxplot(data, labels=labels)
 
 plt.gcf().subplots_adjust(bottom=0.30)

@@ -1,4 +1,4 @@
-firecracker = [
+firecracker_T2 = [
 	213000.00000,
 	195000.00000,
 	195000.00000,
@@ -87,7 +87,7 @@ firecracker_default_kernel = [
 	197000.00000
 ]
 
-qemu_emulated = [
+qemu_emulated_cpu = [
 	215000.00000,
 	216000.00000,
 	216000.00000,
@@ -100,7 +100,7 @@ qemu_emulated = [
 	216000.00000
 ]
 
-qemu = [
+qemu_host_cpu = [
 	227000.00000,
 	228000.00000,
 	229000.00000,
@@ -120,12 +120,12 @@ import matplotlib.pyplot as plt; plt.rcdefaults()
 import numpy as np
 import matplotlib.pyplot as plt
 
-objects = ('qemu','qemu emulated','firecracker','firecracker C3','firecracker default kernel')
+objects = ('qemu host cpu','qemu emulated cpu','firecracker T2','firecracker C3','firecracker default kernel')
 y_pos = np.arange(len(objects))
 performance = [
-	stats.mean(qemu),
-	stats.mean(qemu_emulated),
-	stats.mean(firecracker),
+	stats.mean(qemu_host_cpu),
+	stats.mean(qemu_emulated_cpu),
+	stats.mean(firecracker_T2),
 	stats.mean(firecracker_C3),
 	stats.mean(firecracker_default_kernel)
 ]

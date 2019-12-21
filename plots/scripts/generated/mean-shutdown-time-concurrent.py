@@ -1,6 +1,3 @@
-import numpy as np
-import matplotlib.pyplot as plt
-
 qemu_x20 = [
 	34328.26015,
 	31689.63565,
@@ -201,25 +198,30 @@ qemu_x10 = [
 
 
 
-labels = ['qemu x10','qemu x10 emulated','qemu x20','qemu x20 emulated','firecracker x10','firecracker x20']
-y_pos = np.arange(len(labels))
+import statistics as stats
+import matplotlib.pyplot as plt; plt.rcdefaults()
+import numpy as np
+import matplotlib.pyplot as plt
 
-data=[
-	qemu_x10,
-	qemu_x10_emulated,
-	qemu_x20,
-	qemu_x20_emulated,
-	firecracker_x10,
-	firecracker_x20
+objects = ('qemu x10','qemu x10 emulated','qemu x20','qemu x20 emulated','firecracker x10','firecracker x20')
+y_pos = np.arange(len(objects))
+performance = [
+	stats.mean(qemu_x10),
+	stats.mean(qemu_x10_emulated),
+	stats.mean(qemu_x20),
+	stats.mean(qemu_x20_emulated),
+	stats.mean(firecracker_x10),
+	stats.mean(firecracker_x20)
 ]
 
-fig, ax = plt.subplots()
-ax.set_title("Shutdown Time (Concurrent)")
+plt.bar(y_pos, performance, align='center', alpha=0.5, color=['orange', 'green', 'orange', 'green'])
+plt.xticks(y_pos, objects)
+plt.yticks(np.arange(0, 36000, 3000))
 plt.ylabel('Time (ms)')
-ax.boxplot(data, labels=labels)
+plt.title('Mean VM Shutdown Time (Concurrent)')
 
 plt.gcf().subplots_adjust(bottom=0.30)
 plt.xticks(rotation=45)
 
 #plt.show()
-plt.savefig('plots/scripts/images/shutdown-time-concurrent.png')
+plt.savefig('plots/scripts/images/mean-shutdown-time-concurrent.png')

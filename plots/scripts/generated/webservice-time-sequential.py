@@ -1,33 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-qemu_emulated = [
-	1450.47179,
-	2043.29865,
-	2062.87465,
-	1361.20997,
-	1394.29882,
-	1380.92312,
-	1382.55454,
-	1391.98473,
-	2050.92573,
-	1340.94562
-]
-
-qemu = [
-	1106.60577,
-	1174.30180,
-	2039.68959,
-	2042.32914,
-	1144.12149,
-	1141.54589,
-	1167.05263,
-	1147.44122,
-	1112.47571,
-	1170.27711
-]
-
-firecracker = [
+firecracker_T2 = [
 	1190.23436,
 	1253.17204,
 	1201.01271,
@@ -116,15 +90,41 @@ firecracker_default_kernel = [
 	1008.33589
 ]
 
+qemu_emulated_cpu = [
+	1450.47179,
+	2043.29865,
+	2062.87465,
+	1361.20997,
+	1394.29882,
+	1380.92312,
+	1382.55454,
+	1391.98473,
+	2050.92573,
+	1340.94562
+]
+
+qemu_host_cpu = [
+	1106.60577,
+	1174.30180,
+	2039.68959,
+	2042.32914,
+	1144.12149,
+	1141.54589,
+	1167.05263,
+	1147.44122,
+	1112.47571,
+	1170.27711
+]
 
 
-labels = ['qemu','qemu emulated','firecracker','firecracker C3','firecracker default kernel']
+
+labels = ['qemu host cpu','qemu emulated cpu','firecracker T2','firecracker C3','firecracker default kernel']
 y_pos = np.arange(len(labels))
 
 data=[
-	qemu,
-	qemu_emulated,
-	firecracker,
+	qemu_host_cpu,
+	qemu_emulated_cpu,
+	firecracker_T2,
 	firecracker_C3,
 	firecracker_default_kernel
 ]

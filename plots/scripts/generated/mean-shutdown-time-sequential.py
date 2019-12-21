@@ -1,6 +1,3 @@
-import numpy as np
-import matplotlib.pyplot as plt
-
 firecracker_T2 = [
 	2291.26421,
 	2343.77812,
@@ -118,23 +115,29 @@ qemu_host_cpu = [
 
 
 
-labels = ['qemu host cpu','qemu emulated cpu','firecracker T2','firecracker C3','firecracker default kernel']
-y_pos = np.arange(len(labels))
+import statistics as stats
+import matplotlib.pyplot as plt; plt.rcdefaults()
+import numpy as np
+import matplotlib.pyplot as plt
 
-data=[
-	qemu_host_cpu,
-	qemu_emulated_cpu,
-	firecracker_T2,
-	firecracker_C3,
-	firecracker_default_kernel
+objects = ('qemu host cpu','qemu emulated cpu','firecracker T2','firecracker C3','firecracker default kernel')
+y_pos = np.arange(len(objects))
+performance = [
+	stats.mean(qemu_host_cpu),
+	stats.mean(qemu_emulated_cpu),
+	stats.mean(firecracker_T2),
+	stats.mean(firecracker_C3),
+	stats.mean(firecracker_default_kernel)
 ]
 
-fig, ax = plt.subplots()
+plt.bar(y_pos, performance, align='center', alpha=0.5, color=['orange', 'green', 'orange', 'green'])
+plt.xticks(y_pos, objects)
+plt.yticks(np.arange(0, 13000, 1000))
 plt.ylabel('Time (ms)')
-ax.boxplot(data, labels=labels)
+plt.title('Mean VM Shutdown Time')
 
 plt.gcf().subplots_adjust(bottom=0.30)
 plt.xticks(rotation=45)
 
 #plt.show()
-plt.savefig('plots/scripts/images/shutdown-time-sequential.png')
+plt.savefig('plots/scripts/images/mean-shutdown-time-sequential.png')
