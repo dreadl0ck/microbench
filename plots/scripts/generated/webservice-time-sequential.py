@@ -1,3 +1,6 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
 firecracker = [
 	1190.23436,
 	1253.17204,
@@ -69,27 +72,22 @@ qemu = [
 
 
 
-import statistics as stats
-import matplotlib.pyplot as plt; plt.rcdefaults()
-import numpy as np
-import matplotlib.pyplot as plt
+labels = ['qemu','qemu emulated','firecracker']
+y_pos = np.arange(len(labels))
 
-objects = ('qemu','qemu emulated','firecracker')
-y_pos = np.arange(len(objects))
-performance = [
-	stats.mean(qemu),
-	stats.mean(qemu_emulated),
-	stats.mean(firecracker)
+data=[
+	qemu,
+	qemu_emulated,
+	firecracker
 ]
 
-plt.bar(y_pos, performance, align='center', alpha=0.5, color=['blue', 'green', 'orange'])
-plt.xticks(y_pos, objects)
-plt.yticks(np.arange(0, 1500, 200))
+fig, ax = plt.subplots()
+ax.set_title("Webservice Startup Time (Concurrent)")
 plt.ylabel('Time (ms)')
-plt.title('Mean Web Service Startup Time')
+ax.boxplot(data, labels=labels)
 
 plt.gcf().subplots_adjust(bottom=0.30)
 plt.xticks(rotation=45)
 
 #plt.show()
-plt.savefig('plots/scripts/images/mean-webservice-time-sequential.png')
+plt.savefig('plots/scripts/images/webservice-time-sequential.png')

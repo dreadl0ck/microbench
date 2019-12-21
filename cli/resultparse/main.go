@@ -2,15 +2,17 @@ package main
 
 import (
 	"fmt"
-	"os/exec"
-	"path/filepath"
-	"text/template"
 	"io/ioutil"
 	"log"
 	"os"
+	"os/exec"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
+	"sync"
+	"text/template"
+	"time"
 )
 
 var lineRegex = regexp.MustCompile("delta=[0-9]*.[0-9]*m?s")
@@ -22,144 +24,145 @@ type job struct {
 	name                string
 }
 
+var wg sync.WaitGroup
+
+const (
+	identKernelBootTime = "kernel boot time received"
+	identHashBenchmark = "hash loop benchmark"
+	identWebService = "time until HTTP reply from webservice"
+)
+
 func main() {
-	// mean-hashing-time-sequential.png
-	generate(
-		"plots/scripts/mean-hashing-time-sequential.py",
-		"hash loop benchmark",
-		&job{
+
+	sequentialJobs := []*job{
+		{
 			fileKeywords:        []string{"qemu", "sequential"},
 			excludeFileKeywords: []string{"emulated"},
-			name: "qemu",
+			name:                "qemu",
 		},
-		&job{
-			fileKeywords:        []string{"qemu", "sequential", "emulated"},
+		{
+		fileKeywords:
+			[]string{"qemu", "sequential", "emulated"},
 			name: "qemu_emulated",
 		},
-		&job{
-			fileKeywords:        []string{"firecracker", "sequential"},
+		{
+		fileKeywords:
+			[]string{"firecracker", "sequential"},
 			name: "firecracker",
 		},
+	}
+
+	concurrentJobs := []*job{
+		{
+			fileKeywords:        []string{"qemu", "x10"},
+			excludeFileKeywords: []string{"emulated"},
+		},
+		{
+			fileKeywords:        []string{"qemu", "x20"},
+			excludeFileKeywords: []string{"emulated"},
+		},
+		{
+			fileKeywords:        []string{"qemu", "x10", "emulated"},
+		},
+		{
+			fileKeywords:        []string{"qemu", "x20", "emulated"},
+		},
+		{
+			fileKeywords:        []string{"firecracker", "x10"},
+		},
+		{
+			fileKeywords:        []string{"firecracker", "x20"},
+		},
+	}
+
+	// mean-hashing-time-sequential.png
+	go generate(
+		true,
+		"plots/scripts/mean-hashing-time-sequential.py",
+		identHashBenchmark,
+		sequentialJobs...,
 	)
 
 	// mean-hashing-time-concurrent.png
-	generate(
+	go generate(
+		true,
 		"plots/scripts/mean-hashing-time-concurrent.py",
-		"hash loop benchmark",
-		&job{
-			fileKeywords:        []string{"qemu", "x10"},
-			excludeFileKeywords: []string{"emulated"},
-		},
-		&job{
-			fileKeywords:        []string{"qemu", "x20"},
-			excludeFileKeywords: []string{"emulated"},
-		},
-		&job{
-			fileKeywords:        []string{"qemu", "x10", "emulated"},
-		},
-		&job{
-			fileKeywords:        []string{"qemu", "x20", "emulated"},
-		},
-		&job{
-			fileKeywords:        []string{"firecracker", "x10"},
-		},
-		&job{
-			fileKeywords:        []string{"firecracker", "x20"},
-		},
+		identHashBenchmark,
+		concurrentJobs...,
 	)
 
 	// mean-kernel-boot-time-sequential.png
-	generate(
+	go generate(
+		true,
 		"plots/scripts/mean-kernel-boot-time-sequential.py",
-		"kernel boot time received",
-		&job{
-			fileKeywords:        []string{"qemu", "sequential"},
-			excludeFileKeywords: []string{"emulated"},
-			name: "qemu",
-		},
-		&job{
-			fileKeywords:        []string{"qemu", "sequential", "emulated"},
-			name: "qemu_emulated",
-		},
-		&job{
-			fileKeywords:        []string{"firecracker", "sequential"},
-			name: "firecracker",
-		},
+		identKernelBootTime,
+		sequentialJobs...,
 	)
 
 	// mean-kernel-boot-time-concurrent.png
-	generate(
+	go generate(
+		true,
 		"plots/scripts/mean-kernel-boot-time-concurrent.py",
-		"kernel boot time received",
-		&job{
-			fileKeywords:        []string{"qemu", "x10"},
-			excludeFileKeywords: []string{"emulated"},
-		},
-		&job{
-			fileKeywords:        []string{"qemu", "x20"},
-			excludeFileKeywords: []string{"emulated"},
-		},
-		&job{
-			fileKeywords:        []string{"qemu", "x10", "emulated"},
-		},
-		&job{
-			fileKeywords:        []string{"qemu", "x20", "emulated"},
-		},
-		&job{
-			fileKeywords:        []string{"firecracker", "x10"},
-		},
-		&job{
-			fileKeywords:        []string{"firecracker", "x20"},
-		},
+		identKernelBootTime,
+		concurrentJobs...,
 	)
 
 	// mean-webservice-time-sequential.png
-	generate(
+	go generate(
+		true,
 		"plots/scripts/mean-webservice-time-sequential.py",
-		"time until HTTP reply from webservice",
-		&job{
-			fileKeywords:        []string{"qemu", "sequential"},
-			excludeFileKeywords: []string{"emulated"},
-			name: "qemu",
-		},
-		&job{
-			fileKeywords:        []string{"qemu", "sequential", "emulated"},
-			name: "qemu_emulated",
-		},
-		&job{
-			fileKeywords:        []string{"firecracker", "sequential"},
-			name: "firecracker",
-		},
+		identWebService,
+		sequentialJobs...,
 	)
 
 	// mean-webservice-time-concurrent.png
-	generate(
+	go generate(
+		true,
 		"plots/scripts/mean-webservice-time-concurrent.py",
-		"time until HTTP reply from webservice",
-		&job{
-			fileKeywords:        []string{"qemu", "x10"},
-			excludeFileKeywords: []string{"emulated"},
-		},
-		&job{
-			fileKeywords:        []string{"qemu", "x20"},
-			excludeFileKeywords: []string{"emulated"},
-		},
-		&job{
-			fileKeywords:        []string{"qemu", "x10", "emulated"},
-		},
-		&job{
-			fileKeywords:        []string{"qemu", "x20", "emulated"},
-		},
-		&job{
-			fileKeywords:        []string{"firecracker", "x10"},
-		},
-		&job{
-			fileKeywords:        []string{"firecracker", "x20"},
-		},
+		identWebService,
+		concurrentJobs...,
 	)
+
+	// webservice-time-sequential.png
+	go generate(
+		false,
+		"plots/scripts/webservice-time-sequential.py",
+		identWebService,
+		sequentialJobs...,
+	)
+
+	// webservice-time-concurrent.png
+	go generate(
+		false,
+		"plots/scripts/webservice-time-concurrent.py",
+		identWebService,
+		concurrentJobs...,
+	)
+
+	// kernel-boot-time-sequential.png
+	go generate(
+		false,
+		"plots/scripts/kernel-boot-time-sequential.py",
+		identKernelBootTime,
+		sequentialJobs...,
+	)
+
+	// webservice-time-concurrent.png
+	go generate(
+		false,
+		"plots/scripts/kernel-boot-time-concurrent.py",
+		identKernelBootTime,
+		concurrentJobs...,
+	)
+
+	time.Sleep(500 * time.Millisecond)
+	wg.Wait()
 }
 
-func generate(script string, lineIdent string, jobs ...*job) {
+func generate(mean bool, script string, lineIdent string, jobs ...*job) {
+
+	wg.Add(1)
+	defer wg.Done()
 
 	for _, j := range jobs {
 		if j.name == "" {
@@ -193,7 +196,7 @@ func generate(script string, lineIdent string, jobs ...*job) {
 		out += "]\n\n"
 	}
 
-	fmt.Println(out)
+	//fmt.Println(out)
 
 	t, err := template.ParseFiles(script)
 	if err != nil {
@@ -224,15 +227,25 @@ func generate(script string, lineIdent string, jobs ...*job) {
 			current++
 			if current == lastElem {
 				objects += "'" + strings.ReplaceAll(j.name, "_", " ") + "'"
-				load += "\tstats.mean("+ j.name + ")"
+				if mean {
+					load += "\tstats.mean("+ j.name + ")"
+				} else {
+					load += "\t"+ j.name + ""
+				}
 			} else {
 				objects += "'" + strings.ReplaceAll(j.name, "_", " ") + "',"
-				load += "\tstats.mean("+ j.name + "),\n"
+				if mean {
+					load += "\tstats.mean("+ j.name + "),\n"
+				} else {
+					load += "\t"+ j.name + ",\n"
+				}
 			}
 		} else {
 			log.Fatal("name not found: ", j.name)
 		}
 	}
+
+	outImageName := filepath.Dir(script) + "/images/" + strings.TrimSuffix(filepath.Base(script), ".py") + ".png"
 
 	err = t.Execute(f, struct{
 		Data string
@@ -245,7 +258,7 @@ func generate(script string, lineIdent string, jobs ...*job) {
 		logStatements,
 		load,
 		objects,
-		"'"+ filepath.Dir(script) + "/images/" + strings.TrimSuffix(filepath.Base(script), ".py") + ".png'",
+		"'"+ outImageName + "'",
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -256,7 +269,9 @@ func generate(script string, lineIdent string, jobs ...*job) {
 		fmt.Println(string(outCmd))
 		log.Fatal(err)
 	}
-	fmt.Println(string(outCmd))
+	//fmt.Println(string(outCmd))
+
+	fmt.Println("created", outImageName)
 }
 
 func parseJobs(data map[string][]float64, f os.FileInfo, lineIdent string, jobs []*job) {
@@ -296,7 +311,7 @@ func parseJobs(data map[string][]float64, f os.FileInfo, lineIdent string, jobs 
 			value := lineRegex.FindString(l)
 			value = strings.TrimPrefix(value, "delta=")
 
-			fmt.Println(f.Name(), value)
+			//fmt.Println(f.Name(), value)
 
 			var toMs bool
 			if !strings.HasSuffix(value, "ms") {
@@ -304,9 +319,7 @@ func parseJobs(data map[string][]float64, f os.FileInfo, lineIdent string, jobs 
 			}
 			final := strings.TrimSuffix(
 				strings.TrimSuffix(value, "ms"),
-				"s")
-
-			fmt.Println(final)
+			"s")
 
 			f, err := strconv.ParseFloat(
 				final,

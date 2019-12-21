@@ -15,7 +15,7 @@ bar = plt.bar(y_pos, performance, align='center', alpha=0.5, color=['orange', 'g
 plt.xticks(y_pos, objects)
 plt.yticks(np.arange(0, 3000, 500))
 plt.ylabel('Time (ms)')
-plt.title('Mean Kernel Boot Time')
+plt.title('Mean Kernel Boot Time (Concurrent)')
 #plt.legend((bar[0], bar[1]), ('Single', 'Concurrent'))
 
 plt.gcf().subplots_adjust(bottom=0.30)

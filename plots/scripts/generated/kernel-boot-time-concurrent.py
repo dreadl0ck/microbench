@@ -1,3 +1,6 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
 firecracker_x10 = [
 	827.23400,
 	867.32700,
@@ -191,31 +194,25 @@ qemu_x20 = [
 
 
 
-import statistics as stats
-import matplotlib.pyplot as plt; plt.rcdefaults()
-import numpy as np
-import matplotlib.pyplot as plt
+labels = ['qemu x10','qemu x20','qemu x10 emulated','qemu x20 emulated','firecracker x10','firecracker x20']
+y_pos = np.arange(len(labels))
 
-objects = ('qemu x10','qemu x20','qemu x10 emulated','qemu x20 emulated','firecracker x10','firecracker x20')
-y_pos = np.arange(len(objects))
-performance = [
-	stats.mean(qemu_x10),
-	stats.mean(qemu_x20),
-	stats.mean(qemu_x10_emulated),
-	stats.mean(qemu_x20_emulated),
-	stats.mean(firecracker_x10),
-	stats.mean(firecracker_x20)
+data=[
+	qemu_x10,
+	qemu_x20,
+	qemu_x10_emulated,
+	qemu_x20_emulated,
+	firecracker_x10,
+	firecracker_x20
 ]
 
-bar = plt.bar(y_pos, performance, align='center', alpha=0.5, color=['orange', 'green', 'orange', 'green'])
-plt.xticks(y_pos, objects)
-plt.yticks(np.arange(0, 3000, 500))
+fig, ax = plt.subplots()
+ax.set_title("Kernel Boot Time (Concurrent)")
 plt.ylabel('Time (ms)')
-plt.title('Mean Kernel Boot Time (Concurrent)')
-#plt.legend((bar[0], bar[1]), ('Single', 'Concurrent'))
+ax.boxplot(data, labels=labels)
 
 plt.gcf().subplots_adjust(bottom=0.30)
 plt.xticks(rotation=45)
 
 #plt.show()
-plt.savefig('plots/scripts/images/mean-kernel-boot-time-concurrent.png')
+plt.savefig('plots/scripts/images/kernel-boot-time-concurrent.png')

@@ -1,15 +1,5 @@
-qemu = [
-	844.09100,
-	860.92600,
-	1857.71200,
-	1862.11400,
-	853.24500,
-	870.04100,
-	860.37100,
-	853.40300,
-	856.47700,
-	841.76000
-]
+import numpy as np
+import matplotlib.pyplot as plt
 
 firecracker = [
 	927.48300,
@@ -67,30 +57,37 @@ qemu_emulated = [
 	1033.63700
 ]
 
-
-
-import statistics as stats
-import matplotlib.pyplot as plt; plt.rcdefaults()
-import numpy as np
-import matplotlib.pyplot as plt
-
-objects = ('qemu','qemu emulated','firecracker')
-y_pos = np.arange(len(objects))
-performance = [
-	stats.mean(qemu),
-	stats.mean(qemu_emulated),
-	stats.mean(firecracker)
+qemu = [
+	844.09100,
+	860.92600,
+	1857.71200,
+	1862.11400,
+	853.24500,
+	870.04100,
+	860.37100,
+	853.40300,
+	856.47700,
+	841.76000
 ]
 
-bar = plt.bar(y_pos, performance, align='center', alpha=0.5, color=['blue', 'green', 'orange'])
-plt.xticks(y_pos, objects)
-plt.yticks(np.arange(0, 1300, 100))
+
+
+labels = ['qemu','qemu emulated','firecracker']
+y_pos = np.arange(len(labels))
+
+data=[
+	qemu,
+	qemu_emulated,
+	firecracker
+]
+
+fig, ax = plt.subplots()
+ax.set_title("Kernel Boot Time")
 plt.ylabel('Time (ms)')
-plt.title('Mean Kernel Boot Time')
-#plt.legend((bar[0], bar[1]), ('Single', 'Concurrent'))
+ax.boxplot(data, labels=labels)
 
 plt.gcf().subplots_adjust(bottom=0.30)
 plt.xticks(rotation=45)
 
 #plt.show()
-plt.savefig('plots/scripts/images/mean-kernel-boot-time-sequential.png')
+plt.savefig('plots/scripts/images/kernel-boot-time-sequential.png')
