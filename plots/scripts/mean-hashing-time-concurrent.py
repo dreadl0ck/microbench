@@ -16,7 +16,7 @@ performance = [
 
 bar = plt.bar(y_pos, performance, align='center', alpha=0.5, color=['blue', 'blue', 'blue', 'blue', 'orange', 'orange'])
 plt.xticks(y_pos, objects)
-plt.yticks(np.arange(0, 400, 100))
+#plt.yticks(np.arange(0, 400, 100))
 plt.ylabel('Time (ms)')
 plt.title('Mean Hashing Time SHA-256 100 x 1MB (Concurrent)')
 
