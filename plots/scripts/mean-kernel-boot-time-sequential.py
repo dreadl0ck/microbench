@@ -13,7 +13,7 @@ performance = [
 
 bar = plt.bar(y_pos, performance, align='center', alpha=0.5, color=['blue', 'blue', 'orange', 'orange', 'orange'])
 plt.xticks(y_pos, objects)
-plt.yticks(np.arange(0, 1300, 100))
+#plt.yticks(np.arange(0, 1300, 100))
 plt.ylabel('Time (ms)')
 plt.title('Mean Kernel Boot Time')
 
