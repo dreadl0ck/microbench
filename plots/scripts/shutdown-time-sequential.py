@@ -11,6 +11,7 @@ data=[
 ]
 
 fig, ax = plt.subplots()
+ax.set_title('Shutdown Time')
 plt.ylabel('Time (ms)')
 ax.boxplot(data, labels=labels)
 
