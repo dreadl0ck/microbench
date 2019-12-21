@@ -1,39 +1,3 @@
-default_kernel = [
-	122.82453,
-	89.34523,
-	105.04158,
-	104.42153,
-	98.12093,
-	104.89656,
-	88.79501,
-	98.89055,
-	100.87000,
-	82.99165,
-	85.52291,
-	72.47333,
-	101.45224,
-	107.40379,
-	80.19164,
-	109.31411,
-	92.97686,
-	66.28031,
-	90.28110,
-	94.17809
-]
-
-emulated_cpu = [
-	79.83308,
-	56.86711,
-	48.73478,
-	82.62705,
-	77.75761,
-	90.43223,
-	65.42166,
-	76.74701,
-	48.96195,
-	82.90538
-]
-
 host_cpu = [
 	64.47949,
 	85.34255,
@@ -113,14 +77,50 @@ C3_cpu = [
 	90.28110
 ]
 
+default_kernel = [
+	122.82453,
+	89.34523,
+	105.04158,
+	104.42153,
+	98.12093,
+	104.89656,
+	88.79501,
+	98.89055,
+	100.87000,
+	82.99165,
+	85.52291,
+	72.47333,
+	101.45224,
+	107.40379,
+	80.19164,
+	109.31411,
+	92.97686,
+	66.28031,
+	90.28110,
+	94.17809
+]
+
+emulated_cpu = [
+	79.83308,
+	56.86711,
+	48.73478,
+	82.62705,
+	77.75761,
+	90.43223,
+	65.42166,
+	76.74701,
+	48.96195,
+	82.90538
+]
+
 
 
 import statistics as stats
+print(stats.mean(emulated_cpu))
+print(stats.mean(host_cpu))
 print(stats.mean(T2_cpu))
 print(stats.mean(C3_cpu))
 print(stats.mean(default_kernel))
-print(stats.mean(emulated_cpu))
-print(stats.mean(host_cpu))
 
 
 import matplotlib.pyplot as plt; plt.rcdefaults()
@@ -140,7 +140,7 @@ performance = [
 
 bar = plt.bar(y_pos, performance, align='center', alpha=0.5, color=['blue', 'blue', 'orange', 'orange', 'orange'])
 plt.xticks(y_pos, objects)
-plt.yticks(np.arange(0, 100, 10))
+#plt.yticks(np.arange(0, 100, 10))
 plt.ylabel('Time (ms)')
 plt.title('Mean Hashing Time SHA-256 100 x 1MB')
 

@@ -130,7 +130,7 @@ data=[
 ]
 
 fig, ax = plt.subplots()
-ax.set_title("Webservice Startup Time (Concurrent)")
+ax.set_title("Webservice Startup Time")
 plt.ylabel('Time (ms)')
 ax.boxplot(data, labels=labels)
 
