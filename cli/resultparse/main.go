@@ -24,18 +24,17 @@ type job struct {
 	ident               string
 }
 
-var defaultRegEx = regexp.MustCompile("delta=[0-9]*.[0-9]*m?s")
-var wg sync.WaitGroup
-
 var (
+	flagDebug = flag.Bool("debug", false, "toggle debug mode")
+	defaultRegEx = regexp.MustCompile("delta=[0-9]*.[0-9]*m?s")
+	wg sync.WaitGroup
+
 	identKernelBootTime = "kernel boot time received"
 	identHashBenchmark  = "hash loop benchmark"
 	identWebService     = "time until HTTP reply from webservice"
 	identShutdownTime   = "shutdown complete"
 	identKernelLogLines = "number of kernel log lines received"
 )
-
-var flagDebug = flag.Bool("debug", false, "toggle debug mode")
 
 func main() {
 
@@ -470,6 +469,7 @@ func generate(p plot) {
 
 	// in stacked mode, update the loading instructions
 	if p.stacked {
+		// TODO: generate this properly and make it configurable
 		load = "web = [\n" + load + "\n]\n"
 	}
 
