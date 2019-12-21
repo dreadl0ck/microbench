@@ -41,6 +41,52 @@ firecracker = [
 	2006.94145
 ]
 
+firecracker_C3 = [
+	1190.23436,
+	1253.17204,
+	1031.47671,
+	1257.38374,
+	1203.33090,
+	1011.06872,
+	1160.92970,
+	1020.95356,
+	1009.99655,
+	1253.76479,
+	1997.25129,
+	1250.21300,
+	1204.60626,
+	1266.71832,
+	1187.27939,
+	1030.35450,
+	1182.59821,
+	1038.79605,
+	1197.17705,
+	1264.89341
+]
+
+firecracker_default_kernel = [
+	1253.17204,
+	1201.01271,
+	1257.38374,
+	1259.45029,
+	1011.06872,
+	1029.60918,
+	1020.95356,
+	1260.95425,
+	1253.76479,
+	1019.99951,
+	1250.21300,
+	1035.67160,
+	1266.71832,
+	1255.39149,
+	1030.35450,
+	1257.55789,
+	1038.79605,
+	1021.24892,
+	1264.89341,
+	1008.33589
+]
+
 qemu_emulated = [
 	1450.47179,
 	2043.29865,
@@ -74,12 +120,14 @@ import matplotlib.pyplot as plt; plt.rcdefaults()
 import numpy as np
 import matplotlib.pyplot as plt
 
-objects = ('qemu','qemu emulated','firecracker')
+objects = ('qemu','qemu emulated','firecracker','firecracker C3','firecracker default kernel')
 y_pos = np.arange(len(objects))
 performance = [
 	stats.mean(qemu),
 	stats.mean(qemu_emulated),
-	stats.mean(firecracker)
+	stats.mean(firecracker),
+	stats.mean(firecracker_C3),
+	stats.mean(firecracker_default_kernel)
 ]
 
 plt.bar(y_pos, performance, align='center', alpha=0.5, color=['blue', 'green', 'orange'])

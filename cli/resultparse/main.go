@@ -15,21 +15,23 @@ import (
 	"time"
 )
 
-var lineRegex = regexp.MustCompile("delta=[0-9]*.[0-9]*m?s")
-
 type job struct {
 	fileKeywords        []string
 	excludeFileKeywords []string
 	lineIdent           string
+	lineRegex           *regexp.Regexp
 	name                string
 }
 
+var defaultRegEx = regexp.MustCompile("delta=[0-9]*.[0-9]*m?s")
 var wg sync.WaitGroup
 
 const (
 	identKernelBootTime = "kernel boot time received"
 	identHashBenchmark = "hash loop benchmark"
 	identWebService = "time until HTTP reply from webservice"
+	identShutdownTime = "shutdown complete"
+	identKernelLogLines = "number of kernel log lines received"
 )
 
 func main() {
@@ -41,14 +43,20 @@ func main() {
 			name:                "qemu",
 		},
 		{
-		fileKeywords:
-			[]string{"qemu", "sequential", "emulated"},
-			name: "qemu_emulated",
+			fileKeywords: 	[]string{"qemu", "sequential", "emulated"},
+			name: 			"qemu_emulated",
 		},
 		{
-		fileKeywords:
-			[]string{"firecracker", "sequential"},
-			name: "firecracker",
+			fileKeywords: 	[]string{"firecracker", "sequential"},
+			name: 			"firecracker",
+		},
+		{
+			fileKeywords: 	[]string{"firecracker", "sequential", "C3"},
+			name: 			"firecracker_C3",
+		},
+		{
+			fileKeywords: 	[]string{"firecracker", "sequential", "default", "kernel"},
+			name: 			"firecracker_default_kernel",
 		},
 	}
 
@@ -78,6 +86,7 @@ func main() {
 	// mean-hashing-time-sequential.png
 	go generate(
 		true,
+		nil,
 		"plots/scripts/mean-hashing-time-sequential.py",
 		identHashBenchmark,
 		sequentialJobs...,
@@ -86,6 +95,7 @@ func main() {
 	// mean-hashing-time-concurrent.png
 	go generate(
 		true,
+		nil,
 		"plots/scripts/mean-hashing-time-concurrent.py",
 		identHashBenchmark,
 		concurrentJobs...,
@@ -94,6 +104,7 @@ func main() {
 	// mean-kernel-boot-time-sequential.png
 	go generate(
 		true,
+		nil,
 		"plots/scripts/mean-kernel-boot-time-sequential.py",
 		identKernelBootTime,
 		sequentialJobs...,
@@ -102,6 +113,7 @@ func main() {
 	// mean-kernel-boot-time-concurrent.png
 	go generate(
 		true,
+		nil,
 		"plots/scripts/mean-kernel-boot-time-concurrent.py",
 		identKernelBootTime,
 		concurrentJobs...,
@@ -110,6 +122,7 @@ func main() {
 	// mean-webservice-time-sequential.png
 	go generate(
 		true,
+		nil,
 		"plots/scripts/mean-webservice-time-sequential.py",
 		identWebService,
 		sequentialJobs...,
@@ -118,6 +131,7 @@ func main() {
 	// mean-webservice-time-concurrent.png
 	go generate(
 		true,
+		nil,
 		"plots/scripts/mean-webservice-time-concurrent.py",
 		identWebService,
 		concurrentJobs...,
@@ -126,6 +140,7 @@ func main() {
 	// webservice-time-sequential.png
 	go generate(
 		false,
+		nil,
 		"plots/scripts/webservice-time-sequential.py",
 		identWebService,
 		sequentialJobs...,
@@ -134,6 +149,7 @@ func main() {
 	// webservice-time-concurrent.png
 	go generate(
 		false,
+		nil,
 		"plots/scripts/webservice-time-concurrent.py",
 		identWebService,
 		concurrentJobs...,
@@ -142,6 +158,7 @@ func main() {
 	// kernel-boot-time-sequential.png
 	go generate(
 		false,
+		nil,
 		"plots/scripts/kernel-boot-time-sequential.py",
 		identKernelBootTime,
 		sequentialJobs...,
@@ -150,16 +167,44 @@ func main() {
 	// webservice-time-concurrent.png
 	go generate(
 		false,
+		nil,
 		"plots/scripts/kernel-boot-time-concurrent.py",
 		identKernelBootTime,
 		concurrentJobs...,
+	)
+
+	// shutdown-time-sequential.png
+	go generate(
+		false,
+		nil,
+		"plots/scripts/shutdown-time-sequential.py",
+		identShutdownTime,
+		sequentialJobs...,
+	)
+
+	// shutdown-time-concurrent.png
+	go generate(
+		false,
+		nil,
+		"plots/scripts/shutdown-time-concurrent.py",
+		identShutdownTime,
+		concurrentJobs...,
+	)
+
+	// kernel-log-entries.png
+	go generate(
+		true,
+		regexp.MustCompile("lines=[0-9]*"),
+		"plots/scripts/kernel-log-entries.py",
+		identKernelLogLines,
+		sequentialJobs...,
 	)
 
 	time.Sleep(500 * time.Millisecond)
 	wg.Wait()
 }
 
-func generate(mean bool, script string, lineIdent string, jobs ...*job) {
+func generate(mean bool, reg *regexp.Regexp, script string, lineIdent string, jobs ...*job) {
 
 	wg.Add(1)
 	defer wg.Done()
@@ -178,7 +223,7 @@ func generate(mean bool, script string, lineIdent string, jobs ...*job) {
 	}
 
 	for _, f := range files {
-		parseJobs(data, f, lineIdent, jobs)
+		parseJobs(data, f, reg, lineIdent, jobs)
 	}
 
 	var out string
@@ -241,7 +286,7 @@ func generate(mean bool, script string, lineIdent string, jobs ...*job) {
 				}
 			}
 		} else {
-			log.Fatal("name not found: ", j.name)
+			fmt.Println(script + ": no data for", j.name, "found after collecting values")
 		}
 	}
 
@@ -274,7 +319,11 @@ func generate(mean bool, script string, lineIdent string, jobs ...*job) {
 	fmt.Println("created", outImageName)
 }
 
-func parseJobs(data map[string][]float64, f os.FileInfo, lineIdent string, jobs []*job) {
+func parseJobs(data map[string][]float64, f os.FileInfo, reg *regexp.Regexp, lineIdent string, jobs []*job) {
+
+	if reg == nil {
+		reg = defaultRegEx
+	}
 
 	for _, j := range jobs {
 
@@ -308,10 +357,16 @@ func parseJobs(data map[string][]float64, f os.FileInfo, lineIdent string, jobs 
 				continue
 			}
 
-			value := lineRegex.FindString(l)
-			value = strings.TrimPrefix(value, "delta=")
+			value := reg.FindString(l)
 
-			//fmt.Println(f.Name(), value)
+			// remove the XXX= prefix from the extracted value
+			for i, c := range value {
+				if c == '=' {
+					value = value[i+1:]
+				}
+			}
+
+			//fmt.Println(f.Name(), value, l)
 
 			var toMs bool
 			if !strings.HasSuffix(value, "ms") {
@@ -321,11 +376,15 @@ func parseJobs(data map[string][]float64, f os.FileInfo, lineIdent string, jobs 
 				strings.TrimSuffix(value, "ms"),
 			"s")
 
+			if final == "" {
+				continue
+			}
+
 			f, err := strconv.ParseFloat(
 				final,
 				64)
 			if err != nil {
-				log.Fatal(err)
+				log.Fatal("failed to parse float ", final, ", error: ", err)
 			}
 
 			if toMs {

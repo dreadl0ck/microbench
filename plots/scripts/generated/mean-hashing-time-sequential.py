@@ -41,6 +41,52 @@ firecracker = [
 	98.93750
 ]
 
+firecracker_C3 = [
+	91.46145,
+	122.82453,
+	58.67076,
+	105.04158,
+	106.47532,
+	98.12093,
+	86.43155,
+	88.79501,
+	54.94133,
+	100.87000,
+	110.07188,
+	85.52291,
+	92.75886,
+	101.45224,
+	103.88068,
+	80.19164,
+	85.94929,
+	92.97686,
+	92.08320,
+	90.28110
+]
+
+firecracker_default_kernel = [
+	122.82453,
+	89.34523,
+	105.04158,
+	104.42153,
+	98.12093,
+	104.89656,
+	88.79501,
+	98.89055,
+	100.87000,
+	82.99165,
+	85.52291,
+	72.47333,
+	101.45224,
+	107.40379,
+	80.19164,
+	109.31411,
+	92.97686,
+	66.28031,
+	90.28110,
+	94.17809
+]
+
 qemu_emulated = [
 	79.83308,
 	56.86711,
@@ -70,22 +116,26 @@ qemu = [
 
 
 import statistics as stats
-print(stats.mean(firecracker))
 print(stats.mean(qemu_emulated))
 print(stats.mean(qemu))
+print(stats.mean(firecracker))
+print(stats.mean(firecracker_C3))
+print(stats.mean(firecracker_default_kernel))
 
 
 import matplotlib.pyplot as plt; plt.rcdefaults()
 import numpy as np
 import matplotlib.pyplot as plt
 
-objects = ('qemu','qemu emulated','firecracker')
+objects = ('qemu','qemu emulated','firecracker','firecracker C3','firecracker default kernel')
 
 y_pos = np.arange(len(objects))
 performance = [
 	stats.mean(qemu),
 	stats.mean(qemu_emulated),
-	stats.mean(firecracker)
+	stats.mean(firecracker),
+	stats.mean(firecracker_C3),
+	stats.mean(firecracker_default_kernel)
 ]
 
 bar = plt.bar(y_pos, performance, align='center', alpha=0.5, color=['blue', 'green', 'orange'])
@@ -93,5 +143,8 @@ plt.xticks(y_pos, objects)
 plt.yticks(np.arange(0, 100, 10))
 plt.ylabel('Time (ms)')
 plt.title('Mean Hashing Time')
+
+plt.gcf().subplots_adjust(bottom=0.30)
+plt.xticks(rotation=45)
 
 plt.savefig('plots/scripts/images/mean-hashing-time-sequential.png')
