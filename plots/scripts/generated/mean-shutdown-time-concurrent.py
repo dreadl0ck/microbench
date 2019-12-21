@@ -1,3 +1,16 @@
+qemu_x10 = [
+	15242.35278,
+	16195.20112,
+	16028.14253,
+	16072.69002,
+	15172.23902,
+	15479.58662,
+	16715.64501,
+	15764.85923,
+	17036.69884,
+	16104.44938
+]
+
 qemu_x20 = [
 	34328.26015,
 	31689.63565,
@@ -183,19 +196,6 @@ qemu_x20_emulated = [
 	31333.52363
 ]
 
-qemu_x10 = [
-	15242.35278,
-	16195.20112,
-	16028.14253,
-	16072.69002,
-	15172.23902,
-	15479.58662,
-	16715.64501,
-	15764.85923,
-	17036.69884,
-	16104.44938
-]
-
 
 
 import statistics as stats
@@ -206,7 +206,7 @@ import matplotlib.pyplot as plt
 objects = ('qemu x10','qemu x10 emulated','qemu x20','qemu x20 emulated','firecracker x10','firecracker x20')
 y_pos = np.arange(len(objects))
 performance = [
-	stats.mean(qemu_x10),
+    	stats.mean(qemu_x10),
 	stats.mean(qemu_x10_emulated),
 	stats.mean(qemu_x20),
 	stats.mean(qemu_x20_emulated),
@@ -214,11 +214,13 @@ performance = [
 	stats.mean(firecracker_x20)
 ]
 
-plt.bar(y_pos, performance, align='center', alpha=0.5, color=['orange', 'green', 'orange', 'green'])
+bar = plt.bar(y_pos, performance, align='center', alpha=0.5, color=['blue', 'blue', 'blue', 'blue', 'orange', 'orange'])
 plt.xticks(y_pos, objects)
-plt.yticks(np.arange(0, 36000, 3000))
+#plt.yticks(np.arange(0, 3000, 500))
 plt.ylabel('Time (ms)')
-plt.title('Mean VM Shutdown Time (Concurrent)')
+plt.title('Mean Shutdown Time (Concurrent)')
+
+plt.legend((bar[0], bar[4]), ('QEMU', 'firecracker'))
 
 plt.gcf().subplots_adjust(bottom=0.30)
 plt.xticks(rotation=45)

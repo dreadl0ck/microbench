@@ -1,30 +1,4 @@
-qemu_emulated_cpu = [
-	1450.47179,
-	2043.29865,
-	2062.87465,
-	1361.20997,
-	1394.29882,
-	1380.92312,
-	1382.55454,
-	1391.98473,
-	2050.92573,
-	1340.94562
-]
-
-qemu_host_cpu = [
-	1106.60577,
-	1174.30180,
-	2039.68959,
-	2042.32914,
-	1144.12149,
-	1141.54589,
-	1167.05263,
-	1147.44122,
-	1112.47571,
-	1170.27711
-]
-
-firecracker_T2 = [
+T2_cpu = [
 	1190.23436,
 	1253.17204,
 	1201.01271,
@@ -67,7 +41,7 @@ firecracker_T2 = [
 	2006.94145
 ]
 
-firecracker_C3 = [
+C3_cpu = [
 	1190.23436,
 	1253.17204,
 	1031.47671,
@@ -90,7 +64,7 @@ firecracker_C3 = [
 	1264.89341
 ]
 
-firecracker_default_kernel = [
+default_kernel = [
 	1253.17204,
 	1201.01271,
 	1257.38374,
@@ -113,6 +87,32 @@ firecracker_default_kernel = [
 	1008.33589
 ]
 
+emulated_cpu = [
+	1450.47179,
+	2043.29865,
+	2062.87465,
+	1361.20997,
+	1394.29882,
+	1380.92312,
+	1382.55454,
+	1391.98473,
+	2050.92573,
+	1340.94562
+]
+
+host_cpu = [
+	1106.60577,
+	1174.30180,
+	2039.68959,
+	2042.32914,
+	1144.12149,
+	1141.54589,
+	1167.05263,
+	1147.44122,
+	1112.47571,
+	1170.27711
+]
+
 
 
 import statistics as stats
@@ -120,24 +120,23 @@ import matplotlib.pyplot as plt; plt.rcdefaults()
 import numpy as np
 import matplotlib.pyplot as plt
 
-objects = ('qemu host cpu','qemu emulated cpu','firecracker T2','firecracker C3','firecracker default kernel')
+objects = ('host cpu','emulated cpu','T2 cpu','C3 cpu','default kernel')
 y_pos = np.arange(len(objects))
 performance = [
-	stats.mean(qemu_host_cpu),
-	stats.mean(qemu_emulated_cpu),
-	stats.mean(firecracker_T2),
-	stats.mean(firecracker_C3),
-	stats.mean(firecracker_default_kernel)
+	stats.mean(host_cpu),
+	stats.mean(emulated_cpu),
+	stats.mean(T2_cpu),
+	stats.mean(C3_cpu),
+	stats.mean(default_kernel)
 ]
 
-plt.bar(y_pos, performance, align='center', alpha=0.5, color=['blue', 'green', 'orange'])
+bar = plt.bar(y_pos, performance, align='center', alpha=0.5, color=['blue', 'blue', 'orange', 'orange', 'orange'])
 plt.xticks(y_pos, objects)
-plt.yticks(np.arange(0, 1500, 200))
+#plt.yticks(np.arange(0, 1500, 200))
 plt.ylabel('Time (ms)')
 plt.title('Mean Web Service Startup Time')
 
-plt.gcf().subplots_adjust(bottom=0.30)
-plt.xticks(rotation=45)
+plt.legend((bar[0], bar[2]), ('QEMU', 'firecracker'))
 
 #plt.show()
 plt.savefig('plots/scripts/images/mean-webservice-time-sequential.png')

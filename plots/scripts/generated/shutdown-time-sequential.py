@@ -1,7 +1,20 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-firecracker_T2 = [
+qemu_sequential = [
+	10803.94492,
+	10818.61036,
+	10742.04889,
+	10722.19653,
+	10658.34818,
+	10739.34372,
+	10719.92125,
+	10683.85985,
+	10789.22607,
+	10737.22514
+]
+
+firecracker_sequential = [
 	2291.26421,
 	2343.77812,
 	2305.53904,
@@ -44,7 +57,7 @@ firecracker_T2 = [
 	2289.88585
 ]
 
-firecracker_C3 = [
+firecracker_sequential_C3 = [
 	2291.26421,
 	2343.77812,
 	2331.43214,
@@ -67,7 +80,7 @@ firecracker_C3 = [
 	2357.18932
 ]
 
-firecracker_default_kernel = [
+firecracker_sequential_default_kernel = [
 	2343.77812,
 	2305.53904,
 	2346.85258,
@@ -90,7 +103,7 @@ firecracker_default_kernel = [
 	2301.18490
 ]
 
-qemu_emulated_cpu = [
+qemu_sequential_emulated = [
 	10638.79766,
 	10608.70419,
 	10574.32269,
@@ -103,33 +116,21 @@ qemu_emulated_cpu = [
 	10568.64811
 ]
 
-qemu_host_cpu = [
-	10803.94492,
-	10818.61036,
-	10742.04889,
-	10722.19653,
-	10658.34818,
-	10739.34372,
-	10719.92125,
-	10683.85985,
-	10789.22607,
-	10737.22514
-]
 
 
-
-labels = ['qemu host cpu','qemu emulated cpu','firecracker T2','firecracker C3','firecracker default kernel']
+labels = ['qemu sequential','qemu sequential emulated','firecracker sequential','firecracker sequential C3','firecracker sequential default kernel']
 y_pos = np.arange(len(labels))
 
 data=[
-	qemu_host_cpu,
-	qemu_emulated_cpu,
-	firecracker_T2,
-	firecracker_C3,
-	firecracker_default_kernel
+	qemu_sequential,
+	qemu_sequential_emulated,
+	firecracker_sequential,
+	firecracker_sequential_C3,
+	firecracker_sequential_default_kernel
 ]
 
 fig, ax = plt.subplots()
+ax.set_title('Shutdown Time')
 plt.ylabel('Time (ms)')
 ax.boxplot(data, labels=labels)
 

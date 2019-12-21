@@ -1,75 +1,3 @@
-qemu_x10_emulated = [
-	94.14717,
-	156.90176,
-	113.15587,
-	120.79472,
-	90.70383,
-	104.04471,
-	118.39555,
-	131.67722,
-	107.08754,
-	71.88496
-]
-
-qemu_x20_emulated = [
-	378.85285,
-	469.08973,
-	583.81664,
-	478.81133,
-	286.03118,
-	496.60632,
-	886.69499,
-	376.24134,
-	414.71355,
-	499.80044,
-	510.50934,
-	297.13697,
-	508.15298,
-	143.71336,
-	638.46399,
-	647.37549,
-	289.64443,
-	294.99084,
-	640.61546,
-	766.78585
-]
-
-qemu_x10 = [
-	182.05452,
-	84.64198,
-	72.75233,
-	75.32137,
-	226.06714,
-	79.05355,
-	77.88387,
-	169.59224,
-	109.67444,
-	88.52244
-]
-
-qemu_x20 = [
-	195.79982,
-	105.65309,
-	449.22212,
-	356.70131,
-	413.75686,
-	646.81382,
-	1596.23058,
-	421.56951,
-	311.26853,
-	581.86975,
-	134.29292,
-	566.31754,
-	447.35200,
-	178.84525,
-	261.80951,
-	241.25731,
-	196.64402,
-	564.95767,
-	326.32763,
-	368.06408
-]
-
 firecracker_x10 = [
 	135.78019,
 	138.65614,
@@ -196,15 +124,87 @@ firecracker_x20 = [
 	139.26767
 ]
 
+qemu_x10_emulated = [
+	94.14717,
+	156.90176,
+	113.15587,
+	120.79472,
+	90.70383,
+	104.04471,
+	118.39555,
+	131.67722,
+	107.08754,
+	71.88496
+]
+
+qemu_x20_emulated = [
+	378.85285,
+	469.08973,
+	583.81664,
+	478.81133,
+	286.03118,
+	496.60632,
+	886.69499,
+	376.24134,
+	414.71355,
+	499.80044,
+	510.50934,
+	297.13697,
+	508.15298,
+	143.71336,
+	638.46399,
+	647.37549,
+	289.64443,
+	294.99084,
+	640.61546,
+	766.78585
+]
+
+qemu_x10 = [
+	182.05452,
+	84.64198,
+	72.75233,
+	75.32137,
+	226.06714,
+	79.05355,
+	77.88387,
+	169.59224,
+	109.67444,
+	88.52244
+]
+
+qemu_x20 = [
+	195.79982,
+	105.65309,
+	449.22212,
+	356.70131,
+	413.75686,
+	646.81382,
+	1596.23058,
+	421.56951,
+	311.26853,
+	581.86975,
+	134.29292,
+	566.31754,
+	447.35200,
+	178.84525,
+	261.80951,
+	241.25731,
+	196.64402,
+	564.95767,
+	326.32763,
+	368.06408
+]
+
 
 
 import statistics as stats
-print(stats.mean(firecracker_x10))
-print(stats.mean(firecracker_x20))
 print(stats.mean(qemu_x10_emulated))
 print(stats.mean(qemu_x20_emulated))
 print(stats.mean(qemu_x10))
 print(stats.mean(qemu_x20))
+print(stats.mean(firecracker_x10))
+print(stats.mean(firecracker_x20))
 
 
 import matplotlib.pyplot as plt; plt.rcdefaults()
@@ -223,13 +223,13 @@ performance = [
 	stats.mean(firecracker_x20)
 ]
 
-bar = plt.bar(y_pos, performance, align='center', alpha=0.5, color=['orange', 'green', 'orange', 'green'])
+bar = plt.bar(y_pos, performance, align='center', alpha=0.5, color=['blue', 'blue', 'blue', 'blue', 'orange', 'orange'])
 plt.xticks(y_pos, objects)
 plt.yticks(np.arange(0, 400, 100))
 plt.ylabel('Time (ms)')
-plt.title('Mean Hashing Time (Concurrent)')
+plt.title('Mean Hashing Time SHA-256 100 x 1MB (Concurrent)')
 
-#plt.legend((bar[0], bar[1]), ('Single', 'Concurrent'))
+plt.legend((bar[0], bar[4]), ('QEMU', 'firecracker'))
 
 plt.gcf().subplots_adjust(bottom=0.30)
 plt.xticks(rotation=45)

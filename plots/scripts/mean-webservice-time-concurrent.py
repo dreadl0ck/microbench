@@ -11,11 +11,13 @@ performance = [
 {{ .Load }}
 ]
 
-plt.bar(y_pos, performance, align='center', alpha=0.5, color=['orange', 'green', 'orange', 'green'])
+bar = plt.bar(y_pos, performance, align='center', alpha=0.5, color=['blue', 'blue', 'blue', 'blue', 'orange', 'orange'])
 plt.xticks(y_pos, objects)
-plt.yticks(np.arange(0, 8000, 500))
+#plt.yticks(np.arange(0, 8000, 500))
 plt.ylabel('Time (ms)')
 plt.title('Mean Web Service Startup Time (Concurrent)')
+
+plt.legend((bar[0], bar[4]), ('QEMU', 'firecracker'))
 
 plt.gcf().subplots_adjust(bottom=0.30)
 plt.xticks(rotation=45)

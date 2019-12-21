@@ -36,31 +36,31 @@ const (
 
 func main() {
 
-	sequentialJobs := []*job{
+	sequentialJobs := []job{
 		{
 			fileKeywords:        []string{"qemu", "sequential"},
 			excludeFileKeywords: []string{"emulated"},
-			name:                "qemu_host_cpu",
+			name:                "host_cpu",
 		},
 		{
 			fileKeywords: 	[]string{"qemu", "sequential", "emulated"},
-			name: 			"qemu_emulated_cpu",
+			name: 			"emulated_cpu",
 		},
 		{
 			fileKeywords: 	[]string{"firecracker", "sequential"},
-			name: 			"firecracker_T2",
+			name: 			"T2_cpu",
 		},
 		{
 			fileKeywords: 	[]string{"firecracker", "sequential", "C3"},
-			name: 			"firecracker_C3",
+			name: 			"C3_cpu",
 		},
 		{
 			fileKeywords: 	[]string{"firecracker", "sequential", "default", "kernel"},
-			name: 			"firecracker_default_kernel",
+			name: 			"default_kernel",
 		},
 	}
 
-	concurrentJobs := []*job{
+	concurrentJobs := []job{
 		{
 			fileKeywords:        []string{"qemu", "x10"},
 			excludeFileKeywords: []string{"emulated"},
@@ -84,153 +84,159 @@ func main() {
 	}
 
 	// mean-hashing-time-sequential.png
-	go generate(
-		true,
-		nil,
-		"plots/scripts/mean-hashing-time-sequential.py",
-		identHashBenchmark,
-		sequentialJobs...,
-	)
+	go generate(plot{
+		mean: true,
+		script: "plots/scripts/mean-hashing-time-sequential.py",
+		lineIdent: identHashBenchmark,
+		jobs: sequentialJobs,
+	})
 
 	// mean-hashing-time-concurrent.png
-	go generate(
-		true,
-		nil,
-		"plots/scripts/mean-hashing-time-concurrent.py",
-		identHashBenchmark,
-		concurrentJobs...,
-	)
+	go generate(plot{
+		mean:      true,
+		script:    "plots/scripts/mean-hashing-time-concurrent.py",
+		lineIdent: identHashBenchmark,
+		jobs:      concurrentJobs,
+	})
 
 	// mean-kernel-boot-time-sequential.png
-	go generate(
-		true,
-		nil,
-		"plots/scripts/mean-kernel-boot-time-sequential.py",
-		identKernelBootTime,
-		sequentialJobs...,
-	)
+	go generate(plot{
+		mean: true,
+		script: "plots/scripts/mean-kernel-boot-time-sequential.py",
+		lineIdent: identKernelBootTime,
+		jobs: sequentialJobs,
+	})
 
 	// mean-kernel-boot-time-concurrent.png
-	go generate(
-		true,
-		nil,
-		"plots/scripts/mean-kernel-boot-time-concurrent.py",
-		identKernelBootTime,
-		concurrentJobs...,
-	)
+	go generate(plot{
+		mean: true,
+		script: "plots/scripts/mean-kernel-boot-time-concurrent.py",
+		lineIdent: identKernelBootTime,
+		jobs: concurrentJobs,
+	})
 
 	// mean-webservice-time-sequential.png
-	go generate(
-		true,
-		nil,
-		"plots/scripts/mean-webservice-time-sequential.py",
-		identWebService,
-		sequentialJobs...,
-	)
+	go generate(plot{
+		mean: true,
+		script: "plots/scripts/mean-webservice-time-sequential.py",
+		lineIdent: identWebService,
+		jobs: sequentialJobs,
+	})
 
 	// mean-webservice-time-concurrent.png
-	go generate(
-		true,
-		nil,
-		"plots/scripts/mean-webservice-time-concurrent.py",
-		identWebService,
-		concurrentJobs...,
-	)
+	go generate(plot{
+		mean: true,
+		script: "plots/scripts/mean-webservice-time-concurrent.py",
+		lineIdent: identWebService,
+		jobs: concurrentJobs,
+	})
 
 	// mean-shutdown-time-sequential.png
-	go generate(
-		true,
-		nil,
-		"plots/scripts/mean-shutdown-time-sequential.py",
-		identShutdownTime,
-		sequentialJobs...,
-	)
+	go generate(plot{
+		mean: true,
+		script: "plots/scripts/mean-shutdown-time-sequential.py",
+		lineIdent: identShutdownTime,
+		jobs: sequentialJobs,
+	})
 
-	// mean-webservice-time-concurrent.png
-	go generate(
-		true,
-		nil,
-		"plots/scripts/mean-shutdown-time-concurrent.py",
-		identShutdownTime,
-		concurrentJobs...,
-	)
+	// mean-shutdown-time-concurrent.png
+	go generate(plot{
+		mean: true,
+		script: "plots/scripts/mean-shutdown-time-concurrent.py",
+		lineIdent: identShutdownTime,
+		jobs: concurrentJobs,
+	})
 
 	// webservice-time-sequential.png
-	go generate(
-		false,
-		nil,
-		"plots/scripts/webservice-time-sequential.py",
-		identWebService,
-		sequentialJobs...,
-	)
+	go generate(plot{
+		script: "plots/scripts/webservice-time-sequential.py",
+		lineIdent: identWebService,
+		jobs: sequentialJobs,
+		forceName: true,
+	})
 
 	// webservice-time-concurrent.png
-	go generate(
-		false,
-		nil,
-		"plots/scripts/webservice-time-concurrent.py",
-		identWebService,
-		concurrentJobs...,
-	)
+	go generate(plot{
+		script: "plots/scripts/webservice-time-concurrent.py",
+		lineIdent: identWebService,
+		jobs: concurrentJobs,
+	})
 
 	// kernel-boot-time-sequential.png
-	go generate(
-		false,
-		nil,
-		"plots/scripts/kernel-boot-time-sequential.py",
-		identKernelBootTime,
-		sequentialJobs...,
-	)
+	go generate(plot{
+		script: "plots/scripts/kernel-boot-time-sequential.py",
+		lineIdent: identKernelBootTime,
+		jobs: sequentialJobs,
+		forceName: true,
+	})
 
 	// webservice-time-concurrent.png
-	go generate(
-		false,
-		nil,
-		"plots/scripts/kernel-boot-time-concurrent.py",
-		identKernelBootTime,
-		concurrentJobs...,
-	)
+	go generate(plot{
+		script: "plots/scripts/kernel-boot-time-concurrent.py",
+		lineIdent: identKernelBootTime,
+		jobs: concurrentJobs,
+	})
 
 	// shutdown-time-sequential.png
-	go generate(
-		false,
-		nil,
-		"plots/scripts/shutdown-time-sequential.py",
-		identShutdownTime,
-		sequentialJobs...,
-	)
+	go generate(plot{
+		script:    "plots/scripts/shutdown-time-sequential.py",
+		lineIdent: identShutdownTime,
+		jobs:      sequentialJobs,
+		forceName: true,
+	})
 
 	// shutdown-time-concurrent.png
-	go generate(
-		false,
-		nil,
-		"plots/scripts/shutdown-time-concurrent.py",
-		identShutdownTime,
-		concurrentJobs...,
-	)
+	go generate(plot{
+		script: "plots/scripts/shutdown-time-concurrent.py",
+		lineIdent: identShutdownTime,
+		jobs: concurrentJobs,
+	})
 
 	// kernel-log-entries.png
-	go generate(
-		true,
-		regexp.MustCompile("lines=[0-9]*"),
-		"plots/scripts/kernel-log-entries.py",
-		identKernelLogLines,
-		sequentialJobs...,
-	)
+	go generate(plot{
+		mean: true,
+		reg: regexp.MustCompile("lines=[0-9]*"),
+		script: "plots/scripts/kernel-log-entries.py",
+		lineIdent: identKernelLogLines,
+		jobs: sequentialJobs,
+	})
 
 	time.Sleep(500 * time.Millisecond)
 	wg.Wait()
 }
 
-func generate(mean bool, reg *regexp.Regexp, script string, lineIdent string, jobs ...*job) {
+type plot struct {
+	mean bool
+	reg *regexp.Regexp
+	forceName bool
+	script string
+	lineIdent string
+	jobs []job
+}
+
+//func generate(mean bool, reg *regexp.Regexp, script string, lineIdent string, jobs ...*job) {
+func generate(p plot) {
 
 	wg.Add(1)
 	defer wg.Done()
 
-	for _, j := range jobs {
-		if j.name == "" {
-			j.name = strings.Join(j.fileKeywords, "_")
+	var copiedJobs []job
+
+	for _, j := range p.jobs {
+		var n = j.name
+		if p.forceName || j.name == "" {
+			n = strings.Join(j.fileKeywords, "_")
 		}
+
+		// make a deep copy of the jobs
+		// because the name modification by the force flag can happen in parallel
+		copiedJobs = append(copiedJobs, job{
+			lineIdent: j.lineIdent,
+			lineRegex: j.lineRegex,
+			name: n,
+			fileKeywords: j.fileKeywords,
+			excludeFileKeywords: j.excludeFileKeywords,
+		})
 	}
 
 	var data = make(map[string][]float64)
@@ -241,7 +247,7 @@ func generate(mean bool, reg *regexp.Regexp, script string, lineIdent string, jo
 	}
 
 	for _, f := range files {
-		parseJobs(data, f, reg, lineIdent, jobs)
+		parseJobs(data, f, p.reg, p.lineIdent, copiedJobs)
 	}
 
 	var out string
@@ -261,12 +267,12 @@ func generate(mean bool, reg *regexp.Regexp, script string, lineIdent string, jo
 
 	//fmt.Println(out)
 
-	t, err := template.ParseFiles(script)
+	t, err := template.ParseFiles(p.script)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	outScriptPath := filepath.Dir(script) + "/generated/" + strings.TrimSuffix(filepath.Base(script), ".py") + ".py"
+	outScriptPath := filepath.Dir(p.script) + "/generated/" + strings.TrimSuffix(filepath.Base(p.script), ".py") + ".py"
 	f, err := os.Create(outScriptPath)
 	if err != nil {
 		log.Fatal(err)
@@ -284,31 +290,31 @@ func generate(mean bool, reg *regexp.Regexp, script string, lineIdent string, jo
 		objects string
 		lastElem = len(data)
 	)
-	for _, j := range jobs {
+	for _, j := range copiedJobs {
 		if _, ok := data[j.name]; ok {
 
 			current++
 			if current == lastElem {
 				objects += "'" + strings.ReplaceAll(j.name, "_", " ") + "'"
-				if mean {
+				if p.mean {
 					load += "\tstats.mean("+ j.name + ")"
 				} else {
 					load += "\t"+ j.name + ""
 				}
 			} else {
 				objects += "'" + strings.ReplaceAll(j.name, "_", " ") + "',"
-				if mean {
+				if p.mean {
 					load += "\tstats.mean("+ j.name + "),\n"
 				} else {
 					load += "\t"+ j.name + ",\n"
 				}
 			}
 		} else {
-			fmt.Println(script + ": no data for", j.name, "found after collecting values")
+			fmt.Println(p.script + ": no data for", j.name, "found after collecting values")
 		}
 	}
 
-	outImageName := filepath.Dir(script) + "/images/" + strings.TrimSuffix(filepath.Base(script), ".py") + ".png"
+	outImageName := filepath.Dir(p.script) + "/images/" + strings.TrimSuffix(filepath.Base(p.script), ".py") + ".png"
 
 	err = t.Execute(f, struct{
 		Data string
@@ -337,7 +343,7 @@ func generate(mean bool, reg *regexp.Regexp, script string, lineIdent string, jo
 	fmt.Println("created", outImageName)
 }
 
-func parseJobs(data map[string][]float64, f os.FileInfo, reg *regexp.Regexp, lineIdent string, jobs []*job) {
+func parseJobs(data map[string][]float64, f os.FileInfo, reg *regexp.Regexp, lineIdent string, jobs []job) {
 
 	if reg == nil {
 		reg = defaultRegEx
@@ -387,7 +393,7 @@ func parseJobs(data map[string][]float64, f os.FileInfo, reg *regexp.Regexp, lin
 			//fmt.Println(f.Name(), value, l)
 
 			var toMs bool
-			if !strings.HasSuffix(value, "ms") {
+			if !strings.HasSuffix(value, "ms") && strings.HasSuffix(value, "s") {
 				toMs = true
 			}
 			final := strings.TrimSuffix(

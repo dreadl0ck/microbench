@@ -11,15 +11,16 @@ performance = [
 {{ .Load }}
 ]
 
-bar = plt.bar(y_pos, performance, align='center', alpha=0.5, color=['orange', 'green', 'orange', 'green'])
+bar = plt.bar(y_pos, performance, align='center', alpha=0.5, color=['blue', 'blue', 'orange', 'orange', 'orange'])
 plt.xticks(y_pos, objects)
-plt.yticks(np.arange(0, 200, 50))
+plt.yticks(np.arange(0, 220, 40))
 plt.ylabel('Number of log entries')
 plt.title('Kernel Log Entries')
-#plt.legend((bar[0], bar[1]), ('Single', 'Concurrent'))
 
-plt.gcf().subplots_adjust(bottom=0.30)
-plt.xticks(rotation=45)
+plt.legend((bar[0], bar[2]), ('QEMU', 'firecracker'))
+
+#plt.gcf().subplots_adjust(bottom=0.30)
+#plt.xticks(rotation=45)
 
 #plt.show()
 plt.savefig({{ .Out }})

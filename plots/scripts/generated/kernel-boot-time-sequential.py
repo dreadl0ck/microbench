@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-firecracker_T2 = [
+firecracker_sequential = [
 	927.48300,
 	886.07500,
 	724.23700,
@@ -44,7 +44,7 @@ firecracker_T2 = [
 	915.19300
 ]
 
-firecracker_C3 = [
+firecracker_sequential_C3 = [
 	927.48300,
 	886.07500,
 	827.18300,
@@ -67,7 +67,7 @@ firecracker_C3 = [
 	865.40500
 ]
 
-firecracker_default_kernel = [
+firecracker_sequential_default_kernel = [
 	886.07500,
 	724.23700,
 	869.90400,
@@ -90,7 +90,7 @@ firecracker_default_kernel = [
 	849.13900
 ]
 
-qemu_emulated_cpu = [
+qemu_sequential_emulated = [
 	1040.95300,
 	1145.67800,
 	1139.67400,
@@ -103,7 +103,7 @@ qemu_emulated_cpu = [
 	1033.63700
 ]
 
-qemu_host_cpu = [
+qemu_sequential = [
 	844.09100,
 	860.92600,
 	1857.71200,
@@ -118,15 +118,15 @@ qemu_host_cpu = [
 
 
 
-labels = ['qemu host cpu','qemu emulated cpu','firecracker T2','firecracker C3','firecracker default kernel']
+labels = ['qemu sequential','qemu sequential emulated','firecracker sequential','firecracker sequential C3','firecracker sequential default kernel']
 y_pos = np.arange(len(labels))
 
 data=[
-	qemu_host_cpu,
-	qemu_emulated_cpu,
-	firecracker_T2,
-	firecracker_C3,
-	firecracker_default_kernel
+	qemu_sequential,
+	qemu_sequential_emulated,
+	firecracker_sequential,
+	firecracker_sequential_C3,
+	firecracker_sequential_default_kernel
 ]
 
 fig, ax = plt.subplots()

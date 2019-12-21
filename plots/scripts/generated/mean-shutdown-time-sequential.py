@@ -1,4 +1,4 @@
-firecracker_T2 = [
+T2_cpu = [
 	2291.26421,
 	2343.77812,
 	2305.53904,
@@ -41,7 +41,7 @@ firecracker_T2 = [
 	2289.88585
 ]
 
-firecracker_C3 = [
+C3_cpu = [
 	2291.26421,
 	2343.77812,
 	2331.43214,
@@ -64,7 +64,7 @@ firecracker_C3 = [
 	2357.18932
 ]
 
-firecracker_default_kernel = [
+default_kernel = [
 	2343.77812,
 	2305.53904,
 	2346.85258,
@@ -87,7 +87,7 @@ firecracker_default_kernel = [
 	2301.18490
 ]
 
-qemu_emulated_cpu = [
+emulated_cpu = [
 	10638.79766,
 	10608.70419,
 	10574.32269,
@@ -100,7 +100,7 @@ qemu_emulated_cpu = [
 	10568.64811
 ]
 
-qemu_host_cpu = [
+host_cpu = [
 	10803.94492,
 	10818.61036,
 	10742.04889,
@@ -120,24 +120,25 @@ import matplotlib.pyplot as plt; plt.rcdefaults()
 import numpy as np
 import matplotlib.pyplot as plt
 
-objects = ('qemu host cpu','qemu emulated cpu','firecracker T2','firecracker C3','firecracker default kernel')
+objects = ('host cpu','emulated cpu','T2 cpu','C3 cpu','default kernel')
 y_pos = np.arange(len(objects))
 performance = [
-	stats.mean(qemu_host_cpu),
-	stats.mean(qemu_emulated_cpu),
-	stats.mean(firecracker_T2),
-	stats.mean(firecracker_C3),
-	stats.mean(firecracker_default_kernel)
+    	stats.mean(host_cpu),
+	stats.mean(emulated_cpu),
+	stats.mean(T2_cpu),
+	stats.mean(C3_cpu),
+	stats.mean(default_kernel)
 ]
 
-plt.bar(y_pos, performance, align='center', alpha=0.5, color=['orange', 'green', 'orange', 'green'])
+bar = plt.bar(y_pos, performance, align='center', alpha=0.5, color=['blue', 'blue', 'orange', 'orange', 'orange'])
 plt.xticks(y_pos, objects)
-plt.yticks(np.arange(0, 13000, 1000))
+#plt.yticks(np.arange(0, 2300, 1500))
 plt.ylabel('Time (ms)')
-plt.title('Mean VM Shutdown Time')
+plt.title('Mean Shutdown Time')
 
-plt.gcf().subplots_adjust(bottom=0.30)
-plt.xticks(rotation=45)
+plt.legend((bar[0], bar[2]), ('QEMU', 'firecracker'))
+
+#plt.gcf().subplots_adjust(bottom=0.20)
 
 #plt.show()
 plt.savefig('plots/scripts/images/mean-shutdown-time-sequential.png')
