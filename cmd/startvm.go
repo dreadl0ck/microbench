@@ -7,7 +7,7 @@ import (
 	"strconv"
 )
 
-func spawnMicroVM(logger *logrus.Logger, tapEther string, num int) (*exec.Cmd, error) {
+func spawnMicroVM(l *logrus.Logger, tapEther string, num int) (*exec.Cmd, error) {
 
 	var (
 		cmd    *exec.Cmd
@@ -63,7 +63,7 @@ func spawnMicroVM(logger *logrus.Logger, tapEther string, num int) (*exec.Cmd, e
 	// dont duplicate this log message in debug mode
 	if !*flagDebug {
 		// log to global logger
-		l.WithFields(logrus.Fields{
+		logger.WithFields(logrus.Fields{
 			"rootfs": rootfs,
 			"ether": tapEther,
 			"path": cmd.Path,
@@ -72,7 +72,7 @@ func spawnMicroVM(logger *logrus.Logger, tapEther string, num int) (*exec.Cmd, e
 	}
 
 	// log to vm specific logger
-	logger.WithFields(logrus.Fields{
+	l.WithFields(logrus.Fields{
 		"rootfs": rootfs,
 		"ether": tapEther,
 		"path": cmd.Path,

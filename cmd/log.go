@@ -36,7 +36,7 @@ func makeLogger(name string) (*logrus.Logger, func()) {
 
 	f, err := os.Create(fileName)
 	if err != nil {
-		l.Fatal(err)
+		logger.Fatal(err)
 	}
 
 	l := logrus.New()

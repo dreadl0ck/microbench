@@ -48,6 +48,6 @@ func runMulti() {
 		}()
 	}
 
-	l.Info("waiting...")
+	logger.Info("waiting...")
 	wg.Wait()
 }

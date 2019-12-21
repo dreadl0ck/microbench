@@ -8,7 +8,7 @@ import (
 
 func setupTap(address string, num int) {
 
-	l.Info("setting up tap interface...")
+	logger.Info("setting up tap interface...")
 
 	cmd := exec.Command(
 		"/bin/bash",
@@ -22,6 +22,6 @@ func setupTap(address string, num int) {
 
 	err := cmd.Run()
 	if err != nil {
-		l.WithError(err).Fatal("failed to setup tap interface")
+		logger.WithError(err).Fatal("failed to setup tap interface")
 	}
 }

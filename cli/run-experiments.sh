@@ -36,18 +36,18 @@ bin/firebench -multi -numVMs 20 -kernel /root/hello-vmlinux.bin -tag "default-ke
 
 # Firecracker with C3 CPU template
 bin/firebench -createfs
-# run sequential
+# run sequential with C3 CPU template
 bin/firebench -num 10 -tag "sequential-C3" -firecracker-cpu-template "C3"
-# run concurrent
+# run concurrent with C3 CPU template
 bin/firebench -multi -numVMs 10 -tag "C3" -firecracker-cpu-template "C3"
 bin/firebench -multi -numVMs 20 -tag "C3" -firecracker-cpu-template "C3"
 
-# run with default kernel
+# run with default kernel and C3 CPU template
 bin/firebench -createfs
-# run sequential
+# run sequential with default kernel and C3 CPU template
 bin/firebench -num 10 -kernel /root/hello-vmlinux.bin -tag "sequential-default-kernel-C3" -firecracker-cpu-template "C3"
 
-# run concurrent
+# run concurrent with default kernel and C3 CPU template
 bin/firebench -multi -numVMs 10 -kernel /root/hello-vmlinux.bin -tag "default-kernel-C3" -firecracker-cpu-template "C3"
 bin/firebench -multi -numVMs 20 -kernel /root/hello-vmlinux.bin -tag "default-kernel-C3" -firecracker-cpu-template "C3"
 
