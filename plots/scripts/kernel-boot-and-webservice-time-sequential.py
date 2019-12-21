@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 {{ .Data }}
 
-labels = ['host cpu','emulated cpu','T2 cpu','C3 cpu','default kernel']
+labels = ['qemu host cpu','qemu emulated cpu','firecracker T2 cpu','firecracker C3 cpu','firecracker default kernel']
 y_pos = np.arange(len(labels))
 
 import statistics as stats
