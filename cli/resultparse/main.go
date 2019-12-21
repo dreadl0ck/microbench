@@ -41,170 +41,170 @@ func main() {
 
 	flag.Parse()
 
-			sequentialJobs := []job{
-				{
-					fileKeywords:        []string{"qemu", "sequential"},
-					excludeFileKeywords: []string{"emulated"},
-					name:                "host_cpu",
-				},
-				{
-					fileKeywords: []string{"qemu", "sequential", "emulated"},
-					name:         "emulated_cpu",
-				},
-				{
-					fileKeywords: []string{"firecracker", "sequential"},
-					name:         "T2_cpu",
-				},
-				{
-					fileKeywords: []string{"firecracker", "sequential", "C3"},
-					name:         "C3_cpu",
-				},
-				{
-					fileKeywords: []string{"firecracker", "sequential", "default", "kernel"},
-					name:         "default_kernel",
-				},
-			}
+	sequentialJobs := []job{
+		{
+			fileKeywords:        []string{"qemu", "sequential"},
+			excludeFileKeywords: []string{"emulated"},
+			name:                "host_cpu",
+		},
+		{
+			fileKeywords: []string{"qemu", "sequential", "emulated"},
+			name:         "emulated_cpu",
+		},
+		{
+			fileKeywords: []string{"firecracker", "sequential"},
+			name:         "T2_cpu",
+		},
+		{
+			fileKeywords: []string{"firecracker", "sequential", "C3"},
+			name:         "C3_cpu",
+		},
+		{
+			fileKeywords: []string{"firecracker", "sequential", "default", "kernel"},
+			name:         "default_kernel",
+		},
+	}
 
-			concurrentJobs := []job{
-			{
-				fileKeywords:        []string{"qemu", "x10"},
-				excludeFileKeywords: []string{"emulated"},
-			},
-			{
-				fileKeywords: []string{"qemu", "x10", "emulated"},
-			},
-			{
-				fileKeywords:        []string{"qemu", "x20"},
-				excludeFileKeywords: []string{"emulated"},
-			},
-			{
-				fileKeywords: []string{"qemu", "x20", "emulated"},
-			},
-			{
-				fileKeywords: []string{"firecracker", "x10"},
-			},
-			{
-				fileKeywords: []string{"firecracker", "x20"},
-			},
-		}
+	concurrentJobs := []job{
+		{
+			fileKeywords:        []string{"qemu", "x10"},
+			excludeFileKeywords: []string{"emulated"},
+		},
+		{
+			fileKeywords: []string{"qemu", "x10", "emulated"},
+		},
+		{
+			fileKeywords:        []string{"qemu", "x20"},
+			excludeFileKeywords: []string{"emulated"},
+		},
+		{
+			fileKeywords: []string{"qemu", "x20", "emulated"},
+		},
+		{
+			fileKeywords: []string{"firecracker", "x10"},
+		},
+		{
+			fileKeywords: []string{"firecracker", "x20"},
+		},
+	}
 
-			// mean-hashing-time-sequential.png
-			go generate(plot{
-				mean:       true,
-				script:     "plots/scripts/mean-hashing-time-sequential.py",
-				lineIdent: identHashBenchmark,
-				jobs:       sequentialJobs,
-			})
+	// mean-hashing-time-sequential.png
+	go generate(plot{
+		mean:      true,
+		script:    "plots/scripts/mean-hashing-time-sequential.py",
+		lineIdent: identHashBenchmark,
+		jobs:      sequentialJobs,
+	})
 
-			// mean-hashing-time-concurrent.png
-			go generate(plot{
-				mean:       true,
-				script:     "plots/scripts/mean-hashing-time-concurrent.py",
-				lineIdent: identHashBenchmark,
-				jobs:       concurrentJobs,
-			})
+	// mean-hashing-time-concurrent.png
+	go generate(plot{
+		mean:      true,
+		script:    "plots/scripts/mean-hashing-time-concurrent.py",
+		lineIdent: identHashBenchmark,
+		jobs:      concurrentJobs,
+	})
 
-			// mean-kernel-boot-time-sequential.png
-			go generate(plot{
-				mean:       true,
-				script:     "plots/scripts/mean-kernel-boot-time-sequential.py",
-				lineIdent: identKernelBootTime,
-				jobs:       sequentialJobs,
-			})
+	// mean-kernel-boot-time-sequential.png
+	go generate(plot{
+		mean:      true,
+		script:    "plots/scripts/mean-kernel-boot-time-sequential.py",
+		lineIdent: identKernelBootTime,
+		jobs:      sequentialJobs,
+	})
 
-			// mean-kernel-boot-time-concurrent.png
-			go generate(plot{
-				mean:       true,
-				script:     "plots/scripts/mean-kernel-boot-time-concurrent.py",
-				lineIdent: identKernelBootTime,
-				jobs:       concurrentJobs,
-			})
+	// mean-kernel-boot-time-concurrent.png
+	go generate(plot{
+		mean:      true,
+		script:    "plots/scripts/mean-kernel-boot-time-concurrent.py",
+		lineIdent: identKernelBootTime,
+		jobs:      concurrentJobs,
+	})
 
-			// mean-webservice-time-sequential.png
-			go generate(plot{
-				mean:       true,
-				script:     "plots/scripts/mean-webservice-time-sequential.py",
-				lineIdent: identWebService,
-				jobs:       sequentialJobs,
-			})
+	// mean-webservice-time-sequential.png
+	go generate(plot{
+		mean:      true,
+		script:    "plots/scripts/mean-webservice-time-sequential.py",
+		lineIdent: identWebService,
+		jobs:      sequentialJobs,
+	})
 
-			// mean-webservice-time-concurrent.png
-			go generate(plot{
-				mean:       true,
-				script:     "plots/scripts/mean-webservice-time-concurrent.py",
-				lineIdent: identWebService,
-				jobs:       concurrentJobs,
-			})
+	// mean-webservice-time-concurrent.png
+	go generate(plot{
+		mean:      true,
+		script:    "plots/scripts/mean-webservice-time-concurrent.py",
+		lineIdent: identWebService,
+		jobs:      concurrentJobs,
+	})
 
-			// mean-shutdown-time-sequential.png
-			go generate(plot{
-				mean:       true,
-				script:     "plots/scripts/mean-shutdown-time-sequential.py",
-				lineIdent: identShutdownTime,
-				jobs:       sequentialJobs,
-			})
+	// mean-shutdown-time-sequential.png
+	go generate(plot{
+		mean:      true,
+		script:    "plots/scripts/mean-shutdown-time-sequential.py",
+		lineIdent: identShutdownTime,
+		jobs:      sequentialJobs,
+	})
 
-			// mean-shutdown-time-concurrent.png
-			go generate(plot{
-				mean:       true,
-				script:     "plots/scripts/mean-shutdown-time-concurrent.py",
-				lineIdent: identShutdownTime,
-				jobs:       concurrentJobs,
-			})
+	// mean-shutdown-time-concurrent.png
+	go generate(plot{
+		mean:      true,
+		script:    "plots/scripts/mean-shutdown-time-concurrent.py",
+		lineIdent: identShutdownTime,
+		jobs:      concurrentJobs,
+	})
 
-			// webservice-time-sequential.png
-			go generate(plot{
-				script:     "plots/scripts/webservice-time-sequential.py",
-				lineIdent: identWebService,
-				jobs:       sequentialJobs,
-				forceName:  true,
-			})
+	// webservice-time-sequential.png
+	go generate(plot{
+		script:    "plots/scripts/webservice-time-sequential.py",
+		lineIdent: identWebService,
+		jobs:      sequentialJobs,
+		forceName: true,
+	})
 
-			// webservice-time-concurrent.png
-			go generate(plot{
-				script:     "plots/scripts/webservice-time-concurrent.py",
-				lineIdent: identWebService,
-				jobs:       concurrentJobs,
-			})
+	// webservice-time-concurrent.png
+	go generate(plot{
+		script:    "plots/scripts/webservice-time-concurrent.py",
+		lineIdent: identWebService,
+		jobs:      concurrentJobs,
+	})
 
-			// kernel-boot-time-sequential.png
-			go generate(plot{
-				script:     "plots/scripts/kernel-boot-time-sequential.py",
-				lineIdent: identKernelBootTime,
-				jobs:       sequentialJobs,
-				forceName:  true,
-			})
+	// kernel-boot-time-sequential.png
+	go generate(plot{
+		script:    "plots/scripts/kernel-boot-time-sequential.py",
+		lineIdent: identKernelBootTime,
+		jobs:      sequentialJobs,
+		forceName: true,
+	})
 
-			// webservice-time-concurrent.png
-			go generate(plot{
-				script:     "plots/scripts/kernel-boot-time-concurrent.py",
-				lineIdent: identKernelBootTime,
-				jobs:       concurrentJobs,
-			})
+	// webservice-time-concurrent.png
+	go generate(plot{
+		script:    "plots/scripts/kernel-boot-time-concurrent.py",
+		lineIdent: identKernelBootTime,
+		jobs:      concurrentJobs,
+	})
 
-			// shutdown-time-sequential.png
-			go generate(plot{
-				script:     "plots/scripts/shutdown-time-sequential.py",
-				lineIdent: identShutdownTime,
-				jobs:       sequentialJobs,
-				forceName:  true,
-			})
+	// shutdown-time-sequential.png
+	go generate(plot{
+		script:    "plots/scripts/shutdown-time-sequential.py",
+		lineIdent: identShutdownTime,
+		jobs:      sequentialJobs,
+		forceName: true,
+	})
 
-			// shutdown-time-concurrent.png
-			go generate(plot{
-				script:     "plots/scripts/shutdown-time-concurrent.py",
-				lineIdent: identShutdownTime,
-				jobs:       concurrentJobs,
-			})
+	// shutdown-time-concurrent.png
+	go generate(plot{
+		script:    "plots/scripts/shutdown-time-concurrent.py",
+		lineIdent: identShutdownTime,
+		jobs:      concurrentJobs,
+	})
 
-			// kernel-log-entries.png
-			go generate(plot{
-				mean:       true,
-				reg:        regexp.MustCompile("lines=[0-9]*"),
-				script:     "plots/scripts/kernel-log-entries.py",
-				lineIdent: identKernelLogLines,
-				jobs:       sequentialJobs,
-			})
+	// kernel-log-entries.png
+	go generate(plot{
+		mean:      true,
+		reg:       regexp.MustCompile("lines=[0-9]*"),
+		script:    "plots/scripts/kernel-log-entries.py",
+		lineIdent: identKernelLogLines,
+		jobs:      sequentialJobs,
+	})
 
 	// kernel-boot-and-webservice-time-concurrent.png
 	go generate(plot{
@@ -314,27 +314,27 @@ func main() {
 				fileKeywords:        []string{"qemu", "sequential"},
 				excludeFileKeywords: []string{"emulated"},
 				name:                "host_cpu_webservice",
-				ident: identWebService,
+				ident:               identWebService,
 			},
 			{
 				fileKeywords: []string{"qemu", "sequential", "emulated"},
 				name:         "emulated_cpu_webservice",
-				ident: identWebService,
+				ident:        identWebService,
 			},
 			{
 				fileKeywords: []string{"firecracker", "sequential"},
 				name:         "T2_cpu_webservice",
-				ident: identWebService,
+				ident:        identWebService,
 			},
 			{
 				fileKeywords: []string{"firecracker", "sequential", "C3"},
 				name:         "C3_cpu_webservice",
-				ident: identWebService,
+				ident:        identWebService,
 			},
 			{
 				fileKeywords: []string{"firecracker", "sequential", "default", "kernel"},
 				name:         "default_kernel_webservice",
-				ident: identWebService,
+				ident:        identWebService,
 			},
 		},
 	})
