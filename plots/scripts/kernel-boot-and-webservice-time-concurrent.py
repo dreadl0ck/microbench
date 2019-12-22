@@ -30,8 +30,8 @@ kernel = [
 	stats.mean(firecracker_x20_kernel_boot)
 ]
 
-bar2 = plt.bar(y_pos, web, align='center', alpha=0.5,  color=['blue'])
-bar1 = plt.bar(y_pos, kernel, align='center', alpha=0.5,  color=['green'])
+bar2 = plt.bar(y_pos, web, align='center', alpha=0.5,  color=['orange'])
+bar1 = plt.bar(y_pos, kernel, align='center', alpha=0.5,  color=['black'])
 
 plt.xticks(y_pos, labels)
 
@@ -39,7 +39,8 @@ plt.xticks(y_pos, labels)
 plt.ylabel('Time (ms)')
 plt.title('Stacked Mean Kernel Boot and Web Service Startup Times (Concurrent)')
 
-plt.legend((bar1[0], bar2[0]), ('Kernel boot time', 'Web service startup time'))
+#plt.legend((bar1[0], bar2[0]), ('Kernel boot time', 'Web service startup time'))
+plt.legend((bar2[0], bar1[0]), ('Web service startup time', 'Kernel boot time'))
 
 plt.gcf().subplots_adjust(bottom=0.30)
 plt.xticks(rotation=45)
