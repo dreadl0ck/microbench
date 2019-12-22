@@ -1,16 +1,3 @@
-host_cpu = [
-	1106.60577,
-	1174.30180,
-	2039.68959,
-	2042.32914,
-	1144.12149,
-	1141.54589,
-	1167.05263,
-	1147.44122,
-	1112.47571,
-	1170.27711
-]
-
 T2_cpu = [
 	1190.23436,
 	1253.17204,
@@ -113,14 +100,28 @@ emulated_cpu = [
 	1340.94562
 ]
 
+host_cpu = [
+	1106.60577,
+	1174.30180,
+	2039.68959,
+	2042.32914,
+	1144.12149,
+	1141.54589,
+	1167.05263,
+	1147.44122,
+	1112.47571,
+	1170.27711
+]
+
 
 
 import statistics as stats
+print("script: plots/scripts/mean-webservice-time-sequential.py")
+print("stats.mean(emulated_cpu):", stats.mean(emulated_cpu))
+print("stats.mean(host_cpu):", stats.mean(host_cpu))
 print("stats.mean(T2_cpu):", stats.mean(T2_cpu))
 print("stats.mean(C3_cpu):", stats.mean(C3_cpu))
 print("stats.mean(default_kernel):", stats.mean(default_kernel))
-print("stats.mean(emulated_cpu):", stats.mean(emulated_cpu))
-print("stats.mean(host_cpu):", stats.mean(host_cpu))
 
 
 import statistics as stats

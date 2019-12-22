@@ -116,6 +116,7 @@ host_cpu = [
 
 
 import statistics as stats
+print("script: plots/scripts/mean-shutdown-time-sequential.py")
 print("stats.mean(T2_cpu):", stats.mean(T2_cpu))
 print("stats.mean(C3_cpu):", stats.mean(C3_cpu))
 print("stats.mean(default_kernel):", stats.mean(default_kernel))

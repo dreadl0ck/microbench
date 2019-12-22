@@ -199,12 +199,13 @@ qemu_x20 = [
 
 
 import statistics as stats
-print("stats.mean(firecracker_x10):", stats.mean(firecracker_x10))
+print("script: plots/scripts/mean-webservice-time-concurrent.py")
 print("stats.mean(firecracker_x20):", stats.mean(firecracker_x20))
 print("stats.mean(qemu_x10_emulated):", stats.mean(qemu_x10_emulated))
 print("stats.mean(qemu_x20_emulated):", stats.mean(qemu_x20_emulated))
 print("stats.mean(qemu_x10):", stats.mean(qemu_x10))
 print("stats.mean(qemu_x20):", stats.mean(qemu_x20))
+print("stats.mean(firecracker_x10):", stats.mean(firecracker_x10))
 
 
 import statistics as stats

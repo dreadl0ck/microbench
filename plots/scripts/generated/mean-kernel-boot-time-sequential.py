@@ -116,11 +116,12 @@ host_cpu = [
 
 
 import statistics as stats
-print("stats.mean(T2_cpu):", stats.mean(T2_cpu))
-print("stats.mean(C3_cpu):", stats.mean(C3_cpu))
+print("script: plots/scripts/mean-kernel-boot-time-sequential.py")
 print("stats.mean(default_kernel):", stats.mean(default_kernel))
 print("stats.mean(emulated_cpu):", stats.mean(emulated_cpu))
 print("stats.mean(host_cpu):", stats.mean(host_cpu))
+print("stats.mean(T2_cpu):", stats.mean(T2_cpu))
+print("stats.mean(C3_cpu):", stats.mean(C3_cpu))
 
 
 import statistics as stats

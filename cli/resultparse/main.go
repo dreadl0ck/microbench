@@ -431,7 +431,7 @@ func generate(p plot) {
 	defer f.Close()
 
 	// generate python log statements that log the data to stdout
-	var logStatements string
+	var logStatements = "print(\"script: " + p.script + "\")\n"
 	for k := range data {
 		logStatements += "print(\"stats.mean(" + k + "):\", stats.mean(" + k + "))\n"
 	}
