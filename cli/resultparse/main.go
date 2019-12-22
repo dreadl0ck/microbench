@@ -433,7 +433,7 @@ func generate(p plot) {
 	// generate python log statements that log the data to stdout
 	var logStatements string
 	for k := range data {
-		logStatements += "print(stats.mean(" + k + "))\n"
+		logStatements += "print(\"stats.mean(" + k + "):\", stats.mean(" + k + "))\n"
 	}
 
 	// generate list of objects and loading instructions

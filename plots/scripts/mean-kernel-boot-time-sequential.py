@@ -1,6 +1,9 @@
 {{ .Data }}
 
 import statistics as stats
+{{ .Log }}
+
+import statistics as stats
 import matplotlib.pyplot as plt; plt.rcdefaults()
 import numpy as np
 import matplotlib.pyplot as plt
