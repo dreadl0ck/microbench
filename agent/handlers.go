@@ -1,13 +1,13 @@
 package main
 
 import (
-	"math/rand"
 	"crypto/sha256"
 	"encoding/json"
-	"github.com/sirupsen/logrus"
 	"github.com/dustin/go-humanize"
 	"github.com/ncw/directio"
+	"github.com/sirupsen/logrus"
 	"io"
+	"math/rand"
 	"net/http"
 	"os"
 	"os/exec"
@@ -64,7 +64,7 @@ var serveHexdump = func(w http.ResponseWriter, r *http.Request) {
 
 	l.WithFields(logrus.Fields{
 		"numBytes": n,
-		"delta": time.Since(start),
+		"delta":    time.Since(start),
 	}).Info("read data from file")
 
 	_, err = w.Write(block)
@@ -97,7 +97,7 @@ var hashFileHandler = func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("\nfailed to hash file: " + err.Error() + "\n"))
 	}
 
-	_, err = w.Write(append(out, []byte("\nrandom data size: " + humanize.Bytes(uint64(s.Size())))...))
+	_, err = w.Write(append(out, []byte("\nrandom data size: "+humanize.Bytes(uint64(s.Size())))...))
 	if err != nil {
 		l.WithError(err).Info("failed to write data")
 	}
@@ -106,9 +106,9 @@ var hashFileHandler = func(w http.ResponseWriter, r *http.Request) {
 var hashLoopHandler = func(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		numBytes = 1024*1024
+		numBytes      = 1024 * 1024
 		numIterations = 100
-		d = make([]byte, numBytes)
+		d             = make([]byte, numBytes)
 	)
 
 	_, err := rand.Read(d)

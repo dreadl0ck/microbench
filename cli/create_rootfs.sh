@@ -35,15 +35,15 @@ mkfs.ext4 /tmp/rootfs$num.ext4
 mkdir -p /tmp/my-rootfs$num
 mount /tmp/rootfs$num.ext4 /tmp/my-rootfs$num
 
-# add firebench-agent
+# add microbench-agent
 mkdir -p /tmp/my-rootfs$num/usr/bin
 # link static against musl for running in alpine
-go build --ldflags '-linkmode external -extldflags "-static"' -o /tmp/my-rootfs$num/usr/bin/firebench-agent -i github.com/dreadl0ck/firebench/agent
+go build --ldflags '-linkmode external -extldflags "-static"' -o /tmp/my-rootfs$num/usr/bin/microbench-agent -i github.com/dreadl0ck/microbench/agent
 
 # copy init script(s)
-cp $HOME/go/src/github.com/dreadl0ck/firebench/cli/init_alpine.sh /tmp/my-rootfs$num/init_alpine.sh
-cp $HOME/go/src/github.com/dreadl0ck/firebench/bin/networking /tmp/my-rootfs$num/networking
-#cp $HOME/go/src/github.com/dreadl0ck/firebench/random.data /tmp/my-rootfs$num/random.data
+cp $HOME/go/src/github.com/dreadl0ck/microbench/cli/init_alpine.sh /tmp/my-rootfs$num/init_alpine.sh
+cp $HOME/go/src/github.com/dreadl0ck/microbench/bin/networking /tmp/my-rootfs$num/networking
+#cp $HOME/go/src/github.com/dreadl0ck/microbench/random.data /tmp/my-rootfs$num/random.data
 
 # run docker container with latest alpine image to populate filesystem
 if [ "$1" == "-i" ]; then

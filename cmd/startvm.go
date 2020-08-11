@@ -1,6 +1,7 @@
 package main
 
 import (
+	uuid "github.com/kevinburke/go.uuid"
 	"github.com/sirupsen/logrus"
 	"os"
 	"os/exec"
@@ -28,23 +29,31 @@ func spawnMicroVM(l *logrus.Logger, tapEther string, num int) (*exec.Cmd, error)
 			"--firecracker-log=firecracker-vmm.log",
 			"--kernel-opts='console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw'",
 			"--tap-device=tap"+strconv.Itoa(num)+"/"+tapEther,
+			"--id="+uuid.NewV4().String(),
+			"--exec-file="+*flagExecFile,
+			"--uid="+strconv.Itoa(*flagUID),
+			"--gid="+strconv.Itoa(*flagGID),
+			"--debug",
+			"--chroot-base-dir="+*flagChrootBaseDir,
+			"--jailer="+*flagJail,
+			"--node="+strconv.Itoa(*flagNode),
 		)
 	case "qemu":
 		if *flagQEMUEmulatedCPU {
 			cmd = exec.Command(
-				os.ExpandEnv("$HOME/go/src/github.com/dreadl0ck/firebench/cli/run-qemu-microvm-emulated-cpu.sh"),
+				os.ExpandEnv("$HOME/go/src/github.com/dreadl0ck/microbench/cli/run-qemu-microvm-emulated-cpu.sh"),
 				"-k", os.ExpandEnv(*flagKernel),
 				"-r", rootfs,
-				"-i", "tap" + strconv.Itoa(num),
+				"-i", "tap"+strconv.Itoa(num),
 				"-c", strconv.Itoa(*flagNumCPUs),
 				"-m", strconv.Itoa(*flagMemorySize),
 			)
 		} else {
 			cmd = exec.Command(
-				os.ExpandEnv("$HOME/go/src/github.com/dreadl0ck/firebench/cli/run-qemu-microvm.sh"),
+				os.ExpandEnv("$HOME/go/src/github.com/dreadl0ck/microbench/cli/run-qemu-microvm.sh"),
 				"-k", os.ExpandEnv(*flagKernel),
 				"-r", rootfs,
-				"-i", "tap" + strconv.Itoa(num),
+				"-i", "tap"+strconv.Itoa(num),
 				"-c", strconv.Itoa(*flagNumCPUs),
 				"-m", strconv.Itoa(*flagMemorySize),
 			)
@@ -65,18 +74,18 @@ func spawnMicroVM(l *logrus.Logger, tapEther string, num int) (*exec.Cmd, error)
 		// log to global logger
 		logger.WithFields(logrus.Fields{
 			"rootfs": rootfs,
-			"ether": tapEther,
-			"path": cmd.Path,
-			"args": cmd.Args,
+			"ether":  tapEther,
+			"path":   cmd.Path,
+			"args":   cmd.Args,
 		}).Info("spawning microVM")
 	}
 
 	// log to vm specific logger
 	l.WithFields(logrus.Fields{
 		"rootfs": rootfs,
-		"ether": tapEther,
-		"path": cmd.Path,
-		"args": cmd.Args,
+		"ether":  tapEther,
+		"path":   cmd.Path,
+		"args":   cmd.Args,
 	}).Info("spawning microVM")
 
 	return cmd, cmd.Start()

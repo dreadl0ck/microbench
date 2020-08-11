@@ -14,19 +14,25 @@ var (
 	flagKernel = flag.String("kernel", "$HOME/vmlinuz", "kernel to use")
 	flagMulti  = flag.Bool("multi", false, "spawn multiple vms as specified in config file")
 
-	flagEngineType = flag.String("engine", "firecracker", "set engine type")
+	flagEngineType     = flag.String("engine", "firecracker", "set engine type")
 	flagNumRepetitions = flag.Int("num", 1, "set number of repetitions")
-	flagVersion = flag.Bool("version", false, "print firebench version and exit")
+	flagVersion        = flag.Bool("version", false, "print microbench version and exit")
 
 	flagNumVMs = flag.Int("numVMs", 10, "number of vms for multi mode")
-	flagTag = flag.String("tag", "", "add custom tag to experiment logs")
+	flagTag    = flag.String("tag", "", "add custom tag to experiment logs")
 
-	flagQEMUEmulatedCPU = flag.Bool("qemu-cpu-emulated", false, "use emulated cpu instead of host one for qemu")
+	flagQEMUEmulatedCPU        = flag.Bool("qemu-cpu-emulated", false, "use emulated cpu instead of host one for qemu")
 	flagFirecrackerCPUTemplate = flag.String("firecracker-cpu-template", "T2", "set CPU template to use for firecracker")
 
-	flagNumCPUs = flag.Int("cpus", 2, "set num of CPUs for each VM")
+	flagNumCPUs    = flag.Int("cpus", 2, "set num of CPUs for each VM")
 	flagMemorySize = flag.Int("mem", 512, "set memory in MB for each VM")
 
 	flagDebug = flag.Bool("debug", false, "toggle debug mode")
-)
 
+	flagExecFile      = flag.String("exec-file", "/usr/bin/firecracker", "path to firecracker binary")
+	flagUID           = flag.Int("uid", 1000, "user id for jailed user")
+	flagGID           = flag.Int("gid", 1000, "group id for jailed user")
+	flagChrootBaseDir = flag.String("chroot-base-dir", "/srv/jailer", "path to jail")
+	flagJail          = flag.String("jailer", "/usr/bin/jailer", "path to jailer binary")
+	flagNode          = flag.Int("node", 0, "jailer NUMA Cpu node")
+)

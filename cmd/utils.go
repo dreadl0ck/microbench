@@ -32,7 +32,7 @@ func initVM(l *logrus.Logger, ipAddr, gwAddr string, num int) {
 	}
 
 	l.WithFields(logrus.Fields{
-		"tap": num,
+		"tap":   num,
 		"ether": ether,
 	}).Info("configured tap interface")
 

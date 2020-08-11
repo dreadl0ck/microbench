@@ -11,7 +11,7 @@ dd if=/dev/urandom of=random.txt count=512 bs=1048576
 
 ### Launch command
 ```bash
-root@moscow:~/go/src/github.com/dreadl0ck/firebench# sudo qemu-system-x86_64 -M microvm,rtc=off \
+root@moscow:~/go/src/github.com/dreadl0ck/microbench# sudo qemu-system-x86_64 -M microvm,rtc=off \
    -enable-kvm \
    -smp 2 \
    -m 1g \
@@ -54,7 +54,7 @@ sys	0m 0.23s
 
 ### Launch command
 ```bash
-root@moscow:~/go/src/github.com/dreadl0ck/firebench# firectl \
+root@moscow:~/go/src/github.com/dreadl0ck/microbench# firectl \
   --kernel=/root/vmlinuz \
   --root-drive=/tmp/rootfs0.ext4 \
   -t \

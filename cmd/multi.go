@@ -13,7 +13,7 @@ func makeLocalAddrPair(num int) (string, string) {
 func runMulti() {
 
 	var (
-		wg sync.WaitGroup
+		wg       sync.WaitGroup
 		wgRootFS sync.WaitGroup
 	)
 
@@ -28,15 +28,15 @@ func runMulti() {
 		defer cleanup()
 
 		l.WithFields(logrus.Fields{
-			"num": i,
-			"ip": ipAddr,
+			"num":     i,
+			"ip":      ipAddr,
 			"gateway": gateway,
 			"logfile": ipAddr + ".log",
 		}).Info("bootstrapping machine")
 
 		// prevent capturing loop vars
 		var (
-			n  = i
+			n = i
 		)
 
 		go func() {

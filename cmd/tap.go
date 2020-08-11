@@ -12,7 +12,7 @@ func setupTap(address string, num int) {
 
 	cmd := exec.Command(
 		"/bin/bash",
-		os.ExpandEnv("$HOME/go/src/github.com/dreadl0ck/firebench/cli/create_tap.sh"),
+		os.ExpandEnv("$HOME/go/src/github.com/dreadl0ck/microbench/cli/create_tap.sh"),
 		address,
 		strconv.Itoa(num),
 	)

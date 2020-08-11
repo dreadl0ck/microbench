@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/dreadl0ck/firebench/stats"
+	"github.com/dreadl0ck/microbench/stats"
 	"regexp"
 	"strings"
 	"time"
@@ -27,7 +27,7 @@ func parseKernelLog(contents []byte) (s *stats.Summary, err error) {
 			}
 
 			s.KernelBootup = d
-			s.KernelLogLines = i+1
+			s.KernelLogLines = i + 1
 			//s.KernelLogs = string(contents)
 			break
 		}

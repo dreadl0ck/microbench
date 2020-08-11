@@ -8,6 +8,7 @@ import (
 )
 
 var logger = logrus.New()
+
 const version = "v1.0"
 
 func main() {
@@ -21,13 +22,13 @@ func main() {
 
 	logger.WithFields(logrus.Fields{
 		"engine": *flagEngineType,
-		"tag": *flagTag,
-		"num": *flagNumRepetitions,
+		"tag":    *flagTag,
+		"num":    *flagNumRepetitions,
 		"numVMs": *flagNumVMs,
-		"multi": *flagMulti,
-		"cpu": *flagNumCPUs,
-		"mem": *flagMemorySize,
-	}).Info("starting firebench")
+		"multi":  *flagMulti,
+		"cpu":    *flagNumCPUs,
+		"mem":    *flagMemorySize,
+	}).Info("starting microbench")
 
 	if len(*flagIP) == 0 || len(*flagGateway) == 0 {
 		logger.Fatal("you need to pass an IP and gateway")
@@ -44,7 +45,7 @@ func main() {
 		for {
 			count++
 
-			l, cleanup := makeLogger(*flagIP+"-"+strconv.Itoa(count))
+			l, cleanup := makeLogger(*flagIP + "-" + strconv.Itoa(count))
 			defer cleanup()
 
 			initVM(l, *flagIP, *flagGateway, 0)

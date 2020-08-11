@@ -25,9 +25,9 @@ type job struct {
 }
 
 var (
-	flagDebug = flag.Bool("debug", false, "toggle debug mode")
+	flagDebug    = flag.Bool("debug", false, "toggle debug mode")
 	defaultRegEx = regexp.MustCompile("delta=[0-9]*.[0-9]*m?s")
-	wg sync.WaitGroup
+	wg           sync.WaitGroup
 
 	identKernelBootTime = "kernel boot time received"
 	identHashBenchmark  = "hash loop benchmark"

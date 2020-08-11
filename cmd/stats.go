@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	"github.com/dreadl0ck/firebench/stats"
+	"github.com/dreadl0ck/microbench/stats"
 	"github.com/sirupsen/logrus"
 	"io/ioutil"
 	"net"
@@ -33,7 +33,7 @@ func fetchStats(l *logrus.Logger, ip net.IP) {
 		l.WithField("lines", s.KernelLogLines).Info("number of kernel log lines received")
 
 		if len(s.KernelLogs) > 0 {
-			fileName := filepath.Join(logDir, *flagEngineType + "-dmesg.log")
+			fileName := filepath.Join(logDir, *flagEngineType+"-dmesg.log")
 			f, err := os.Create(fileName)
 			if err != nil {
 				l.Fatal(err)

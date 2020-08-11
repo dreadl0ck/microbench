@@ -37,7 +37,7 @@ passwd -d "root"
 # Now add startup item inside container
 cat > /etc/init.d/serve <<EOF
 #!/sbin/openrc-run
-command="firebench-agent"
+command="microbench-agent"
 command_background="yes"
 pidfile="/run/$RC_SVCNAME/$RC_SVCNAME.pid"
 EOF
@@ -83,7 +83,7 @@ rc-update add networking boot
 # EOF
 # chmod 755 /etc/local.d/setup.start
 
-echo "firebench" > /etc/hostname
+echo "microbench" > /etc/hostname
 #hostname -F /etc/hostname
 
 echo "nameserver 9.9.9.9" > /etc/resolv.conf

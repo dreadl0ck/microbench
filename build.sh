@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-echo "building firebench tool"
-GOOS=linux go build -o bin/firebench -i github.com/dreadl0ck/firebench/cmd
+echo "building microbench tool"
+GOOS=linux go build -o bin/microbench -i github.com/dreadl0ck/microbench/cmd

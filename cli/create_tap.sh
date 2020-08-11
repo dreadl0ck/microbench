@@ -15,20 +15,23 @@ if [ -z "$num" ]; then
     exit 1
 fi
 
-echo "creating tap$num"
+echo "creating tap$num with ip $gw_ip"
 
 # clean
 ip link del "tap$num"
 
 #iptables -F
 
+echo "adding interface"
 ip tuntap add "tap$num" mode tap
 ip addr add "$gw_ip"/28 dev "tap$num"
 
+echo "set interface status to UP"
 ip link set "tap$num" up
 
 #brctl addif docker0 tap0
 
+echo "configure iptables"
 sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
 iptables -t nat -A POSTROUTING -o eno1 -j MASQUERADE
 iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT

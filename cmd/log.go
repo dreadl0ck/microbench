@@ -58,18 +58,20 @@ func makeLogger(name string) (*logrus.Logger, func()) {
 
 	switch *flagEngineType {
 	case "firecracker":
-		out, err := exec.Command("firecracker", "-V").CombinedOutput()
+		out, err := exec.Command("firecracker", "--version").CombinedOutput()
 		if err != nil {
 			l.WithError(err).Fatal("failed to get firecracker version")
 		}
+
 		version = string(out)
 
 		l.Info("using CPU template: ", *flagFirecrackerCPUTemplate)
 	case "qemu":
 		out, err := exec.Command("qemu-system-x86_64", "--version").CombinedOutput()
 		if err != nil {
-			l.WithError(err).Fatal("failed to get firecracker version")
+			l.WithError(err).Fatal("failed to get qemu version")
 		}
+
 		version = strings.Split(string(out), "\n")[0]
 	}
 

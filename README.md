@@ -1,6 +1,6 @@
 # firecracker setup
 
-## check for hardware virtualisation support
+## check for hardware virtualization support
 
     egrep -c '(vmx|svm)' /proc/cpuinfo
 
@@ -375,8 +375,8 @@ https://github.com/firecracker-microvm/firecracker/blob/master/docs/network-setu
 ### Automate microVM start
     
     dreadl0ck
-    cd firebench
-    cli/create_rootfs.sh && bin/firebench 145.100.106.18
+    cd microbench
+    cli/create_rootfs.sh && bin/microbench 145.100.106.18
 
 ### Benchmark kernel boot time
 

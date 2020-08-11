@@ -69,7 +69,7 @@ func measureResponseTime(l *logrus.Logger, ip net.IP, requests int) {
 	out, err := exec.Command("ab",
 		"-n"+strconv.Itoa(requests),
 		"-k",
-		"-e", "./logs/apache/responseTime/" + ip.String() + ".log",
+		"-e", "./logs/apache/responseTime/"+ip.String()+".log",
 		"http://"+ip.String()+":80"+"/ping",
 	).CombinedOutput()
 	if err != nil {
@@ -87,9 +87,9 @@ func measureThroughput(l *logrus.Logger, ip net.IP, requests int, concurrentRequ
 	out, err := exec.Command("ab",
 		"-n"+strconv.Itoa(requests),
 		"-k",
-		"-t",strconv.Itoa(timeInSeconds),
-		 "-c",strconv.Itoa(concurrentRequests),
-		"-e", "./logs/apache/throughput/" + ip.String() + ".log",
+		"-t", strconv.Itoa(timeInSeconds),
+		"-c", strconv.Itoa(concurrentRequests),
+		"-e", "./logs/apache/throughput/"+ip.String()+".log",
 		"http://"+ip.String()+":80"+"/ping",
 	).CombinedOutput()
 	if err != nil {
@@ -100,7 +100,7 @@ func measureThroughput(l *logrus.Logger, ip net.IP, requests int, concurrentRequ
 	}
 }
 
-func startHashingFile(l *logrus.Logger, ip net.IP)  {
+func startHashingFile(l *logrus.Logger, ip net.IP) {
 	http.DefaultClient = &http.Client{
 		Timeout: 0,
 	}
@@ -117,7 +117,7 @@ func startHashingFile(l *logrus.Logger, ip net.IP)  {
 	}
 }
 
-func startHashingLoop(l *logrus.Logger, ip net.IP)  {
+func startHashingLoop(l *logrus.Logger, ip net.IP) {
 
 	http.DefaultClient = &http.Client{
 		Timeout: 0,
