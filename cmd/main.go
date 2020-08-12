@@ -30,7 +30,7 @@ func main() {
 		"multi":  *flagMulti,
 		"cpu":    *flagNumCPUs,
 		"mem":    *flagMemorySize,
-	}).Info("starting microbench")
+	}).Info("starting microbench", version)
 
 	if len(*flagIP) == 0 || len(*flagGateway) == 0 {
 		logger.Fatal("you need to pass an IP and gateway")
