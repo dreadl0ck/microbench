@@ -1,12 +1,14 @@
-# firecracker setup
+# README
 
-## check for hardware virtualization support
+## Firecracker Setup
+
+### check for hardware virtualization support
 
     egrep -c '(vmx|svm)' /proc/cpuinfo
 
 > must be > 0
 
-## install KVM and docker
+### install KVM and docker
 
     # apt install qemu-kvm libvirt-bin bridge-utils
     # apt install vim tree curl docker.io make gcc
@@ -463,3 +465,133 @@ Performance measurements:
 
 - integration_tests/performance/test_process_startup_time.py Process startup time is: 23428 us (6601 CPU us)
 - Total: 5 failed, 64 passed, 1 skipped in 946.56s (0:15:46)
+
+## QEMU
+
+Inspired by [firecracker's microvms](https://github.com/firecracker-microvm/firecracker/blob/master/docs/design.md), QEMU released [support for microvms](https://github.com/qemu/qemu/blob/master/docs/microvm.rst)
+
+## Prerequisites
+
+```bash
+sudo apt install qemu qemu-kvm
+```
+
+### Shellcheck
+Install [shellcheck](https://github.com/koalaman/shellcheck) and run it as a pre-commit hook e.g. `cp hooks/pre-commit .git/hooks/`
+
+```bash
+sudo apt install shellcheck
+cp hooks/pre-commit .git/hooks/pre-commit
+```
+
+### Qemu installation
+
+The ubuntu package manager only has qemu version 2.11. Since support for microvms is in the latest version (4.20) we are going to have to build QEMU from source.
+
+```bash
+# update sources list
+sudo cp /etc/apt/sources.list /etc/apt/sources.list~
+sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
+sudo apt update
+
+# install qemu dependencies & build tools
+sudo apt build-dep qemu
+sudo apt install build-essential
+
+# install qemu from source
+wget https://download.qemu.org/qemu-4.2.0-rc2.tar.xz
+tar xvJf qemu-4.2.0-rc2.tar.xz
+cd qemu-4.2.0-rc2
+./configure
+make
+sudo make install
+```
+
+### Linux kernel compilation
+https://github.com/firecracker-microvm/firecracker/blob/master/docs/rootfs-and-kernel-setup.md
+```bash
+# get linux source code
+git clone https://github.com/torvalds/linux.git linux.git
+cd linux.git
+
+# checkout the version you want
+git checkout v5.3
+
+# get microvm custom kernel
+git clone https://gist.github.com/ppartarr/0f501d22788ad7ca214472814f3a87a1 .config
+
+# build uncompressed kernel image
+make -j32 vmlinux
+```
+
+### Alpine rootfs
+Create a minimal alpine rootfs for QEMU
+```bash
+wget http://dl-cdn.alpinelinux.org/alpine/v3.10/releases/x86_64/alpine-minirootfs-3.10.2-x86_64.tar.gz
+qemu-img create -f raw alpine-rootfs-x86_64.raw 1G
+sudo losetup /dev/loop0 alpine-rootfs-x86_64.raw
+sudo mkfs.ext4 /dev/loop0
+sudo mount /dev/loop0 /mnt
+sudo tar xpf alpine-minirootfs-3.10.2-x86_64.tar.gz -C /mnt
+sudo umount /mnt
+sudo losetup -d /dev/loop0
+```
+
+## Running a microvm
+
+See early boot logs with legacy console:
+```bash
+sudo qemu-system-x86_64 \
+  -M microvm \
+  -enable-kvm \
+  -smp 2 \
+  -m 1g \
+  -kernel vmlinux-microvm \
+  -append "earlyprintk=ttyS0 console=ttyS0 root=/dev/vda init=/bin/sh" \
+  -nodefaults \
+  -no-user-config \
+  -nographic \
+  -serial stdio \
+  -drive id=test,file=alpine/alpine-rootfs-x86_64.raw,format=raw,if=none \
+  -device virtio-blk-device,drive=test \
+  -netdev tap,id=tap0,script=no,downscript=no \
+  -device virtio-net-device,netdev=tap0 \
+  -no-reboot
+```
+
+```bash
+sudo qemu-system-x86_64 \
+  -M microvm \
+  -enable-kvm \
+  -smp 2 \
+  -m 1g \
+  -kernel vmlinux-redhat \
+  -append "console=hvc0 root=/dev/vda init=/bin/sh rootfstype=ext4" \
+  -nodefaults \
+  -no-user-config \
+  -nographic \
+  -serial pty \
+  -chardev stdio,id=virtiocon0,server \
+  -device virtio-serial-device \
+  -device virtconsole,chardev=virtiocon0 \
+  -netdev user,id=testnet \
+  -device virtio-net-device,netdev=testnet \
+  -drive id=test,file=alpine/alpine-rootfs-x86_64.raw,format=raw,if=none \
+  -device virtio-blk-device,drive=test \
+  -no-reboot
+```
+
+### FAQ
+
+**Q: why do I get the following error?**
+```bash
+qemu-system-x86_64: error: failed to set MSR 0x480 to 0x0
+qemu-system-x86_64: /opt/qemu-4.2.0-rc1/target/i386/kvm.c:2932: kvm_put_msrs: Assertion `ret == cpu->kvm_msr_buf->nmsrs' failed.
+Aborted
+```
+
+**Q: how do I connect to a serial console i.e. ttyS0**
+Run qemu with a legacy console: `-append "console=9600,ttyS0"` and connect with minicom
+```bash
+minicom -D /dev/ttyS0 -b 9600
+```
