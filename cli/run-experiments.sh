@@ -2,19 +2,19 @@
 
 # QEMU with host cpu
 # re-create the rootfs to be sure everything works
-#bin/microbench -createfs
+bin/microbench -createfs
 # run sequential
-#bin/microbench -engine qemu -num 10 -tag "sequential"
+bin/microbench -engine qemu -num 10 -tag "sequential"
 #
 ## run concurrent
-#bin/microbench -engine qemu -multi -numVMs 10
-#bin/microbench -engine qemu -multi -numVMs 20
+bin/microbench -engine qemu -multi -numVMs 10
+bin/microbench -engine qemu -multi -numVMs 20
 #
 ## QEMU use emulated cpu
-#bin/microbench -createfs
-#bin/microbench -engine qemu -num 10 -qemu-cpu-emulated -tag "sequential-emulated-cpu"
-#bin/microbench -engine qemu -multi -qemu-cpu-emulated -numVMs 10 -tag "emulated-cpu"
-#bin/microbench -engine qemu -multi -qemu-cpu-emulated -numVMs 20 -tag "emulated-cpu"
+bin/microbench -createfs
+bin/microbench -engine qemu -num 10 -qemu-cpu-emulated -tag "sequential-emulated-cpu"
+bin/microbench -engine qemu -multi -qemu-cpu-emulated -numVMs 10 -tag "emulated-cpu"
+bin/microbench -engine qemu -multi -qemu-cpu-emulated -numVMs 20 -tag "emulated-cpu"
 
 # Firecracker
 # re-create the rootfs to be sure everything works

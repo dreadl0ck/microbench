@@ -1,24 +1,35 @@
 #!/bin/bash
 
+# usage: ./create_rootfs.sh <ip> <gw> <num> [<jail_user>]"
+
 # exit script on error
 set -e
 
 vm_ip="$1"
 gw_ip="$2"
+num=$3
+jail_user=$4
 
 if [ -z "$vm_ip" ]; then
     echo "you must pass an ip for the vm as parameter #1"
-    echo "usage: ./create_rootfs.sh <ip> <gw>"
+    echo "usage: ./create_rootfs.sh <ip> <gw> <num> [<jail_user>]"
+    echo "                          ^^^^"
     exit 1
 fi
 
 if [ -z "$gw_ip" ]; then
     echo "you must pass a gateway ip as parameter #2"
-    echo "usage: ./create_rootfs.sh <ip> <gw>"
+    echo "usage: ./create_rootfs.sh <ip> <gw> <num> [<jail_user>]"
+    echo "                               ^^^^"
     exit 1
 fi
 
-num=$3
+if [ -z "$num" ]; then
+    echo "you must pass an index number for the tap interface as parameter #3"
+    echo "usage: ./create_rootfs.sh <ip> <gw> <num> [<jail_user>]"
+    echo "                                    ^^^^"
+    exit 1
+fi
 
 # hotfix for dangling network interfaces
 #systemctl restart docker
@@ -41,9 +52,9 @@ mkdir -p /tmp/my-rootfs$num/usr/bin
 go build --ldflags '-linkmode external -extldflags "-static"' -o /tmp/my-rootfs$num/usr/bin/microbench-agent -i github.com/dreadl0ck/microbench/agent
 
 # copy init script(s)
-cp $HOME/go/src/github.com/dreadl0ck/microbench/cli/init_alpine.sh /tmp/my-rootfs$num/init_alpine.sh
-cp $HOME/go/src/github.com/dreadl0ck/microbench/bin/networking /tmp/my-rootfs$num/networking
-#cp $HOME/go/src/github.com/dreadl0ck/microbench/random.data /tmp/my-rootfs$num/random.data
+cp ${GOPATH}/src/github.com/dreadl0ck/microbench/cli/init_alpine.sh /tmp/my-rootfs$num/init_alpine.sh
+cp ${GOPATH}/src/github.com/dreadl0ck/microbench/bin/networking /tmp/my-rootfs$num/networking
+#cp ${GOPATH}/src/github.com/dreadl0ck/microbench/random.data /tmp/my-rootfs$num/random.data
 
 # run docker container with latest alpine image to populate filesystem
 if [ "$1" == "-i" ]; then
@@ -62,6 +73,13 @@ sync
 
 echo "unmounting..."
 umount /tmp/my-rootfs$num
+
+echo "jail user: $jail_user"
+if [ -n "$jail_user" ]; then
+    echo "setting jail user to $jail_user"
+    chown "$jail_user" "/tmp/rootfs$num.ext4"
+    ls -la "/tmp/rootfs$num.ext4"
+fi
 
 echo "created rootfs at /tmp/rootfs$num.ext4"
 exit 0

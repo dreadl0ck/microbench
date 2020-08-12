@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/sirupsen/logrus"
+	"os"
 	"strconv"
 )
 
@@ -17,6 +18,7 @@ func main() {
 
 	if *flagVersion {
 		fmt.Println(version)
+
 		return
 	}
 
@@ -34,14 +36,20 @@ func main() {
 		logger.Fatal("you need to pass an IP and gateway")
 	}
 
+	var jailUser = *flagJailUser
+	if jailUser == "" {
+		jailUser = os.Getenv("JAIL_USER")
+	}
+
 	if *flagCreateFS {
-		createRootFS(logger, *flagIP, *flagGateway, 0)
+		createRootFS(logger, *flagIP, *flagGateway, 0, jailUser)
+
 		return
 	}
 
 	if !*flagMulti {
-
 		var count int
+
 		for {
 			count++
 
@@ -50,12 +58,14 @@ func main() {
 
 			initVM(l, *flagIP, *flagGateway, 0)
 			if count == *flagNumRepetitions {
+
 				break
 			}
 		}
+
 		return
 	}
 
-	runMulti()
+	runMulti(jailUser)
 	logger.Info("done. bye")
 }

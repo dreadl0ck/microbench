@@ -10,7 +10,7 @@ func makeLocalAddrPair(num int) (string, string) {
 	return "10.0." + strconv.Itoa(num) + ".1", "10.0." + strconv.Itoa(num) + ".2"
 }
 
-func runMulti() {
+func runMulti(jailUser string) {
 
 	var (
 		wg       sync.WaitGroup
@@ -40,7 +40,7 @@ func runMulti() {
 		)
 
 		go func() {
-			createRootFS(l, ipAddr, gateway, n)
+			createRootFS(l, ipAddr, gateway, n, jailUser)
 			wgRootFS.Done()
 			wgRootFS.Wait()
 			initVM(l, ipAddr, gateway, n)

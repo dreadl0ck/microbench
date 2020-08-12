@@ -41,6 +41,7 @@ func initVM(l *logrus.Logger, ipAddr, gwAddr string, num int) {
 	if err != nil {
 		l.WithError(err).Fatal("failed to start microVM")
 	}
+
 	l.WithField("pid", cmd.Process.Pid).Info("VM started")
 
 	if *flagInteractive {

@@ -18,7 +18,7 @@ func spawnMicroVM(l *logrus.Logger, tapEther string, num int) (*exec.Cmd, error)
 	switch *flagEngineType {
 	case "firecracker":
 		cmd = exec.Command(
-			os.ExpandEnv("$HOME/go/bin/firectl"),
+			os.ExpandEnv("${GOPATH}/bin/firectl"),
 			"--kernel="+os.ExpandEnv(*flagKernel),
 			"--root-drive="+rootfs,
 			"-t",
@@ -41,7 +41,7 @@ func spawnMicroVM(l *logrus.Logger, tapEther string, num int) (*exec.Cmd, error)
 	case "qemu":
 		if *flagQEMUEmulatedCPU {
 			cmd = exec.Command(
-				os.ExpandEnv("$HOME/go/src/github.com/dreadl0ck/microbench/cli/run-qemu-microvm-emulated-cpu.sh"),
+				os.ExpandEnv("${GOPATH}/src/github.com/dreadl0ck/microbench/cli/run-qemu-microvm-emulated-cpu.sh"),
 				"-k", os.ExpandEnv(*flagKernel),
 				"-r", rootfs,
 				"-i", "tap"+strconv.Itoa(num),
@@ -50,7 +50,7 @@ func spawnMicroVM(l *logrus.Logger, tapEther string, num int) (*exec.Cmd, error)
 			)
 		} else {
 			cmd = exec.Command(
-				os.ExpandEnv("$HOME/go/src/github.com/dreadl0ck/microbench/cli/run-qemu-microvm.sh"),
+				os.ExpandEnv("${GOPATH}/src/github.com/dreadl0ck/microbench/cli/run-qemu-microvm.sh"),
 				"-k", os.ExpandEnv(*flagKernel),
 				"-r", rootfs,
 				"-i", "tap"+strconv.Itoa(num),
@@ -65,6 +65,9 @@ func spawnMicroVM(l *logrus.Logger, tapEther string, num int) (*exec.Cmd, error)
 
 	if *flagInteractive {
 		cmd.Stdin = os.Stdin
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
+	} else if *flagDebug {
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 	}
