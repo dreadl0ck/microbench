@@ -51,9 +51,11 @@ mkdir -p /tmp/my-rootfs$num/usr/bin
 # link static against musl for running in alpine
 go build --ldflags '-linkmode external -extldflags "-static"' -o /tmp/my-rootfs$num/usr/bin/microbench-agent -i github.com/dreadl0ck/microbench/agent
 
+echo "GOPATH: ${GOPATH}"
+
 # copy init script(s)
-cp ${GOPATH}/src/github.com/dreadl0ck/microbench/cli/init_alpine.sh /tmp/my-rootfs$num/init_alpine.sh
-cp ${GOPATH}/src/github.com/dreadl0ck/microbench/bin/networking /tmp/my-rootfs$num/networking
+cp "${GOPATH}/src/github.com/dreadl0ck/microbench/cli/init_alpine.sh" /tmp/my-rootfs$num/init_alpine.sh
+cp "${GOPATH}/src/github.com/dreadl0ck/microbench/bin/networking" /tmp/my-rootfs$num/networking
 #cp ${GOPATH}/src/github.com/dreadl0ck/microbench/random.data /tmp/my-rootfs$num/random.data
 
 # run docker container with latest alpine image to populate filesystem

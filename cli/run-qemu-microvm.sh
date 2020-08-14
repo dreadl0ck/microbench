@@ -19,8 +19,10 @@ echo "INTERFACE=$INTERFACE"
 echo "CPU=$CPU"
 echo "MEM=$MEM"
 
+echo "USER=$(whoami)"
+
 function runQemu() {
-	sudo qemu-system-x86_64 -M microvm,isa-serial=off,rtc=off \
+	qemu-system-x86_64 -M microvm,isa-serial=off,rtc=off \
 		-enable-kvm \
 		-cpu host \
 		-smp $CPU \

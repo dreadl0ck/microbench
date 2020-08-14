@@ -11,7 +11,7 @@ var (
 	flagCreateFS = flag.Bool("createfs", false, "create rootfs and exit")
 	flagRootFS   = flag.String("rootfs", "/tmp/rootfs.ext4", "use rootfs at the specified path")
 
-	flagKernel = flag.String("kernel", "/root/vmlinuz", "kernel to use")
+	flagKernel = flag.String("kernel", "vmlinuz", "kernel to use")
 	flagMulti  = flag.Bool("multi", false, "spawn multiple vms as specified in config file")
 
 	flagEngineType     = flag.String("engine", "firecracker", "set engine type")

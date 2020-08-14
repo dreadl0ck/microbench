@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/exec"
 	"strconv"
+	"syscall"
 )
 
 func spawnMicroVM(l *logrus.Logger, tapEther string, num int) (*exec.Cmd, error) {
@@ -57,6 +58,16 @@ func spawnMicroVM(l *logrus.Logger, tapEther string, num int) (*exec.Cmd, error)
 				"-c", strconv.Itoa(*flagNumCPUs),
 				"-m", strconv.Itoa(*flagMemorySize),
 			)
+		}
+
+		// jail the QEMU process if a user and group id have been supplied
+		if *flagUID != 0 && *flagGID != 0 {
+			cmd.SysProcAttr = &syscall.SysProcAttr{
+				Credential: &syscall.Credential{
+					Uid: uint32(*flagUID),
+					Gid: uint32(*flagGID),
+				},
+			}
 		}
 
 	default:

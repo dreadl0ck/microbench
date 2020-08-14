@@ -8,7 +8,7 @@ import (
 
 func setupTap(address string, num int) {
 
-	logger.Info("setting up tap interface...")
+	logger.Info("setting up tap interface... GOPATH=", os.ExpandEnv("${GOPATH}"))
 
 	cmd := exec.Command(
 		"/bin/bash",

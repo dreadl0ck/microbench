@@ -14,7 +14,7 @@ func createRootFS(l *logrus.Logger, ip, gw string, num int, jailUser string) {
 		"ip":      ip,
 		"gateway": gw,
 		"jailUser": jailUser,
-	}).Info("creating rootfs")
+	}).Info("creating rootfs... GOPATH=", os.ExpandEnv("${GOPATH}"))
 
 	if jailUser == "" {
 		l.Warn("no jailUser set!")

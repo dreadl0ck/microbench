@@ -20,7 +20,7 @@ echo "CPU=$CPU"
 echo "MEM=$MEM"
 
 function runQemu() {
-	sudo qemu-system-x86_64 -M microvm,isa-serial=off,rtc=off \
+	qemu-system-x86_64 -M microvm,isa-serial=off,rtc=off \
 		-enable-kvm \
 		-smp $CPU \
 		-m ${MEM}m \

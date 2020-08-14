@@ -52,4 +52,6 @@ bin/microbench -multi -numVMs 10 -kernel /root/hello-vmlinux.bin -tag "default-k
 bin/microbench -multi -numVMs 20 -kernel /root/hello-vmlinux.bin -tag "default-kernel-C3" -firecracker-cpu-template "C3"
 
 tree experiment_logs
-echo "done."
+echo "experiments done."
+
+cli/compress.sh

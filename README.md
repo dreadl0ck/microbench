@@ -595,3 +595,37 @@ Run qemu with a legacy console: `-append "console=9600,ttyS0"` and connect with 
 ```bash
 minicom -D /dev/ttyS0 -b 9600
 ```
+
+**Q: Why do I receive a QEMU KVM Permission Denied Error?**
+
+    Could not access KVM kernel module: Permission denied
+    qemu-system-x86_64: failed to initialize kvm: Permission denied
+
+For the jailing to work, update the permissions and add the jail_user to the _kvm_ group: 
+
+    # chown root:kvm /dev/kvm
+    # chmod 666 /dev/kvm
+    # usermod -a -G kvm <jail_user>
+    # addgroup libvirtd
+    # usermod -a -G libvirtd <jail_user>
+    # systemctl restart libvirtd.service
+    
+Also make sure the kernel file is owned by the jail_user:
+
+    # chown <jail_user> <path/to/vmlinuz>
+
+Verify access works as jail user:
+
+    $ kvm-ok
+    INFO: /dev/kvm exists
+    KVM acceleration can be used
+    
+Check group ownerships of jail_user:
+
+    $ id  
+    uid=1000(jail_user) gid=1000(jail_user) groups=1000(jail_user),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),111(lpadmin),112(sambashare),113(docker),114(kvm),116(libvirt),1003(libvirtd)
+    
+To Persist changes to /dev/kvm between reboots,
+create a file _/lib/udev/rules.d/99-kvm.rules_ with this content:
+
+    KERNEL=="kvm", GROUP="kvm", MODE="0666"
