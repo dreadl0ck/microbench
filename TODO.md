@@ -1,5 +1,7 @@
 # TODOs
 
+- amazon paper: speculative prebooting of vms - side effects? 
+
 - note that only linux is supported atm
 - note that rootfs need to be created per machine, because they contain network interface information and addresses 
 - add notes for general setup and experiment workflow:
